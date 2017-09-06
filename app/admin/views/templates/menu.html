@@ -1,0 +1,25 @@
+<div class="vernav2 iconmenu">
+	<ul>
+		<li <?php if($cname=='Option'):?>class="current"<?php endif?>><a href="/admin.php/option"><i class="fa fa-cog"></i> <span class="nav-label">基本设置</span></a></li>
+        <li <?php if($cname=='Slide'):?>class="current"<?php endif?>><a href="/admin.php/slide"><i class="fa fa-picture-o"></i> <span class="nav-label">轮播图</span></a></li>
+        <li <?php if($cname=='Project' || $cname=='User'):?>class="current"<?php endif?>><a href="#pro" class="editor"><i class="fa fa-rmb"></i> 项目管理</a>
+            <span class="arrow"></span>
+            <ul id="pro">
+                <li <?php if($cname=='Project'):?>class="current"<?php endif?>><a href="/admin.php/project">项目列表</a></li>
+                <li <?php if($cname=='User'):?>class="current"<?php endif?>><a href="/admin.php/user">借款人</a></li>
+            </ul>
+        </li>
+        <li <?php if($cname=='Member'):?>class="current"<?php endif?>><a href="/admin.php/member"><i class="fa fa-user-o"></i> <span class="nav-label">会员管理</span></a></li>
+        <li <?php if($cname=='Notice'):?>class="current"<?php endif?>><a href="/admin.php/notice"><i class="fa fa-bell-o"></i> <span class="nav-label">公告管理</span></a></li> 
+        <li <?php if($cname=='Information'):?>class="current"<?php endif?>><a href="/admin.php/information"><i class="fa fa-vcard-o"></i> <span class="nav-label">信息披露</span></a></li>   
+        <li <?php if($cname=='News' || $cname=='Category'):?>class="current"<?php endif?>><a href="#news" class="editor"><i class="fa fa-newspaper-o"></i> 新闻管理</a>
+        	<span class="arrow"></span>
+        	<ul id="news">
+                <li <?php if($cname=='Category'):?>class="current"<?php endif?>><a href="/admin.php/category/index/1">新闻分类</a></li>
+                <li <?php if($cname=='News'):?>class="current"<?php endif?>><a href="/admin.php/news">新闻内容</a></li>
+            </ul>
+        </li>
+    </ul>
+    <a class="togglemenu"></a>
+    <br /><br />
+</div>
