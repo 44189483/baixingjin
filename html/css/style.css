@@ -27,8 +27,12 @@ ul {
 	padding:15px 0;
 }
 
+.mtb30{
+	margin: 30px auto;
+}
+
 .ptb30{
-	padding:30px 0; 
+	padding:30px 0;
 }
 
 a,a:hover{
@@ -52,6 +56,10 @@ h4{
 
 .f14{
 	font-size: 14px;
+}
+
+.f16{
+	font-size: 16px;
 }
 
 .f20{
@@ -99,7 +107,9 @@ header .loginbar a{
 }
 
 footer{
-	line-height: 72px;
+	margin-top: 30px;
+	padding: 40px 0;
+	line-height: 40px;
 }
 
 .banner{
@@ -108,7 +118,7 @@ footer{
 }
 
 .banner img{
-	width: 100%;
+	max-width: 100%;
 }
 
 .btn{
@@ -126,7 +136,7 @@ footer{
 }
 
 .s-line{
-	border-bottom: 1px solid #f5f5f5; 
+	border-bottom: 1px solid #eaeaea; 
 }
 
 .logreg a{
@@ -212,6 +222,10 @@ footer{
 	color:#666666;
 }
 
+.notice{
+	padding-top:10px;
+}
+
 .marquee-panel{
 	height:30px;
 	overflow:hidden;
@@ -243,19 +257,17 @@ footer{
 
 .tab li{
 	float: left;
-	font-size: 20px;
 	margin-right: 30px;
 	cursor: pointer;
 }
 
 .tab .active{
 	color:#cd9d26;
-	padding-bottom: 10px;
 	border-bottom: 2px solid #cd9d26; 
 }
 
 .tab #tabCon div{
-	padding:20px 0;
+	padding:15px 0;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
@@ -270,8 +282,13 @@ footer{
 	overflow: auto;
 }
 
-.subnav{
-	margin: 30px 0;
+.info-panel img{
+	max-width: 100%;
+}
+
+.subnav {
+    height: 50px;
+    margin-top: 25px;
 }
 
 .subnav li{
@@ -288,10 +305,40 @@ footer{
 	color:#cd9d26;
 }
 
+.subtitle{
+	margin:20px 0;
+	font-size: small;
+}
+
+.info-panel .login{
+	padding:30px;
+}
+
+.info-panel form{
+	margin:30px 0;
+	text-align: center;
+}
+
+.info-panel form input {
+    border-radius: 5px;
+    border: 1px solid #eaeaea;
+    padding: 15px;
+    margin: 15px;
+}
+
+.info-panel .tab #tabCon p {
+	margin:15px 0;
+}
+
+.info-panel .tab #tabCon a:hover{
+	color:#cd9d26;
+}
+
 /* 超小屏幕（手机，小于 768px） mobile */
 @media (max-width: 768px) {
 
 	h2{
+		font-size: 20px;
 		text-align: center;
 	}
 
@@ -303,19 +350,24 @@ footer{
 		display: none;
 	}
 
+	footer{
+		font-size: 14px;
+	}
+
 	.nav-bar{
+		position: relative;
 		margin-top: 20px;
 		height: 62px;
 	}
 
 	.nav-bar ul{
 		background: #fff;
-		width: 85%;
-		padding:20px 50px;
+		width: 75%;
+		padding:20px 40px;
 		position: absolute;
 	    top: 70px;
 	    right: -15px;
-	    z-index: 999;
+	    z-index: 1;
 		-moz-box-shadow:2px 10px 20px #949494; 
 		-webkit-box-shadow:2px 10px 20px #949494; 
 		box-shadow:2px 10px 20px #949494;
@@ -324,27 +376,22 @@ footer{
 
 	.nav-bar ul li{
 		padding:0 30px 30px 30px;
-		font-size: 22px;
 		width: 100%;
 	}
 
 	.nav-bar ul li{
 		border-bottom: 1px solid #eaeaea;
-		padding:20px;
+		padding:10px;
 	}
 
 	.nav-bar ul li:last-child{
 		border-bottom: none;
 	}
 
-	.nav-bar .active{
-		font-size: 26px;
-	}
-
 	#triangle{
         position: absolute;
         top: 20px;
-	    right: 0;
+	    right: 5px;
 	    z-index: 1;
 	    width: 0;
 	    height: 0;
@@ -371,8 +418,8 @@ footer{
 	.data-tips img{
 		position: relative;
 		top:8px;
-		width: 32%;
-		height:32%;
+		width: 30%;
+		height:30%;
 	}
 
 	.data-tips span{
@@ -380,11 +427,11 @@ footer{
 	    font-size: 16px;
 	    position: relative;
 	    top: 0;
-	    left: 34%;
+	    left: 32%;
 	}
 
 	.plr5{
-		margin:0 25px;
+		margin:0 15px;
 	}
 
 	.inspection img{
@@ -504,6 +551,10 @@ footer{
 	    width: 100%;
 	}
 
+	.list h3{
+		font-size: 18px;
+	}
+
 	.list:first-child{
 		border: none;
 	}
@@ -579,6 +630,38 @@ footer{
 
 	.tab{
 		padding: 0 20px;
+		font-size: 16px;
+	}
+
+	.tab .active{
+		padding-bottom: 12px;
+	}
+
+	.subnav li{
+		padding: 0 10px;
+		font-size: 14px;
+	}
+
+	.info-panel{
+		font-size:14px; 
+	}
+
+	.pager{
+		font-size: 12px;
+	}
+
+	.info-panel form input {
+		width: 240px;
+	}
+
+	.info-panel form #verifcode{
+		width: 155px;
+	}
+
+	.info-panel .tab #tabCon div{
+		overflow: hidden;
+	  	text-overflow: ellipsis;
+	  	white-space: nowrap;
 	}
 
 }
@@ -640,6 +723,8 @@ footer{
 
 	.login-panel{
 		background: white;
+		/*filter:alpha(opacity=50);
+	    opacity:0.5;*/
 		position: absolute;
 	    top: 40px;
 	    right: 300px;
@@ -821,6 +906,34 @@ footer{
 
 	footer{
 		margin-top: 30px; 
+	}
+
+	.tab li{
+		font-size: 20px;
+	}
+
+	.tab .active{
+		padding-bottom: 9px;
+	}
+
+	.subtitle p:first-child{
+		float: left;
+	}
+
+	.subtitle p:last-child{
+		float: right;
+	}
+
+	.info-panel form input {
+		width: 400px;
+	}
+
+	.info-panel form #verifcode{
+		width: 155px;
+	}
+
+	.info-panel .tab{
+		margin: 0 30px; 
 	}
 
 }
