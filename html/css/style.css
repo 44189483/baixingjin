@@ -35,7 +35,7 @@ ul {
 	padding:30px 0;
 }
 
-a,a:hover{
+a,a:hover,a:link{
 	color:#000;
 	text-decoration: none;
 }
@@ -98,6 +98,10 @@ h4{
 	background: #eaeaea;
 }
 
+.center{
+	margin: 0 auto;
+}
+
 header .loginbar{
 	color: #666666;
 }
@@ -128,7 +132,7 @@ footer{
 	margin: 10px 0;
 	border-radius: 10px;
 	font-weight: bold;
-	color:#fff;
+	color:#fff !important;
 }
 
 .b-line{
@@ -222,10 +226,6 @@ footer{
 	color:#666666;
 }
 
-.notice{
-	padding-top:10px;
-}
-
 .marquee-panel{
 	height:30px;
 	overflow:hidden;
@@ -235,6 +235,10 @@ footer{
 
 .progress .progress-bar {
     background-color: red;
+}
+
+.pager{
+	font-size: 14px;
 }
 
 .pager li a.active{
@@ -315,8 +319,7 @@ footer{
 }
 
 .info-panel form{
-	margin:30px 0;
-	text-align: center;
+	margin-top:30px;
 }
 
 .info-panel form input {
@@ -340,6 +343,10 @@ footer{
 	h2{
 		font-size: 20px;
 		text-align: center;
+	}
+
+	.w180{
+		width: 180px;
 	}
 
 	.m-gray-bg{
@@ -367,7 +374,7 @@ footer{
 		position: absolute;
 	    top: 70px;
 	    right: -15px;
-	    z-index: 1;
+	    z-index: 999;
 		-moz-box-shadow:2px 10px 20px #949494; 
 		-webkit-box-shadow:2px 10px 20px #949494; 
 		box-shadow:2px 10px 20px #949494;
@@ -428,6 +435,10 @@ footer{
 	    position: relative;
 	    top: 0;
 	    left: 32%;
+	}
+
+	.notice{
+		padding-top:10px;
 	}
 
 	.plr5{
@@ -646,22 +657,23 @@ footer{
 		font-size:14px; 
 	}
 
-	.pager{
-		font-size: 12px;
+	.info-panel form input[^type=checkbox] {
+		
 	}
 
-	.info-panel form input {
-		width: 240px;
+	.info-panel form span{
+		margin-left: 15px;
+		display: block;
 	}
 
-	.info-panel form #verifcode{
-		width: 155px;
-	}
-
-	.info-panel .tab #tabCon div{
+	.info-panel .tab #tabCon p{
 		overflow: hidden;
 	  	text-overflow: ellipsis;
 	  	white-space: nowrap;
+	}
+
+	.info-panel form .btn{
+		width:200px;
 	}
 
 }
@@ -741,6 +753,10 @@ footer{
 
 	.data-tips span{
 		font-size: 20px;
+	}
+
+	.notice{
+		padding:10px 0;
 	}
 
 	.lr-line{
@@ -924,12 +940,26 @@ footer{
 		float: right;
 	}
 
-	.info-panel form input {
+	.info-panel form p {
+	    width: 600px;
+	    margin: 0 auto;
+	}
+
+	.info-panel form input:not([type=checkbox]) {
 		width: 400px;
 	}
 
 	.info-panel form #verifcode{
-		width: 155px;
+		width: 150px;
+	}
+
+	.info-panel form .forgetpwd{
+		float: right;
+		margin:10px 66px 0 0;
+	}
+
+	.info-panel form .btn{
+		width:300px;
 	}
 
 	.info-panel .tab{
