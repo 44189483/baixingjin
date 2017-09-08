@@ -87,6 +87,19 @@ $(function(){
  
 	});
     */
+
+    //加入我们 展开闭合
+    $('.conbr h3 span').click(function(){
+        var op = $(this).parent().parent().find('.op');
+        if(op.attr('style') == 'height:auto'){
+            $(this).find('i').attr('class','fa fa-chevron-down');
+            op.attr('style','height:80px');
+        }else{
+            $(this).find('i').attr('class','fa fa-chevron-up');
+            op.attr('style','height:auto');
+        }
+    });
+
 });
 
 /*
@@ -105,4 +118,3 @@ function switchTab(tle,con,e){
     con.children[e].style.display = '';
     tle.children[e].className = 'active';
 }
-
