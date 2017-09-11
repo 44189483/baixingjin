@@ -144,6 +144,15 @@ footer .black-bg{
 	color:#fff !important;
 }
 
+.btn-default{
+	border: 1px solid #eaeaea;
+	padding:15px 30px;
+	margin: 10px 0;
+	border-radius: 10px;
+	font-weight: bold;
+	color:#666;
+}
+
 .b-line{
 	border-bottom: 10px solid #f5f5f5; 
 }
@@ -695,8 +704,16 @@ footer .black-bg{
 		font-size:14px; 
 	}
 
+	.info-panel .login .f20{
+		font-size:18px; 
+	}
+
 	.info-panel form input[^type=checkbox] {
 		
+	}
+
+	.info-panel form #phonecode{
+		width:65px;
 	}
 
 	.info-panel form span{
@@ -1010,7 +1027,11 @@ footer .black-bg{
 	}
 
 	.info-panel form #verifcode{
-		width: 150px;
+		width: 105px;
+	}
+
+	.info-panel form #phonecode{
+		width:255px;
 	}
 
 	.info-panel form .forgetpwd{
