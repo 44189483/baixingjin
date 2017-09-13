@@ -31,6 +31,11 @@ class Index extends CI_Controller{
 	    $s_query = $this->db->query("SELECT * FROM {$this->db->dbprefix('project')} WHERE status='出借中' ORDER BY projectOrd DESC LIMIT 0,5");
 	    $result['service'] = $s_query->result();
 
+
+		$this->load->helper('func');
+
+		CreateVerifyImage(154,39); 
+
 		$this->load->view('index.html');
 
 	}

@@ -116,11 +116,13 @@ header .loginbar a{
 
 footer{
 	margin-top: 30px;
+	padding-top:30px;
 	line-height: 50px;
 }
 
 footer .black-bg{
 	background: #000;
+	margin-top: 10px;
 	padding:20px 0;
 	color: #fff;
 }
@@ -128,10 +130,11 @@ footer .black-bg{
 .banner{
 	position: relative;
 	border-top: 5px solid #f5f5f5;
+	text-align: center;
 }
 
 .banner img{
-	max-width: 100%;
+	width: 100%;
 }
 
 .btn{
@@ -142,6 +145,10 @@ footer .black-bg{
 	border-radius: 10px;
 	font-weight: bold;
 	color:#fff !important;
+}
+
+.btn:hover{
+	background: rgba(205,157,38,0.88);
 }
 
 .btn-default{
@@ -197,6 +204,7 @@ footer .black-bg{
   user-select: none;
 }
 
+/*
 @media screen and (min-width: 40em) {
   .js .nav-collapse {
     position: relative;
@@ -208,6 +216,7 @@ footer .black-bg{
     display: none;
   }
 }
+*/
 
 .nav-collapse,
 .nav-collapse * {
@@ -383,8 +392,31 @@ footer .black-bg{
 	overflow:hidden;
 }
 
+.op-auto{
+	height: auto;
+}
+
+.error{
+	display: none;
+	margin-left: 15px !important;
+}
+
+/* 补丁IPHONE6 */
+@media (min-width: 375px) and (max-width: 395px) {
+
+	.novice .btn-panel {
+	    display: none;
+	}
+
+	.detail-tl i{
+		position: static !important;
+		top: 0 !important;
+	}
+
+}
+
 /* 超小屏幕（手机，小于 768px） mobile */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
 	h2{
 		font-size: 20px;
@@ -406,6 +438,11 @@ footer .black-bg{
 	footer{
 		font-size: 14px;
 		line-height: 30px;
+		text-align: center;
+	}
+
+	footer .lx{
+		margin-top: 10px;
 	}
 
 	.nav-bar{
@@ -416,7 +453,7 @@ footer .black-bg{
 
 	.nav-bar ul{
 		background: #fff;
-		width: 75%;
+		width: 70%;
 		padding:20px 40px;
 		position: absolute;
 	    top: 70px;
@@ -466,22 +503,28 @@ footer .black-bg{
 	}
 
 	.data-tips li{
+		position: relative;
 		text-align: left;
+		width: 32.5%;
 	}
+
+	.data-tips li:last-child{
+		margin-left: 2.5%;
+	}
+
 
 	.data-tips img{
 		position: relative;
 		top:8px;
-		width: 30%;
-		height:30%;
+		width: 31%;
 	}
 
 	.data-tips span{
-		width: 100%;
 	    font-size: 16px;
-	    position: relative;
-	    top: 0;
-	    left: 32%;
+	    position: absolute;
+	    top: 35px;
+	    left: 37px;
+	    display: inherit;
 	}
 
 	.notice{
@@ -576,7 +619,7 @@ footer .black-bg{
 
 	.novice .newinfo .info h5{
 		margin: 5px 0;
-		font-size: 12px;
+		font-size: 90%;
 	}
 
 	.novice .newinfo .info .f22{
@@ -663,12 +706,13 @@ footer .black-bg{
 	}
 
 	.detail-tl{
+		position: relative;
 		font-size: 14px;
 	}
 
 	.detail-tl i{
-		float:right;
-		margin-top: 4px;
+		position: absolute;
+		top: 4px;
 	}
 
 	.detail-tl .progress{
@@ -732,7 +776,7 @@ footer .black-bg{
 	}
 
 	.conbr{
-		font-size: 13px;
+		font-size: 12px;
 	}
 
 	.conbr h3{
@@ -756,19 +800,266 @@ footer .black-bg{
 }
 
 /* 小屏幕（平板，大于等于 768px） ipad*/
-@media (min-width: 768px){
+@media (min-width:768px) and (max-width: 991px){
 
 	header .loginbar{
-		height: 80px;
-		line-height: 80px;
+		display: none;
 	}
 
-	.banner{
-		height:360px; 
+	.login-panel{
+		display: none;
 	}
 
-	h2{
-		width: 980px;
+	.nav-bar {
+	    position: relative;
+	    margin-top: 20px;
+	    height: 62px;
+	}
+
+	.nav-bar ul{
+		background: #fff;
+		width: 40%;
+		padding:20px 40px;
+		position: absolute;
+	    top: 70px;
+	    right: -15px;
+	    z-index: 999;
+		-moz-box-shadow:2px 10px 20px #949494; 
+		-webkit-box-shadow:2px 10px 20px #949494; 
+		box-shadow:2px 10px 20px #949494;
+	    text-align: center;
+	}
+
+	.nav-bar ul li{
+		padding:0 30px 30px 30px;
+		width: 100%;
+	}
+
+	.nav-bar ul li{
+		border-bottom: 1px solid #eaeaea;
+		padding:10px;
+	}
+
+	.nav-bar ul li:last-child{
+		border-bottom: none;
+	}
+
+	#triangle{
+        position: absolute;
+        top: 20px;
+	    right: 5px;
+	    z-index: 1;
+	    width: 0;
+	    height: 0;
+	    border-width: 25px;
+	    border-style: solid;
+        border-color:transparent transparent white transparent;
+	}
+
+	.data-tips li{
+		width: 32.5%;
+	}
+
+	.data-tips li:last-child{
+		margin-left: 2.5%;
+	}
+
+	.data-tips span{
+	    font-size: 16px;
+	}
+
+	.notice{
+		padding:10px 0;
+	}
+
+	.inspection img {
+	    width: auto;
+	    height: auto;
+	}
+
+	.novice{
+		position: relative;
+		margin:30px 0;
+		border:1px solid #f5f5f5;
+		border-radius: 10px;
+		font-weight:bold; 
+		height: 163px;
+	}
+
+	.novice li{
+		float: left;
+		text-align: left;
+		margin-right: 25px;
+	}
+
+	.novice a{
+		color:#fff;
+	}
+
+	.novice .bg{
+	    background: url(../images/novice_bg.png) no-repeat;
+	    width:260px;
+	    height:180px;
+	    padding: 40px 10px;
+	    margin-top: -10px;
+	    color: #fff;
+	    text-align: center;
+	}
+
+	.novice .bg dl{
+		font-size: 14px;
+		margin-bottom:10px;
+	}
+
+	.novice .bg dl dd{
+		float: left;
+	}
+	
+	.novice .newinfo{
+		float: left;
+	}
+
+	.novice .newinfo .info{
+		float: left;
+	}
+
+	.novice .lqbtn{
+		position: relative;
+    	top: 20px;
+		padding: 5px 15px;
+		margin-top: 5px;
+		border-radius: 5px;
+		border: 1px solid #fff;
+		color: #fff;
+	}
+
+	.novice .btn-panel{
+		position: absolute;
+		top: 0;
+		right: 20px;
+	}
+
+	.novice .btn{
+		margin-top: 60px;
+	}
+
+	.novice .btn-panel{
+		width:15%;
+	}
+
+	.novice .newinfo .info {
+	    position: relative;
+	    top:40px;
+	    left:20px;
+	    padding:0;
+	}
+
+	.novice .newinfo .info .f22 {
+	    font-size: 20px;
+	}
+
+	.novice .newinfo .info h5 {
+	    font-size: 14px;
+	}
+
+	.novice .newinfo .info .f20 {
+	    font-size: 14px;
+	}
+
+	.list{
+		border: 1px solid #f5f5f5;
+	    border-radius: 10px;
+	    padding: 25px 25px 0 25px;
+	    display: inline-block;
+	    width: 100%;
+	    margin-top:30px;
+	}
+
+	.list > *{
+		line-height: 30px;
+	}
+
+	.list h3{
+		margin:0;
+	}
+
+	.list li{
+		float:left;
+		margin-top: 15px;
+		width: 24%;
+	}
+
+	.list li:last-child{
+		width:42%;
+		margin-left:10%;
+	}
+
+	.list li div{
+		position: relative;
+	}
+
+	.list li .progress{
+		position: absolute;
+	    top: 5px;
+	    right: -6px;
+	    width: 100px;
+	}
+
+	.list li .btn{
+		margin-top: -20px;
+	    width: 200px;
+	}
+
+	.search-colmn{
+		margin:30px 20px;
+		padding-bottom: 20px;
+		clear: both;
+	}
+
+	.search-colmn span{
+		font-size: 18px;
+		display: block;
+	}
+
+	.search-colmn ul{
+		margin-top: 15px;
+	}
+
+	.search-colmn li{
+		float: left;
+		margin-right: 11px;
+		font-size: 16px;
+	}
+
+	.detail-tl{
+		position: relative;
+		font-size: 14px;
+	}
+
+	.detail-tl .progress{
+		float: right;
+		width:100px;
+	}
+
+	#tabTle,#tabCon{
+		margin: 0 15px;
+	}
+
+	.brown-bg {
+	    padding: 20px 30px;
+	}
+
+	.conbr{
+		font-size: 12px;
+	}
+
+	.conbr h3{
+		font-size: 18px;
+	}
+	
+	footer{
+		text-align: center;
+		font-size: 14px;
 	}
 
 }
@@ -776,14 +1067,24 @@ footer .black-bg{
 /* 中等屏幕（桌面显示器，大于等于 992px） PC */
 @media (min-width:992px) {
 
+	header .loginbar{
+		height: 60px;
+		line-height: 60px;
+	}
+
+	.nav-toggle {
+		display: none;
+	}
+
 	.nav-bar{
-		padding:40px 0;
-		height: 125px;		
+		padding:30px 0;
+		height: 100px;		
 	}
 
 	.nav-collapse ul{
 		float: right;
 		margin-top: 12px;
+		width: auto;
 	}
 
 	.nav-collapse li:first-child{
@@ -791,7 +1092,7 @@ footer .black-bg{
 	}
 
 	.nav-collapse li {
-		font-size: 20px;
+		font-size: 18px;
 	 }
 
 	.nav-collapse a {
@@ -810,22 +1111,34 @@ footer .black-bg{
 		width: 980px;
 	}
 
-	.login-panel{
-		background: white;
-		/*filter:alpha(opacity=50);
-	    opacity:0.5;*/
-		position: absolute;
-	    top: 40px;
-	    right: 300px;
+	.login-panel {
+	    background: white;
+	    position: absolute;
+	    top:12%;
+	    right: 2%;
 	    z-index: 1;
 	    border-radius: 15px;
-	    padding:20px 50px;
-	    height: 280px;
-	    width: 340px;
+	    padding: 2% 5%;
+	}
+
+	.login-panel h3{
+		font-size: 2vw;
+	}
+
+	.login-panel span{
+		font-size: 1.5vw;
+	}
+
+	.login-panel span.f40{
+		font-size: 3vw;
 	}
 
 	.login-panel p{
 		letter-spacing:2px;
+	}
+
+	.login-panel .btn{
+		margin-top: 5%;
 	}
 
 	.data-tips span{
@@ -841,20 +1154,19 @@ footer .black-bg{
 	    border-right: 1px solid #f5f5f5;
 	}
 
-	.novice{
-		position: relative;
-		height: 160px;
-		margin:30px 0;
-		padding:10px 0;
-		border:1px solid #f5f5f5;
-		border-radius: 10px;
-		font-weight:bold; 
+	.novice {
+	    position: relative;
+	    border: 1px solid #f5f5f5;
+	    border-radius: 10px;
+	    font-weight: bold;
+	    height: 163px;
+	    margin: 20px 0 20px 0;
 	}
 
 	.novice li{
 		float: left;
 		text-align: left;
-		margin-right: 30px;
+		margin-right: 25px;
 	}
 
 	.novice a{
@@ -862,29 +1174,24 @@ footer .black-bg{
 	}
 
 	.novice .bg{
-		background: url(../images/novice_bg.png) no-repeat;
-		width: 260px;
-	    height: 180px;
-	    padding:30px 10px;
-	    margin-top: -21px;
-	    color:#fff;
+	    background: url(../images/novice_bg.png) no-repeat;
+	    width:260px;
+	    height:180px;
+	    padding: 40px 10px;
+	    margin-top: -10px;
+	    color: #fff;
 	    text-align: center;
 	}
 
 	.novice .bg dl{
-		margin:20px 0;
 		font-size: 14px;
+		margin-bottom:10px;
 	}
 
 	.novice .bg dl dd{
 		float: left;
 	}
-
-	.novice .newinfo{
-		float: left;
-		margin: 20px 15px;
-	}
-
+	
 	.novice .newinfo .info{
 		float: left;
 	}
@@ -896,11 +1203,12 @@ footer .black-bg{
 		margin-top: 5px;
 		border-radius: 5px;
 		border: 1px solid #fff;
+		color: #fff;
 	}
 
 	.novice .btn-panel{
 		position: absolute;
-		top: 5%;
+		top: 0;
 		right: 20px;
 	}
 
@@ -910,6 +1218,18 @@ footer .black-bg{
 
 	.novice .btn-panel{
 		width:20%;
+	}
+
+	.novice .newinfo .info {
+	    position: relative;
+	    top: 20px;
+	    left: 15px;
+	    padding: 10px;
+	}
+
+	.novice .newinfo .info h5 {
+	    font-size: 16px;
+	    padding-top: 10px;
 	}
 
 	.list{
@@ -958,7 +1278,7 @@ footer .black-bg{
 		width: 150px;
 		border-radius: 10px;
 		font-size: 14px;
-		margin-top: 2px;
+		margin-top: 4px;
 	}
 
 	.search-colmn{
@@ -995,10 +1315,6 @@ footer .black-bg{
 
 	.brown-bg p:first-child{
 		margin-top: 10px;
-	}
-
-	footer{
-		margin-top: 30px; 
 	}
 
 	.tab li{
@@ -1047,6 +1363,10 @@ footer .black-bg{
 		margin: 0 30px; 
 	}
 
+	.novice .btn-panel {
+	    right: 25px;
+	}
+
 	.conbr h3{
 		font-size: 18px;
 	}
@@ -1063,19 +1383,14 @@ footer .black-bg{
 		float:right;
 	}
 
-	.ptr{
-		padding:20px 10px;
-		text-align:right;
+	footer .wx{
+		float: left;
+		margin-left: 240px;
 	}
 
-	.ptl{
-		padding:20px 10px;
-		text-align:left;
+	footer .lx{
+		float: right;
+		margin-right: 220px;
 	}
-
-}
-
-/* 大等屏幕（桌面显示器，大于等于 1200px） PC */
-@media (min-width:1200px) {
 
 }
