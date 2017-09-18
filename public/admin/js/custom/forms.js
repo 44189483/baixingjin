@@ -62,13 +62,6 @@ jQuery(document).ready(function(){
 		     minlength: 6,
 		     equalTo: "#pwd"
 		    },
-			firstname: "required",
-			lastname: "required",
-			email: {
-				required: true,
-				email: true,
-			},
-			location: "required",
 			selection: "required"
 		},
 		messages: {
@@ -79,18 +72,14 @@ jQuery(document).ready(function(){
 			cname: "名称必填",
 			cid: "分类必选",
 			content: "内容必填",
-			number: "设备编号必填",
+			number: "身份证必填",
 		    pwd: {
 		     minlength: jQuery.format("密码不能小于{0}个字符")
 		    },
 		    newpwd: {
 		     minlength: "确认密码不能小于5个字符",
 		     equalTo: "两次输入密码不一致不一致"
-		    },
-			firstname: "Please enter your first name",
-			lastname: "Please enter your last name",
-			email: "Please enter a valid email address",
-			location: "Please enter your location"
+		    }
 		}
 	});
 	

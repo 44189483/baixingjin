@@ -1,11 +1,221 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>403 Forbidden</title>
-</head>
-<body>
-
-<p>Directory access is forbidden.{{$test}}</p>
-
-</body>
-</html>
+      <div class="banner">
+        <div class="login-panel">
+          <!--
+          <div class="text-center mtb15">
+            <img src="public/home/images/avatar_detalut.png" alt="" width="72" height="72" />
+            <p class="mt5">gq_1339848</p>
+            <h1 class="mt5 red">200</h1>
+            <p class="mt5"><a href="#" class="btn-brown">进入账户中心</a></p>
+          </div>
+          -->
+          <h3>百姓金持续运营</h3><br/>
+          <p>
+            <span class="red f40"><strong>2</strong></span> <strong>年</strong>
+            <span class="red f40"><strong>257</strong></span> <strong>天</strong>
+            <span class="red f40"><strong>14</strong></span> <strong>时</strong>
+          </p>
+          <p>
+            <a href="#" class="btn-brown">立即注册</a>
+          </p>
+          <p class="right">
+            <span><a href="#">已有帐号</a></span> <span><a href="#" class="brown">去登陆</a></span> 
+          </p>
+        </div>
+        <div id="myCarousel" class="carousel"> 
+          <div class="carousel-inner">
+            <?php foreach ($banner as $key => $val):?>
+            <div class="item <?php if($key==0):?>active<?php endif;?>">
+              <img src="<?php echo $val->url;?>" alt="">
+            </div>
+            <?php endforeach;?>
+          </div>
+          <ol class="carousel-indicators">
+            <?php foreach ($banner as $key => $val):?>
+            <li data-target="#myCarousel" data-slide-to="<?php echo $key;?>" <?php if($key==0):?>class="active"<?php endif;?>></li>
+            <?php endforeach;?>
+          </ol>
+        </div>
+      </div> 
+      <div class="clearfix"></div>
+      <div class="m-gray-bg ptb30">
+        <div class="container">
+          <div class="row">
+            <ul class="data-tips">
+              <li class="text-left">
+                <img src="public/home/images/icon_user.png" alt="" /> 
+                用户总量
+                <span class="red"><?php echo $data['total_users'];?></span>
+              </li>
+              <li class="lr-line text-center">
+                <img src="public/home/images/icon_zje.png" alt="" /> 
+                用户投资总额 <span class="red"><?php echo $data['total_investment'];?></span>
+              </li>
+              <li class="text-right">
+                <img src="public/home/images/icon_jyt.png" alt="" /> 
+                近半年交易额 <span class="red"><?php echo $data['half_year_turnover'];?></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="s-line"></div>
+      <div class="m-gray-bg notice">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 plr5">
+              <div class="pull-left"> <img src="public/home/images/icon_ba.png" alt=""> &nbsp;&nbsp;最新公告: &nbsp;&nbsp;</div>
+              <div class="pull-left marquee-panel" id="h">
+                <ul id="h1">
+                  <?php foreach ($notice as $key => $val):?>
+                  <li><?php echo utfSubstr($val->articleTitle, 0, 80);?></li>
+                  <?php endforeach?>
+                </ul>
+                <ul id="h2"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        /***marquee txt***/
+        var speed = 75;
+        var h2 = document.getElementById("h2");
+        var h1 = document.getElementById("h1");
+        var h = document.getElementById("h");
+        h2.innerHTML = h1.innerHTML;
+        function Marquee(){
+            if(h2.offsetTop-h.scrollTop<=0){
+              h.scrollTop-=h1.offsetHeight;
+            }                    
+            else{
+              h.scrollTop++;
+            }
+        }
+        var MyMar = setInterval(Marquee,speed);
+        h.onmouseover = function() {clearInterval(MyMar)}
+        h.onmouseout = function() {MyMar=setInterval(Marquee,speed)}
+      </script>
+      <div class="b-line"></div>
+      <div class="container mtb30">
+        <div class="row inspection">
+          <div class="col-xs-4">
+            <div class="text-center">
+              <img src="public/home/images/icon_bb.png" alt="" />
+              <h4>体系完备 风控保驾</h4>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="text-center">
+              <img src="public/home/images/icon_plane.png" alt="" />
+              <h4>三方平台 信息透明</h4>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="text-center">
+              <img src="public/home/images/icon_pig.png" alt="" />
+              <h4>实物债权 诚信专业</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="b-line"></div>
+      <div class="container">
+        <div class="row">
+          <h2>新手专享/<span class="gray f16">新手专享福利多多</span></h2>
+        </div>
+      </div>
+      <div class="s-line"></div>
+      <div class="container">
+        <div class="row">
+          <div class="novice">
+            <div class="bg pull-left">
+              <p class="f20 text-center">新手专享</p>
+                <dl>
+                  <dd>298元红包</dd>
+                  <dd class="hidden-xs">+</dd>
+                  <dd>3000体验金</dd>
+                  <dd class="hidden-xs">+</dd>
+                  <dd>5%加息券</dd>
+                </dl>
+              <p><a href="#" class="lqbtn">立即领取</a></p>
+            </div>
+            <div class="newinfo">
+              <div class="info">
+                <div class="f22 brown">新手专享N17082501</div>
+                <ul>
+                  <li>
+                    <h5>历史年化收益率</h5>
+                    <span class="f20 red">8.60%</span>
+                  </li>
+                  <li>
+                    <h5>封闭期</h5>
+                    <span class="f20">31天</span>
+                  </li>
+                  <li>
+                    <h5>还款方式</h5>
+                    <span class="f20">到期还本付息</span>
+                  </li>
+                </ul>
+              </div>
+              <p class="btn-panel">
+                <a href="#" class="btn-brown">立即出借</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="b-line"></div>
+      <div class="container">
+        <div class="row">
+          <h2>出借服务/<span class="gray f16">多种方案供您选择</span></h2>
+        </div>
+      </div>
+      <div class="s-line"></div>
+      <div class="container">
+        <div class="row">
+          <?php foreach ($service as $key => $val):?>
+          <div class="list">
+            <h3><a href="lenddetail/<?php echo $val->projectId;?>" class="brown"><?php echo $val->projectName;?></a></h3>
+            <ul>
+              <li>
+                <p>借款期限: <span class="f20 red"><?php echo $val->timeLimit;?></span></p>
+                <p>借款金额: <span>10万以下</span></p>
+              </li>
+              <li>
+                <p>年化收益率: <span class="f20 red"><?php echo $val->yearRate;?>%</span></p>
+                <div>
+                  出借进度: 
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $val->lendProgress;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $val->lendProgress;?>%;">
+                      <?php echo $val->lendProgress;?>%
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <p class="text-right">
+                  <?php 
+                    if($val->status == '出借中'):
+                  ?>
+                  <a href="#" class="btn-brown">立即出借</a>
+                  <?php
+                    elseif($val->status == '还款中'):
+                  ?>
+                  <a href="#" class="btn-gray">还款中</a>
+                  <?php
+                    elseif($val->status == '已满标'):
+                  ?>
+                  <a href="#" class="btn-gray">已满标</a>
+                  <?php
+                    endif;
+                  ?>
+                </p>
+                <p class="mt12">还款方式: <span>一次性还本息</span></p>
+              </li>
+            </ul>            
+          </div>
+          <?php endforeach;?>
+        </div>
+      </div>  

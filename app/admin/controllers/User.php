@@ -51,7 +51,7 @@ class User extends CI_Controller{
 		}
 
 	    $config = array();
-	    $config['per_page'] = 2; //每页显示的数据数
+	    $config['per_page'] = 10; //每页显示的数据数
 	    $current_page = intval($this->input->get('per_page')); //获取当前分页页码数
 	    //page还原
 	    if(0 == $current_page){

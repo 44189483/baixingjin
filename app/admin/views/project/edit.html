@@ -112,15 +112,20 @@
                     </p>
 
                     <p>
-                        <label>日期</label>
-                        <span class="field"><input type="text" name="time" id="time" class="smallinput" value="<?php echo $createTime;?>"  required="required" readonly="readonly" /></span>
+                        <label>出借进度</label>
+                        <span class="field"><input type="text" name="progress" id="progress" class="smallinput" required="required" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" style="width:110px" value="<?php echo $lendProgress;?>"/></span>
                     </p>
 
                     <p>
-                        <label>内容</label>
+                        <label>日期</label>
+                        <span class="field"><input type="text" name="time" id="time" class="smallinput" value="<?php echo $createTime;?>"  required="required" readonly="readonly" /></span>
+                    </p>
+                    <!--
+                    <p>
+                        <label>风险控制</label>
                         <span class="field"><textarea id="risk" name="risk"><?php echo $riskManagement;?></textarea>
                     </p>
-                    
+                    -->
                     <p class="stdformbutton">
                         <button class="submit radius2">提 交</button>
                         <input type="hidden" name="id" id="id" value="<?php echo $projectId;?>" />

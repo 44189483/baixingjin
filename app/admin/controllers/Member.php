@@ -27,9 +27,13 @@ class Member extends CI_Controller{
 		$this->load->view('templates/header.html',$this->head_data);
 		$this->load->view('templates/menu.html',$this->head_data);
 
+		//获取所有业务员
+		$query = $this->db->query("SELECT id,realname,mobile FROM {$this->db->dbprefix('salesman')}");
+	    $this->salemans = $query->result();
+
 	}
 
-	public function index($pid = null){
+	public function index($pid = null,$sid = null){
 
 		$where = "WHERE 1=1";
 
@@ -38,7 +42,15 @@ class Member extends CI_Controller{
 			$where .= " AND mobile='{$mobile}'";
 		}
 
+		if(!empty($sid)){
+			$where .= " AND sid='{$sid}'";
+		}else if(!empty($this->input->get('sid'))){
+			$sid = $this->input->get('sid');
+			$where .= " AND sid='{$sid}'";
+		}
+
 		if(!empty($pid)){//根据项目
+			echo 'a';
 			$where .= " AND EXISTS(SELECT mid FROM {$this->db->dbprefix('fund')} f WHERE f.pid={$pid} AND {$this->table}.id=f.mid)";
 		}
 
@@ -86,6 +98,8 @@ class Member extends CI_Controller{
 	    $this->pagination->initialize($config);
 
 	    $data = array(
+	    	'salemans' => $this->salemans,
+	    	'sid' => $sid,
 	    	'mobile' => $mobile,
 	        'rows' => $result['list'],
 	        'total'  => $result['total'],

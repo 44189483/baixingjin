@@ -28,6 +28,7 @@ class Information extends CI_Controller{
 		$this->load->view('templates/menu.html',$this->head_data);
 
 	}
+
 	public function index(){
 		
 		$title = trim($this->input->get('title'));
@@ -87,7 +88,7 @@ class Information extends CI_Controller{
 	    );
 		$this->load->view('information/index.html',$data);
 	}
-
+	
 	public function add(){
 		$this->load->view('information/add.html');
 	}
@@ -114,17 +115,49 @@ class Information extends CI_Controller{
 		$content = $this->input->post('content');
 
 		$ord = $this->input->post('ord') == null ? 0 : 1;
-		
+
+		//文件存在判断
+		if(!empty($_FILES["attchment"]["name"]) && is_uploaded_file($_FILES["attchment"]["tmp_name"])){
+
+			//重命名
+			$attchname = $_FILES["attchment"]["name"];
+			$ext = substr($attchname,strripos($attchname,'.') + 1);
+			$name = date('Ymd').rand(0,999).'.'.$ext;
+			$config['file_name'] = $name;
+
+			$config['upload_path'] = 'upload/banner/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size'] = '0';
+			$config['max_width'] = '1024';
+			$config['max_height'] = '768';
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			$this->upload->do_upload('attchment');
+			$info = $this->upload->data();
+
+		    if($info && !empty($id)){//删除旧图
+				$query = $this->db->query("SELECT articleAttach FROM {$this->table} WHERE articleId={$id}");
+	    		$row = $query->row(); 
+				@unlink($row->articleAttach);
+		    }
+
+		    $pic = $config['upload_path'].$name;
+
+		}else{
+			$pic = '';
+		}
+
 		$data = array(
 		    'articleTitle' => $title,
 		    'articleContent' => $content,
+		    'articleAttach' => $pic,
 		    'articleType' => 2,
 		    'articleOrd' => $ord,
 		    'createTime' => date('Y-m-d H:i:s')
 		);
 		
 		if(empty($id)){
-			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleTitle='{$title}'");
+			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleType=2 AND articleTitle='{$title}'");
 	    	$row = $query->row(); 
 			if($row){
 				jump('该信息已存在',site_url('information/add'));
@@ -181,6 +214,5 @@ class Information extends CI_Controller{
         }
 
 	}
-
 }
 ?>

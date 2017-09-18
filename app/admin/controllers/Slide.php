@@ -30,19 +30,10 @@ class Slide extends CI_Controller{
 
 	public function index($id = null){
 
-		$row = array();
-
-		if(!empty($id)){
-			$query = $this->db->query("SELECT * FROM {$this->table} WHERE id={$id}");
-	    	$row = $query->row();
-		}
-
-	    $query = $this->db->query("SELECT * FROM {$this->table} WHERE type='banner'");
+	    $query = $this->db->query("SELECT * FROM {$this->table} WHERE type='banner' ORDER BY ord DESC,id DESC");
 	    $rows = $query->result();
 
 	    $data = array(
-	    	'id' => $id,
-	    	'row' => $row,
 	        'rows' => $rows
 	    );
 		$this->load->view('slide.html',$data);
@@ -50,9 +41,7 @@ class Slide extends CI_Controller{
 
 	public function save(){
 
-		$id = $this->input->post('id');
-
-		$ord = $this->input->post('ord') == null ? 0 : 1;
+		$ord = $this->input->post('ord');
 
 		//文件存在判断
 		if(!empty($_FILES["attchment"]["name"]) && is_uploaded_file($_FILES["attchment"]["tmp_name"])){
@@ -65,7 +54,7 @@ class Slide extends CI_Controller{
 
 			$config['upload_path'] = 'upload/banner/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_size'] = '1000';
+			$config['max_size'] = '0';
 			$config['max_width'] = '1920';
 			$config['max_height'] = '768';
 			$this->load->library('upload', $config);
@@ -82,7 +71,7 @@ class Slide extends CI_Controller{
 		    $pic = $config['upload_path'].$name;
 
 		}else{
-			$pic = '';
+			show_error('<a href="'.base_url().'slide/index">图片不能为空,点击返回!</a>',null,'错误提示');
 		}
 		
 		$data = array(
@@ -91,49 +80,25 @@ class Slide extends CI_Controller{
 		    'ord' => $ord
 		);
 		
-		if(empty($id)){
-			$bool = $this->db->insert($this->table, $data);
-		}else{
-			$this->db->where('id', $id);
-			$bool = $this->db->update($this->table, $data);
-		}
-		
-        redirect(site_url('Slide/index'));
+		$bool = $this->db->insert($this->table, $data);
+        redirect(site_url('slide/index'));
 
 	}
 
-	public function del($id = null){
-
-		$pid = $this->input->post('id');
-
-		$gid = $id;
+	public function del($id){
 
 		$bool = false;
 
-		if($pid){//多删
+		$query = $this->db->query("SELECT * FROM {$this->table} WHERE id={$id}");
+    	$row = $query->row();
+		//删除图片
+		@unlink($row->url);
 
-			$query = $this->db->query("SELECT * FROM {$this->table} WHERE id IN(".implode(',', $pid).")");
-	    	$rows = $query->result();
+		$bool = $this->db->delete($this->table, array('id' => $id));
 
-			foreach ($rows as $k => $v) {
-				@unlink($v->url);
-			}
-
-			$bool = $this->db->query("DELETE FROM {$this->table} WHERE id IN(".implode(',', $pid).")"); 
-
-		}else if (!empty($gid)) {//单删
-
-			$query = $this->db->query("SELECT * FROM {$this->table} WHERE id={$gid}");
-	    	$row = $query->row();
-			//删除图片
-			@unlink($row->url);
-
-			$bool = $this->db->delete($this->table, array('id' => $gid));
-
-		}
 		
 		if($bool) {
-            jump('操作成功',site_url('Slide/index'));
+            jump('操作成功',site_url('slide/index'));
         }else{
             jump('操作失败');
         }

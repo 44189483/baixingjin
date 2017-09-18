@@ -118,7 +118,7 @@ class Lend extends CI_Controller{
 		
 	}
 
-	public function detail($id){
+	public function lenddetail($id){
 
 		$data = array();
 

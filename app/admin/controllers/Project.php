@@ -62,7 +62,7 @@ class Project extends CI_Controller{
 	    $query = $this->db->query("SELECT * FROM {$this->table} {$where}");
 	    $result['total'] = $query->num_rows();
 
-	    $query = $this->db->query("SELECT * FROM {$this->table} {$where} ORDER BY projectId DESC LIMIT {$offset},{$config['per_page']}");
+	    $query = $this->db->query("SELECT * FROM {$this->table} {$where} ORDER BY projectOrd DESC, projectId DESC LIMIT {$offset},{$config['per_page']}");
 	    $result['list'] = $query->result();
 
 	    $config['base_url']   = site_url('project/index');//'admin.php/project/index?';
@@ -140,6 +140,8 @@ class Project extends CI_Controller{
 
 		$rate = $this->input->post('rate');
 
+		$progress = $this->input->post('progress');
+
 		$tlimit = $this->input->post('tlimit');
 
 		$repay = $this->input->post('repay');
@@ -150,7 +152,7 @@ class Project extends CI_Controller{
 
 		$time = $this->input->post('time');
 
-		$risk = $this->input->post('risk');
+		//$risk = $this->input->post('risk');//风险控制
 
 		$data = array(
 		    'projectName' => $name,
@@ -158,10 +160,11 @@ class Project extends CI_Controller{
 		    'loanAmount' => $lamount,
 		    'minLoanAmount' => $mlamount,
 		    'yearRate' => $rate,
+		    'lendProgress' => $progress,
 		    'timeLimit' => $tlimit,
 		    'repayment' => $repay,
 		    'interestDate' => $date,
-		    'riskManagement' => $risk,
+		    //'riskManagement' => $risk,
 		    'status' => $status,
 		    'createTime' => $time
 		);

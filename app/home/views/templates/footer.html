@@ -1,0 +1,49 @@
+</div>
+    <footer class="gray-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <img src="public/home/images/weixinchat.png" alt="" class="wx"/>
+              <div class="lx">
+                <p><img src="public/home/images/icon_wx.png" alt="" /> &nbsp;微信服务号：大连百姓金管理咨询有限公司</p>
+                <p><img src="public/home/images/icon_tel.png" alt="" /> &nbsp;全国客服电话: 0411-66896333 (9:00-21:00)</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="black-bg">
+        <div class="container">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            辽ICP备17015706号-1   |   Copyright © 2015-2017 百姓金 All Rights Reserved. 
+          </div>
+        </div>
+      </div>
+      </div>
+    </footer>
+
+    <script src="public/home/js/responsive-nav.js"></script>
+    <script src="public/home/js/jquery.min.js"></script>
+    <script src="public/home/js/bootstrap.min.js"></script>
+    <script src="public/home/js/jquery.rotate.min.js"></script>
+    <script src="public/home/js/custom.js"></script>
+    <script type="text/javascript">
+      var navigation = responsiveNav(".nav-collapse", { // Selector: The ID of the wrapper
+          animate: true, // Boolean: 是否启动CSS过渡效果（transitions）， true 或 false
+          transition: 300, // Integer: 过渡效果的执行速度，以毫秒（millisecond）为单位
+          label: "Menu", // String: Label for the navigation toggle
+          insert: "before", // String: Insert the toggle before or after the navigation
+          customToggle: "", // Selector: Specify the ID of a custom toggle
+          openPos: "static", // String: Position of the opened nav, relative or static
+          jsClass: "js", // String: 'JS enabled' class which is added to <html> el
+          debug: false, // Boolean: Log debug messages to console, true 或 false
+          init: function(){}, // Function: Init callback
+          open: function(){$(".nav-toggle").rotate({animateTo:90});}, // Function: Open callback
+          close: function(){$(".nav-toggle").rotate({animateTo:0});} // Function: Close callback
+      });
+
+      $('.carousel').carousel();
+
+    </script>
+  </body>
+</html>

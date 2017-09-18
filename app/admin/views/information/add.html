@@ -8,7 +8,12 @@
             
             <div id="validation" class="subcontent">
 
-                <form id="form1" name="form1" class="stdform" method="post" action="/admin.php/information/save">
+                <form id="form1" name="form1" class="stdform" method="post" action="/admin.php/information/save" enctype="multipart/form-data">
+
+                    <p>
+                        <label>头部banner</label>
+                        <span class="field"><input type="file" name="attchment" id="attchment"/></span>
+                    </p>
 
                     <p>
                         <label>标题</label>

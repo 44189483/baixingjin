@@ -167,7 +167,7 @@ class News extends CI_Controller{
 
 			$config['upload_path'] = 'upload/img/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_size'] = '100';
+			$config['max_size'] = '0';
 			$config['max_width'] = '1024';
 			$config['max_height'] = '768';
 			$this->load->library('upload', $config);
@@ -198,7 +198,7 @@ class News extends CI_Controller{
 		);
 		
 		if(empty($id)){
-			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleTitle='{$title}'");
+			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleType=1 AND articleTitle='{$title}'");
 	    	$row = $query->row(); 
 			if($row){
 				jump('该设备已存在',site_url('news/add'));
