@@ -70,6 +70,7 @@ class Notice extends CI_Controller{
 
 	    $config['total_rows'] = $result['total'];//总条数
 	    $config['num_links']  = 2;//页码连接数
+	    $config['use_page_numbers'] = TRUE;//使用页码而不是offset
 	    $config['use_page_titles']  = TRUE;
 	    $config['page_query_string'] = TRUE;
 	    $this->load->library('pagination');//加载ci pagination类

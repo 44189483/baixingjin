@@ -36,7 +36,7 @@ class Information extends CI_Controller{
 		$where = "WHERE articleType=2";
 
 	    $config = array();
-	    $config['per_page'] = 2; //每页显示的数据数
+	    $config['per_page'] = 10; //每页显示的数据数
 	    $current_page = intval($this->input->get('per_page')); //获取当前分页页码数
 	    //page还原
 	    if(0 == $current_page){
@@ -47,7 +47,7 @@ class Information extends CI_Controller{
 	    $query = $this->db->query("SELECT * FROM {$this->table} {$where}");
 	    $result['total'] = $query->num_rows();
 
-	    $query = $this->db->query("SELECT * FROM {$this->table} {$where} ORDER BY articleId DESC LIMIT {$offset},{$config['per_page']}");
+	    $query = $this->db->query("SELECT * FROM {$this->table} {$where} ORDER BY articleOrd DESC,articleId DESC LIMIT {$offset},{$config['per_page']}");
 	    $result['list'] = $query->result();
 
 	    $config['base_url']   = site_url('information/index');//'admin.php/information/index?';
@@ -73,6 +73,7 @@ class Information extends CI_Controller{
 
 	    $config['total_rows'] = $result['total'];//总条数
 	    $config['num_links']  = 2;//页码连接数
+	    $config['use_page_numbers'] = TRUE;//使用页码而不是offset
 	    $config['use_page_titles']  = TRUE;
 	    $config['page_query_string'] = TRUE;
 	    $this->load->library('pagination');//加载ci pagination类
@@ -116,6 +117,14 @@ class Information extends CI_Controller{
 
 		$ord = $this->input->post('ord') == null ? 0 : 1;
 
+		$data = array(
+		    'articleTitle' => $title,
+		    'articleContent' => $content,
+		    'articleType' => 2,
+		    'articleOrd' => $ord,
+		    'createTime' => date('Y-m-d H:i:s')
+		);
+
 		//文件存在判断
 		if(!empty($_FILES["attchment"]["name"]) && is_uploaded_file($_FILES["attchment"]["tmp_name"])){
 
@@ -141,21 +150,10 @@ class Information extends CI_Controller{
 				@unlink($row->articleAttach);
 		    }
 
-		    $pic = $config['upload_path'].$name;
+		    $data['articleAttach'] = $config['upload_path'].$name;
 
-		}else{
-			$pic = '';
 		}
 
-		$data = array(
-		    'articleTitle' => $title,
-		    'articleContent' => $content,
-		    'articleAttach' => $pic,
-		    'articleType' => 2,
-		    'articleOrd' => $ord,
-		    'createTime' => date('Y-m-d H:i:s')
-		);
-		
 		if(empty($id)){
 			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleType=2 AND articleTitle='{$title}'");
 	    	$row = $query->row(); 

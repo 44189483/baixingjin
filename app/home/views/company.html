@@ -1,0 +1,21 @@
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="info-panel">
+              <ul class="subnav">
+                <?php foreach ($classes as $key => $val):?>
+                <li <?php if($val->articleId==$id):?>class="ative"<?php endif;?>><a href="/company/<?php echo $val->articleId;?>"><?php echo $val->articleTitle;?></a></li>
+                <?php endforeach;?>
+              </ul>
+              <div class="clearfix"></div>
+              <?php if(!empty($info->articleAttach)):?>
+              <p><img src="/<?php echo $info->articleAttach;?>" alt="" /></p>
+              <?php endif;?>
+              <div style="padding:20px;line-height:40px">
+                <!--<h3 class="text-center f20"><?php echo $info->articleTitle;?></h3>-->
+                <?php echo $info->articleContent;?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 

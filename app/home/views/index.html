@@ -2,7 +2,7 @@
         <div class="login-panel">
           <!--
           <div class="text-center mtb15">
-            <img src="public/home/images/avatar_detalut.png" alt="" width="72" height="72" />
+            <img src="/public/home/images/avatar_detalut.png" alt="" width="72" height="72" />
             <p class="mt5">gq_1339848</p>
             <h1 class="mt5 red">200</h1>
             <p class="mt5"><a href="#" class="btn-brown">进入账户中心</a></p>
@@ -42,16 +42,16 @@
           <div class="row">
             <ul class="data-tips">
               <li class="text-left">
-                <img src="public/home/images/icon_user.png" alt="" /> 
+                <img src="/public/home/images/icon_user.png" alt="" /> 
                 用户总量
                 <span class="red"><?php echo $data['total_users'];?></span>
               </li>
               <li class="lr-line text-center">
-                <img src="public/home/images/icon_zje.png" alt="" /> 
+                <img src="/public/home/images/icon_zje.png" alt="" /> 
                 用户投资总额 <span class="red"><?php echo $data['total_investment'];?></span>
               </li>
               <li class="text-right">
-                <img src="public/home/images/icon_jyt.png" alt="" /> 
+                <img src="/public/home/images/icon_jyt.png" alt="" /> 
                 近半年交易额 <span class="red"><?php echo $data['half_year_turnover'];?></span>
               </li>
             </ul>
@@ -64,7 +64,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-12 plr5">
-              <div class="pull-left"> <img src="public/home/images/icon_ba.png" alt=""> &nbsp;&nbsp;最新公告: &nbsp;&nbsp;</div>
+              <div class="pull-left"> <img src="/public/home/images/icon_ba.png" alt=""> &nbsp;&nbsp;最新公告: &nbsp;&nbsp;</div>
               <div class="pull-left marquee-panel" id="h">
                 <ul id="h1">
                   <?php foreach ($notice as $key => $val):?>
@@ -101,19 +101,19 @@
         <div class="row inspection">
           <div class="col-xs-4">
             <div class="text-center">
-              <img src="public/home/images/icon_bb.png" alt="" />
+              <img src="/public/home/images/icon_bb.png" alt="" />
               <h4>体系完备 风控保驾</h4>
             </div>
           </div>
           <div class="col-xs-4">
             <div class="text-center">
-              <img src="public/home/images/icon_plane.png" alt="" />
+              <img src="/public/home/images/icon_plane.png" alt="" />
               <h4>三方平台 信息透明</h4>
             </div>
           </div>
           <div class="col-xs-4">
             <div class="text-center">
-              <img src="public/home/images/icon_pig.png" alt="" />
+              <img src="/public/home/images/icon_pig.png" alt="" />
               <h4>实物债权 诚信专业</h4>
             </div>
           </div>
@@ -197,22 +197,22 @@
               <li>
                 <p class="text-right">
                   <?php 
-                    if($val->status == '出借中'):
+                    if($val->className == '出借中'):
                   ?>
-                  <a href="#" class="btn-brown">立即出借</a>
+                  <a href="lenddetail/<?php echo $val->projectId;?>" class="btn-brown">立即出借</a>
                   <?php
-                    elseif($val->status == '还款中'):
+                    elseif($val->className == '还款中'):
                   ?>
                   <a href="#" class="btn-gray">还款中</a>
                   <?php
-                    elseif($val->status == '已满标'):
+                    elseif($val->className == '已满标'):
                   ?>
                   <a href="#" class="btn-gray">已满标</a>
                   <?php
                     endif;
                   ?>
                 </p>
-                <p class="mt12">还款方式: <span>一次性还本息</span></p>
+                <p class="mt12">还款方式: <span><?php echo $val->repayment;?></span></p>
               </li>
             </ul>            
           </div>

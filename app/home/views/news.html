@@ -1,0 +1,29 @@
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="info-panel">
+              <ul class="subnav">
+                <?php foreach ($classes as $key => $val):?>
+                <li <?php if($val->classId==$cid):?>class="ative"<?php endif;?>><a href="/news/<?php echo $val->classId;?>"><?php echo $val->className;?></a></li>
+                <?php endforeach;?>
+              </ul>
+              <div class="clearfix"></div>
+              <p>
+                <img src="/public/home/images/banner-6.png" alt="" />
+              </p>
+              <div class="tab">
+                <ul id="tabTle">
+                  <li class="active"><?php echo $class->className;?></li>
+                </ul>
+                <div class="clearfix"></div>
+                <div id="tabCon" class="f14">
+                  <?php foreach ($rows as $key => $val):?>
+                    <p><a href="/news/detail/<?php echo $val->articleId;?>"><?php echo $val->articleTitle;?></a><span class="pull-right hidden-xs"><?php echo $val->createTime;?></span></p>
+                  <?php endforeach;?>
+                </div>
+              </div>
+              <?php echo $page;?>
+            </div>
+          </div>
+        </div>
+      </div> 

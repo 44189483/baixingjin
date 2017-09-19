@@ -99,12 +99,12 @@
                                 <option value="">-请选择-</option>
                                 <?php 
                                 foreach ($classes['status'] as $key => $val) :
-                                    if($val->className == $status):
+                                    if($val->classId == $status):
                                         $selected = 'selected="selected"';
                                     else:
                                         $selected = '';
                                     endif;
-                                    echo '<option value="'.$val->className.'" '.$selected.'>'.$val->className.'</option>';
+                                    echo '<option value="'.$val->classId.'" '.$selected.'>'.$val->className.'</option>';
                                 endforeach;
                                 ?>
                             </select>

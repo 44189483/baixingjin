@@ -60,4 +60,5 @@ $route['default_controller'] = 'index';
 // $route['default_controller'] = 'pages/view';
 // $route['(:any)'] = 'pages/view/$1';
 $route['lend/(:any)'] = 'lend/index/$1';
+$route['news/(:any)'] = 'news/index/$1';
 $route['company/(:any)'] = 'company/index/$1';

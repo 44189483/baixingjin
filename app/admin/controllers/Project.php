@@ -51,7 +51,7 @@ class Project extends CI_Controller{
 		}
 
 	    $config = array();
-	    $config['per_page'] = 10; //每页显示的数据数
+	    $config['per_page'] = 3; //每页显示的数据数
 	    $current_page = intval($this->input->get('per_page')); //获取当前分页页码数
 	    //page还原
 	    if(0 == $current_page){
@@ -62,9 +62,22 @@ class Project extends CI_Controller{
 	    $query = $this->db->query("SELECT * FROM {$this->table} {$where}");
 	    $result['total'] = $query->num_rows();
 
-	    $query = $this->db->query("SELECT * FROM {$this->table} {$where} ORDER BY projectOrd DESC, projectId DESC LIMIT {$offset},{$config['per_page']}");
-	    $result['list'] = $query->result();
+	    $sql = "
+	    	SELECT 
+	    		p.*,
+	    		c.className 
+	    	FROM 
+	    		{$this->db->dbprefix('project')} p
+	    	INNER JOIN
+	    		{$this->db->dbprefix('class')} c 
+	    	ON
+	    		p.status=c.classId
+	    	ORDER BY p.projectOrd DESC,p.projectId DESC LIMIT {$offset},{$config['per_page']}
+	    ";
 
+	    $query = $this->db->query($sql);
+	    $result['list'] = $query->result();
+	    
 	    $config['base_url']   = site_url('project/index');//'admin.php/project/index?';
 	    
 		$config['first_link'] = '首页';
@@ -88,6 +101,7 @@ class Project extends CI_Controller{
 
 	    $config['total_rows'] = $result['total'];//总条数
 	    $config['num_links']  = 2;//页码连接数
+	    $config['use_page_numbers'] = TRUE;//使用页码而不是offset
 	    $config['use_page_titles']  = TRUE;
 	    $config['page_query_string'] = TRUE;
 	    $this->load->library('pagination');//加载ci pagination类

@@ -3,12 +3,12 @@
         <div id="contentwrapper" class="contentwrapper">
 
             <div class="contenttitle2">
-                <h3>编辑信息</h3>
+                <h3>联系我们</h3>
             </div><!--contenttitle-->
             
             <div id="validation" class="subcontent">
 
-                <form id="form1" name="form1" class="stdform" method="post" action="/admin.php/information/save" enctype="multipart/form-data">
+                <form id="form1" name="form1" class="stdform" method="post" action="/admin.php/contactus/save" enctype="multipart/form-data">
 
                     <p>
                         <label>头部banner</label>
@@ -16,20 +16,15 @@
                     </p>
 
                     <?php if(!empty($articleAttach)):?>
-                        <p align="center">
-                            <span id="load"></span>
-                        </p>
-                        <p id="panel" align="center">
-                            <img src="/<?php echo $articleAttach;?>" alt=""/>
-                            <button type="button" onclick="delData('article','articleAttach','articleId',<?php echo $articleId;?>)">删除</button>
-                        </p>
+                    <p align="center">
+                        <span id="load"></span>
+                    </p>
+                    <p id="panel" align="center">
+                        <img src="/<?php echo $articleAttach;?>" alt=""/>
+                        <button type="button" onclick="delData('article','articleAttach','articleId',<?php echo $articleId;?>)">删除</button>
+                    </p>
                     <?php endif; ?>
 
-                    <p>
-                        <label>标题</label>
-                        <span class="field"><input type="text" name="title" id="title" class="smallinput" value="<?php echo $articleTitle;?>"/></span>
-                    </p>
-                    
                     <p>
                         <label>内容</label>
                         <span class="field"><textarea id="content" name="content"><?php echo $articleContent;?></textarea>
@@ -38,7 +33,6 @@
                     <br />
                     
                     <p class="stdformbutton">
-                        <input type="hidden" name="id" value="<?php echo $articleId;?>"/>
                         <button class="submit radius2">提 交</button>
                         <button type="button" class="backbutton" onclick="history.back()">返 回</button>
                     </p>

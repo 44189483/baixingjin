@@ -8,7 +8,8 @@
         	
             <div id="validation" class="subcontent">
             	
-                    <form id="form1" class="stdform" method="post" action="">
+                    <form id="form1" name="form1" class="stdform" method="post" action="/admin.php/setpwd/save">
+
                     	<p>
                         	<label>管理员</label>
                             <span class="field"><?php echo $optionKey;?>
@@ -17,12 +18,12 @@
                         
                         <p>
                         	<label>新密码</label>
-                            <span class="field"><input type="password" name="pwd" id="pwd" class="smallinput"/></span>
+                            <span class="field"><input type="password" name="pwd" id="pwd" class="smallinput"  required="required"/></span>
                         </p>
                         
                         <p>
                         	<label>重复密码</label>
-                            <span class="field"><input type="password" name="newpwd" id="newpwd" class="smallinput"/></span>
+                            <span class="field"><input type="password" name="newpwd" id="newpwd" class="smallinput" required="required"/></span>
                         </p>
                         
                         <p class="stdformbutton">

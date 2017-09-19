@@ -106,6 +106,7 @@ class News extends CI_Controller{
 
 	    $config['total_rows'] = $result['total'];//总条数
 	    $config['num_links']  = 2;//页码连接数
+	    $config['use_page_numbers'] = TRUE;//使用页码而不是offset
 	    $config['use_page_titles']  = TRUE;
 	    $config['page_query_string'] = TRUE;
 	    $this->load->library('pagination');//加载ci pagination类
@@ -156,6 +157,15 @@ class News extends CI_Controller{
 
 		$ord = $this->input->post('ord') == null ? 0 : 1;
 
+		$data = array(
+		    'articleTitle' => $title,
+		    'articleContent' => $content,
+		    'articleType' => 1,
+		    'articleOrd' => $ord,
+		    'classId' => $cid,
+		    'createTime' => date('Y-m-d H:i:s')
+		);
+
 		//文件存在判断
 		if(!empty($_FILES["attchment"]["name"]) && is_uploaded_file($_FILES["attchment"]["tmp_name"])){
 
@@ -181,21 +191,9 @@ class News extends CI_Controller{
 				@unlink($row->articleAttach);
 		    }
 
-		    $pic = $config['upload_path'].$name;
+		    $data['articleAttach'] = $config['upload_path'].$name;
 
-		}else{
-			$pic = '';
 		}
-		
-		$data = array(
-		    'articleTitle' => $title,
-		    'articleContent' => $content,
-		    'articleAttach' => $pic,
-		    'articleType' => 1,
-		    'articleOrd' => $ord,
-		    'classId' => $cid,
-		    'createTime' => date('Y-m-d H:i:s')
-		);
 		
 		if(empty($id)){
 			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleType=1 AND articleTitle='{$title}'");

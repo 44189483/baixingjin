@@ -97,7 +97,7 @@
                                     <?php echo $val->interestDate; ?>
                                 </td>
                                 <td class="head3">
-                                    <?php echo $val->status;?>
+                                    <?php echo $val->className;?>
                                 </td>
                                 <td class="head3">
                                     <input type="text" value="<?php echo $val->projectOrd;?>" name="projectOrd" id="input_2_<?php echo $val->projectId;?>" onchange="saveData('project','projectOrd',this.value,'projectId',this.id);" class="smallinput" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}" style="width:20px;" />

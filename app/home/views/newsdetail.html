@@ -1,0 +1,43 @@
+<div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="info-panel">
+              <p>
+                <img src="/public/home/images/banner-4.jpg" alt="" />
+              </p>
+              <div style="padding:20px;">
+                <h3 class="text-center f20"><?php echo $articleTitle;?></h3>
+                <div class="s-line"></div>
+                <p class="f16 text-center mt5">发表时间:<?php echo $createTime;?></p>
+                <br/>
+                <?php if(!empty($articleAttach)):?>
+                <p><img src="/<?php echo $articleAttach;?>" alt="" /></p>
+                <?php endif;?>
+                <?php echo $articleContent;?>
+              </div>
+            </div>
+            <div class="subtitle">
+              <p>
+                上一篇:
+                <span>
+                <?php if($prev):?>
+                  <a href="/news/detail/<?php echo $prev->articleId;?>"><?php echo $prev->articleTitle;?></a>
+                <?php else:?>
+                  无
+                <?php endif;?>
+                </span>
+              </p>
+              <p>
+                下一篇:
+                <span>
+                  <?php if($next):?>
+                    <a href="/news/detail/<?php echo $next->articleId;?>"><?php echo $next->articleTitle;?></a>
+                  <?php else:?>
+                    无
+                  <?php endif;?>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>

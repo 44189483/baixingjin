@@ -173,7 +173,7 @@ button {
 	display: block;
 	text-align: center;
 	width: 100%;
-	padding:10px 20px;
+	padding:5px 20px;
 	margin: 10px 0;
 	border-radius: 10px;
 	border: none;
@@ -190,7 +190,7 @@ button {
 	display: block;
 	text-align: center;
 	width: 100%;
-	padding:10px 20px;
+	padding:5px 20px;
 	margin: 10px 0;
 	border-radius: 10px;
 	border: none;
@@ -323,17 +323,24 @@ button {
     background-color: red;
 }
 
-.pager{
+.page{
+	margin:15px 0;
+	text-align: center;
 	font-size: 14px;
 }
 
-.pager li a.active{
-	background: #eaeaea;
-	color:#fff; 
+.page li {
+    display: inline-block;
+    padding: 5px 14px;
+    margin: 0 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.pager li>a, .pager li>span{
-	border-radius: 5px;
+.page li.active{
+	background: #eaeaea;
+	color:#fff; 
 }
 
 .detail-tl .row{
@@ -1534,7 +1541,7 @@ button {
 
 	.search-colmn li{
 		float: left;
-		width: 120px;
+		width: 140px;
 	}
 
 	.detail-tl{
