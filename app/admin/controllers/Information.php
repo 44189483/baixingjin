@@ -115,13 +115,10 @@ class Information extends CI_Controller{
 
 		$content = $this->input->post('content');
 
-		$ord = $this->input->post('ord') == null ? 0 : 1;
-
 		$data = array(
 		    'articleTitle' => $title,
 		    'articleContent' => $content,
 		    'articleType' => 2,
-		    'articleOrd' => $ord,
 		    'createTime' => date('Y-m-d H:i:s')
 		);
 

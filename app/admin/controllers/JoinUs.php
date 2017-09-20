@@ -1,13 +1,13 @@
 <?php
 /*
-* News 新闻
-* @package	News
+* JoinUs 加入我们
+* @package	JoinUs
 * @author	Sun Guo Liang
 * @since	Version 1.0.0
 * @filesource
 */
 
-class News extends CI_Controller{
+class JoinUs extends CI_Controller{
 
 	public function __construct(){
 
@@ -21,38 +21,16 @@ class News extends CI_Controller{
 			jump('',site_url('index/login'));
 		}
 
-		//获取分类
-		$query = $this->db->query("SELECT * FROM {$this->db->dbprefix}class WHERE classType=1");
-	    $this->classes = $query->result();
-	    if(!$this->classes){
-	    	show_error('<a href="'.site_url("category/index/1").'">暂无新闻分类,点击添加!</a>',null,'友情提示');
-	    }
-
 		$this->head_data['cname'] = __CLASS__;
 		$this->table = $this->db->dbprefix('article');
 		$this->load->view('templates/header.html',$this->head_data);
 		$this->load->view('templates/menu.html',$this->head_data);
 
 	}
+	
 	public function index(){
 
-		//获取所有新闻分类
-		$q = $this->db->query("SELECT classId,className FROM {$this->db->dbprefix('class')} WHERE classType=1");
-	    $class = $q->result();
-		
-		$title = trim($this->input->get('title'));
-
-		$where = "WHERE n.articleType=1";
-
-		if(!empty($title)){
-			$where .= " AND n.articleTitle LIKE '%{$title}%'";
-		}
-
-		$cid = trim($this->input->get('cid'));
-
-		if(!empty($cid)){
-			$where .= " AND n.classId={$cid}";
-		}
+		$where = "WHERE articleType=4";
 
 	    $config = array();
 	    $config['per_page'] = 10; //每页显示的数据数
@@ -63,27 +41,13 @@ class News extends CI_Controller{
 	    }
 	    $offset = ($current_page - 1 ) * $config['per_page']; //设置偏移量 限定 数据查询 起始位置（从 $offset 条开始）
 
-	    $query = $this->db->query("SELECT * FROM {$this->table} n {$where}");
+	    $query = $this->db->query("SELECT * FROM {$this->table} {$where}");
 	    $result['total'] = $query->num_rows();
 
-	    $sql = "
-	    	SELECT 
-	    		c.className,
-	    		n.* 
-	    	FROM 
-	    		{$this->table} n
-	    	INNER JOIN
-	    		{$this->db->dbprefix('class')} c
-	    	ON
-	    		n.classId=c.classId
-	    	{$where}
-	    	 ORDER BY n.articleId DESC LIMIT {$offset},{$config['per_page']}
-	    ";
-
-	    $query = $this->db->query($sql);
+	    $query = $this->db->query("SELECT * FROM {$this->table} {$where} ORDER BY articleOrd DESC,articleId DESC LIMIT {$offset},{$config['per_page']}");
 	    $result['list'] = $query->result();
 
-	    $config['base_url']   = site_url('news/index');//'admin.php/news/index?';
+	    $config['base_url']   = site_url('joinus/index');
 	    
 		$config['first_link'] = '首页';
 		$config['first_tag_open'] = '<span class="first paginate_button paginate_button_disabled">';
@@ -113,43 +77,33 @@ class News extends CI_Controller{
 	    $this->pagination->initialize($config);
 
 	    $data = array(
-	    	'cid' => $cid,
-	    	'class' => $class,
-	    	'title' => $title,
 	        'rows' => $result['list'],
 	        'total'  => $result['total'],
 	        'current_page' => $current_page,
 	        'per_page' => $config['per_page'],
 	        'page'  => $this->pagination->create_links(),
 	    );
-		$this->load->view('news/index.html',$data);
+		$this->load->view('joinus/index.html',$data);
 	}
 
 	public function add(){
-		$data['classes'] = $this->classes; 
-		$this->load->view('news/add.html',$data);
+		$this->load->view('joinus/add.html');
 	}
 
 	public function edit($id){
-
-		$data = array();
 
 		if(!empty($id)){
 			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleId={$id}");
 	    	$data = $query->row();
 		}
-
-		$data->classes = $this->classes;
 		
-		$this->load->view('news/edit.html',$data);
+		$this->load->view('joinus/edit.html',$data);
 
 	}
 
 	public function save(){
 
 		$id = $this->input->post('id');
-
-		$cid = $this->input->post('cid');//分类
 
 		$title = $this->input->post('title');
 
@@ -158,45 +112,15 @@ class News extends CI_Controller{
 		$data = array(
 		    'articleTitle' => $title,
 		    'articleContent' => $content,
-		    'articleType' => 1,
-		    'classId' => $cid,
+		    'articleType' => 4,
 		    'createTime' => date('Y-m-d H:i:s')
 		);
 
-		//文件存在判断
-		if(!empty($_FILES["attchment"]["name"]) && is_uploaded_file($_FILES["attchment"]["tmp_name"])){
-
-			//重命名
-			$attchname = $_FILES["attchment"]["name"];
-			$ext = substr($attchname,strripos($attchname,'.') + 1);
-			$name = date('Ymd').rand(0,999).'.'.$ext;
-			$config['file_name'] = $name;
-
-			$config['upload_path'] = 'upload/img/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_size'] = '0';
-			$config['max_width'] = '1024';
-			$config['max_height'] = '768';
-			$this->load->library('upload', $config);
-			$this->upload->initialize($config);
-			$this->upload->do_upload('attchment');
-			$info = $this->upload->data();
-
-		    if($info && !empty($id)){//删除旧图
-				$query = $this->db->query("SELECT articleAttach FROM {$this->table} WHERE articleId={$id}");
-	    		$row = $query->row(); 
-				@unlink($row->articleAttach);
-		    }
-
-		    $data['articleAttach'] = $config['upload_path'].$name;
-
-		}
-		
 		if(empty($id)){
-			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleType=1 AND articleTitle='{$title}'");
+			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleType=4 AND articleTitle='{$title}'");
 	    	$row = $query->row(); 
 			if($row){
-				jump('该设备已存在',site_url('news/add'));
+				jump('该设备已存在',site_url('joinus/add'));
 			}
 			$bool = $this->db->insert($this->table, $data);
 		}else{
@@ -205,7 +129,7 @@ class News extends CI_Controller{
 		}
 		
 		if($bool) {
-            jump('操作成功',site_url('news/index'));
+            jump('操作成功',site_url('joinus/index'));
         }else{
             jump('操作失败');
         }
@@ -243,7 +167,7 @@ class News extends CI_Controller{
 		}
 		
 		if($bool) {
-            jump('操作成功',site_url('news/index'));
+            jump('操作成功',site_url('joinus/index'));
         }else{
             jump('操作失败');
         }

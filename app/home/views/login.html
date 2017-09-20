@@ -1,0 +1,54 @@
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="info-panel">
+              <div class="login">
+                <div class="f20">登录百姓金 <span class="pull-right"><a href="register.html">没有账号?去<span class="brown">注册</span></a></span></div>
+                <br/>
+                <div class="s-line"></div>
+                <form id="form1" name="form1" method="POST" action="">
+                  <table class="center">
+                    <tr>
+                      <td class="w180">用户名:</td>
+                      <td>
+                        <input type="text" name="user" id="user" required=""/>
+                        <p class="red error user">用户不存在</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>密　码:</td>
+                      <td>
+                        <input type="password" name="pwd" id="pwd" required=""/>
+                        <p class="red error pwd">密码错误请重新填写</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>图片验证码:</td>
+                      <td>
+                        <input type="text" name="verifcode" id="verifcode" required="" />
+                        <span class="ml15"><img src="images/4F5D958D-244A-4224-8F4A-9ABF95ECE927.png" alt="" /></span> 
+                        <span class="brown ml15">看不清?再换一张</span>
+                        <p class="red error verifcode">图片验证码错误</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>
+                        <input type="checkbox" name="" id=""/>记住用户名
+                        <a href="findpwd.html" class="forgetpwd">忘记密码</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td class="text-center">
+                        <input type="hidden" name="formtype" id="formtype" value="login"/>
+                        <button type="submit" name="submit" id="submit" class="btn-brown">登陆</button>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

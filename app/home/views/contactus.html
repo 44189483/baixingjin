@@ -1,0 +1,17 @@
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="info-panel">
+              <ul class="subnav">
+                <li class="ative"><a href="/contactus">联系我们</a></li>
+                <li><a href="/joinus">加入百姓金</a></li>
+              </ul>
+              <div class="clearfix"></div>
+              <?php if(!empty($articleAttach)):?>
+                <p><img src="/<?php echo $articleAttach;?>" alt="" /></p>
+                <?php endif;?>
+                <?php echo $articleContent;?>
+            </div>
+          </div>
+        </div>
+      </div>
