@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * 前端用法:
  * <img class="verifyimg" src="文件名" name="文件名" alt="" title="看不清则点击图片" onclick="this.src = this.name+'?'+'img='+Math.random();"> 
  */  
-function CreateVerifyImage($width = 100, $height = 40, $pixed_num = 80, $line_num = 5, $code_type = 1, $code_length = 4) {  
+function CreateVerifyImage($width = 100, $height = 40, $pixed_num = 80, $line_num = 5, $code_type = null, $code_length = 4) {  
 
     if ($code_type == 1) {  
         $chars = join("", range(0, 9));  
@@ -45,6 +45,8 @@ function CreateVerifyImage($width = 100, $height = 40, $pixed_num = 80, $line_nu
     }  
     $chars = str_shuffle($chars);  
     $m_verify_code = substr($chars, 0, $code_length);
+
+    $_SESSION['authImg'] = strtolower($m_verify_code);
 
     $m_image = imagecreatetruecolor($width, $height);  
     $white = imagecolorallocate($m_image, 255, 255, 255);  

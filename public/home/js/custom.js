@@ -87,7 +87,7 @@ $(function(){
  
 	});
     */
-
+    /*
     var form = $('#form1');
     // 为表单创建事件监听
     $(form).submit(function(e) {
@@ -95,7 +95,6 @@ $(function(){
         //阻止浏览器直接提交表单
         e.preventDefault();
 
-        /*
         var formtype = $('#formtype').val();
 
         switch(formtype){
@@ -105,7 +104,7 @@ $(function(){
                 break;
 
         }
-        */
+
 
         //密码验证
         var newpwd = document.getElementById("newpwd");
@@ -116,13 +115,13 @@ $(function(){
             }
         };
 
-        /*
         //手机验证
         var robot = $("#mdCheckRot");
         if(robot.val() == '1'){
             $('.isrobot p i').attr('style','color:red');
             return false;
         }
+
 
         // 序列化表单数据
         var formData = $(form).serialize();
@@ -185,7 +184,97 @@ $(function(){
             $('.load-warp img').remove();
 
         });
-        */
+        
+    });
+    */
+
+    var form = $('#checkform');
+    $(form).find("input").focus(function(){
+      $(".error").hide();
+    });
+    
+    // 为表单创建事件监听
+    $(form).submit(function(e) {
+
+        //阻止浏览器直接提交表单
+        e.preventDefault();
+
+        var formtype = $('#formtype').val();
+
+        if(formtype == 'register'){
+
+            //密码验证
+            var pwd = $("#pwd").val();
+            var repwd = $("#repwd").val();
+            if(repwd != pwd){ 
+                $('.repwd').show();
+            }
+
+        }
+
+        // 序列化表单数据 隐藏域无法获到值FUCK
+        var formData = $(form).serialize();
+
+        // 使用AJAX提交表单
+        $.ajax({
+            type: 'POST',
+            url: $(form).attr('action'),
+            data: formData,
+            beforeSend: function ( xhr ) {
+                $('#loadimg').show();
+                $('#submit').hide();
+            }
+        })
+        .done(function(response) {
+
+            $('#loadimg').hide();
+
+            $('#submit').show();
+
+            if(response == 500){
+                $('.server').show();
+            }
+
+            if(response == -1){
+                $('.verifcode').show();
+            }
+
+            //登陆
+            if(formtype == 'login'){
+                if(response == -2){
+                    $('.user').show();
+                }else if(response == -3){
+                    $('.pwd').show();
+                } 
+            }
+
+            //注册
+            if(formtype == 'register'){
+                if(response == -2){
+                    $('.phone').show();
+                }else if(response == -3){
+                    $('.phonecode').show();
+                } 
+            }
+
+            window.location.href='/member';
+
+        })
+        .fail(function(data) {
+
+            // 设置消息文本
+            if (data.responseText !== '') {
+                $('.server').text(data.responseText);
+            } else {
+                $('.server').text('出错了,请再试一次!.');
+            }
+
+            $('#submit').show();
+
+            $('#loadimg').hide();
+
+        });
+ 
     });
 
     //加入我们 展开闭合
@@ -245,3 +334,25 @@ function switchTab(tle,con,e){
     con.children[e].style.display = '';
     tle.children[e].className = 'active';
 }
+
+
+/*发送手机验证码*/
+var wait=60;  
+function time(o) {  
+    if (wait == 0) {  
+        o.removeAttribute("disabled");            
+        o.value="重新发送验证码";
+        o.style.background="#fff";  
+        wait = 60;  
+    } else {  
+        o.setAttribute("disabled", true);  
+        o.value="发送验证码(" + wait + ")...";
+        o.style.background="#eee";  
+        wait--;  
+        setTimeout(function() {  
+            time(o)  
+        },  
+        1000)  
+    }  
+}  
+document.getElementById("getphonecode").onclick=function(){time(this);}  

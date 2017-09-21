@@ -36,7 +36,7 @@ ul {
 }
 
 .ml15{
-	margin-left: 15px;
+	margin-left: 15px !important;
 }
 
 .mtb30{
@@ -908,10 +908,11 @@ button {
 		width:65px;
 	}
 
+	/*
 	.info-panel form span{
-		/*margin-left: 15px;*/
 		display: block;
 	}
+	*/
 
 	.info-panel .tab #tabCon p{
 		overflow: hidden;
@@ -1290,6 +1291,10 @@ button {
 	.rightcolmn li{
 		padding:10px;
 	}
+
+	.info-panel form .btn-brown{
+		width:227px;
+	}
 	
 	footer{
 		text-align: center;
@@ -1577,16 +1582,21 @@ button {
 	    margin: 0 auto;
 	}
 
-	.info-panel form input:not([type=checkbox&radio]){
+	/*&&[type=radio]*/
+	.info-panel form input:not([type=checkbox]){
 		width: 400px;
 	}
 
+	.info-panel form #getphonecode{
+		width: 180px;
+	}
+
 	.info-panel form #verifcode{
-		width: 105px;
+		width: 82px;
 	}
 
 	.info-panel form #phonecode{
-		width:255px;
+		width:82px;
 	}
 
 	.info-panel form .forgetpwd{
@@ -1595,7 +1605,7 @@ button {
 	}
 
 	.info-panel form .btn-brown{
-		width:300px;
+		width:250px;
 	}
 
 	.info-panel form .progress{
