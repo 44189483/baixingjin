@@ -19,8 +19,8 @@ class Member extends CI_Controller{
 		$this->head_data['cname'] = __CLASS__;		
 	}
 
-	//验证码
-	public function verifycode(){
+	//图片验证码
+	public function imgverifycode(){
 
 		$this->load->helper('func');
 		CreateVerifyImage(154,39); 

@@ -908,6 +908,20 @@ button {
 		width:65px;
 	}
 
+	.info-panel form #getphonecode{
+		margin: 0;
+	    width: 118px;
+	    font-size: 12px;
+	}
+
+	/*
+
+	.info-panel form #verifcode{
+		width: 82px;
+	}
+
+	*/
+
 	/*
 	.info-panel form span{
 		display: block;
@@ -1292,6 +1306,23 @@ button {
 		padding:10px;
 	}
 
+	/*&&[type=radio]*/
+	.info-panel form input:not([type=checkbox]){
+		width: 400px;
+	}
+
+	.info-panel form #phonecode{
+		width:82px;
+	}
+
+	.info-panel form #getphonecode{
+	    width: 150px;
+	}
+
+	.info-panel form #verifcode{
+		width: 82px;
+	}
+
 	.info-panel form .btn-brown{
 		width:227px;
 	}
@@ -1578,7 +1609,7 @@ button {
 	}
 
 	.info-panel form p {
-	    width: 600px;
+	    /*width: 600px;*/
 	    margin: 0 auto;
 	}
 

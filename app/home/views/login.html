@@ -7,20 +7,20 @@
                 <br/>
                 <div class="s-line"></div>
                 <form id="checkform" name="checkform" method="POST" action="/member/checklogin">
-                  <span class="text-center red error server">服务器错误 500.</span>
+                  <p class="text-center red error server">服务器错误 500.</p>
                   <table class="center">
                     <tr>
                       <td class="w180">用户名:</td>
                       <td>
                         <input type="text" name="user" id="user" required=""/>
-                        <span class="red error user">用户不存在.</span>
+                        <p class="red error user">用户不存在.</p>
                       </td>
                     </tr>
                     <tr>
                       <td>密　码:</td>
                       <td>
                         <input type="password" name="pwd" id="pwd" required=""/>
-                        <span class="red error pwd">密码错误请重新填写.</span>
+                        <p class="red error pwd">密码错误请重新填写.</p>
                       </td>
                     </tr>
                     <tr>
@@ -28,10 +28,10 @@
                       <td>
                         <input type="text" name="verifcode" id="verifcode" required="" />
                         <span>
-                          <img src="/member/verifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
+                          <img src="/member/imgverifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
                         </span> 
-                        <span class="ml15"><a href="javascript:void()'" onclick="document.getElementById('imgCaptcha').src='/member/verifycode';" class="brown">看不清?再换一张</a></span>
-                        <span class="red error verifcode">图片验证码错误.</span>
+                        <span class="ml15"><a href="javascript:void()'" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
+                        <p class="red error verifcode">图片验证码错误.</p>
                       </td>
                     </tr>
                     <tr>

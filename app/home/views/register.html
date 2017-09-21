@@ -12,7 +12,7 @@
                       <td class="w180">手机号:</td>
                       <td>
                         <input type="text" name="phone" id="phone" required="" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
-                        <span class="red error phone">用户已存在.</span>
+                        <p class="red error phone">用户已存在.</p>
                       </td>
                     </tr>
                     <tr>
@@ -25,7 +25,7 @@
                       <td>确认密码:</td>
                       <td>
                         <input type="password" name="repwd" id="repwd" required="" />
-                        <span class="red error repwd">两次密码输入不一致.</span>
+                        <p class="red error repwd">两次密码输入不一致.</p>
                       </td>
                     </tr>
                     <tr>
@@ -33,10 +33,10 @@
                       <td>
                         <input type="text" name="verifcode" id="verifcode" required="" />
                         <span>
-                          <img src="/member/verifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
+                          <img src="/member/imgverifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
                         </span> 
-                        <span class="ml15"><a href="javascript:void()'" onclick="document.getElementById('imgCaptcha').src='/member/verifycode';" class="brown">看不清?再换一张</a></span>
-                        <span class="red error verifcode">图片验证码错误.</span>
+                        <span class="ml15"><a href="javascript:void()'" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
+                        <p class="red error verifcode">图片验证码错误.</p>
                       </td>
                     </tr>
                     <tr>
@@ -44,14 +44,14 @@
                       <td>
                         <input type="text" name="phonecode" id="phonecode" required="" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
                         <input type="button" id="getphonecode" class="btn-def" value="免费获取验证码" />
-                        <span class="red error phonecode">短信验证码错误.</span>
+                        <p class="red error phonecode">短信验证码错误.</p>
                       </td>
                     </tr>
                     <tr>
                       <td>推荐或渠道码:</td>
                       <td>
                         <input type="text" name="recommcode" id="recommcode" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}" />
-                        <span class="red error verifcode">渠道码错误.</span>
+                        <p class="red error verifcode">渠道码错误.</p>
                       </td>
                     </tr>
                     <tr>
@@ -59,6 +59,7 @@
                       <td>
                         <input type="checkbox" name="agree" id="agree"/>我已阅读并同意
                         <a href="/member/agreement" class="brown">《注册协议》</a>
+                        <p class="red error agree">未同意注册协议.</p>
                       </td>
                     </tr>
                     <tr>
