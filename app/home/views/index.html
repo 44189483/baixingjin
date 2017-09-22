@@ -1,13 +1,6 @@
       <div class="banner">
         <div class="login-panel">
-          <!--
-          <div class="text-center mtb15">
-            <img src="/public/home/images/avatar_detalut.png" alt="" width="72" height="72" />
-            <p class="mt5">gq_1339848</p>
-            <h1 class="mt5 red">200</h1>
-            <p class="mt5"><a href="#" class="btn-brown">进入账户中心</a></p>
-          </div>
-          -->
+          <?php if(empty($member->user)):?>
           <h3>百姓金持续运营</h3><br/>
           <p>
             <span class="red f40"><strong>2</strong></span> <strong>年</strong>
@@ -15,11 +8,19 @@
             <span class="red f40"><strong>14</strong></span> <strong>时</strong>
           </p>
           <p>
-            <a href="#" class="btn-brown">立即注册</a>
+            <a href="/member/register" class="btn-brown">立即注册</a>
           </p>
           <p class="right">
-            <span><a href="#">已有帐号</a></span> <span><a href="#" class="brown">去登陆</a></span> 
+            <span><a href="/member/login">已有帐号</a></span> <span><a href="/member/login" class="brown">去登陆</a></span> 
           </p>
+          <?php else:?>
+            <div class="text-center mtb15">
+              <img src="/public/home/images/avatar_detalut.png" alt="" width="72" height="72" />
+              <p class="mt5"><?php echo $member->user;?></p>
+              <h1 class="mt5 red">200</h1>
+              <p class="mt5"><a href="/user" class="btn-brown">进入账户中心</a></p>
+            </div>
+          <?php endif;?>
         </div>
         <div id="myCarousel" class="carousel"> 
           <div class="carousel-inner">

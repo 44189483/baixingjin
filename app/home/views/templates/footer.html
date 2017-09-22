@@ -1,3 +1,22 @@
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">
+            提示信息
+          </h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确定
+          </button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+  </div>
+
 </div>
     <footer class="gray-bg">
       <div class="container">
@@ -45,6 +64,10 @@
 
       $('.carousel').carousel();
 
+      <?php if(!empty($province)):?>
+        $("#prov_city").citySelect({prov:"<?php echo $province;?>", city:"<?php echo $city;?>"});
+      <?php endif;?>
+      
     </script>
   </body>
 </html>

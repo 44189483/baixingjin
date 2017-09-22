@@ -22,7 +22,8 @@ class Lend extends CI_Controller{
 
 		$header = array(
 			'nav' => '出借',
-			'cname' => $this->head_data['cname']
+			'cname' => $this->head_data['cname'],
+			'member' => $this->session->member
 		);
 
 		//项目状态
@@ -171,7 +172,8 @@ class Lend extends CI_Controller{
 
     	$header = array(
 			'nav' => $data->projectName,
-			'cname' => $this->head_data['cname']
+			'cname' => $this->head_data['cname'],
+			'member' => $this->session->member
 		);
 
     	$this->load->view('templates/header.html',$header);

@@ -1,0 +1,50 @@
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="info-panel">
+              <div class="login">
+                <div class="f20">找回百姓金登录密码</div>
+                <br/>
+                <div class="s-line"></div>
+                <form id="checkform" name="checkform" method="POST" action="/member/checkfindpwd">
+                  <table class="center">
+                    <tr>
+                      <td class="w180">手机号:</td>
+                      <td>
+                        <input type="text" name="phone" id="phone" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}" required="" />
+                        <p class="red error user">用户不存在.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>图片验证码:</td>
+                      <td>
+                        <input type="text" name="verifcode" id="verifcode" required="" />
+                        <span>
+                          <img src="/member/imgverifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
+                        </span> 
+                        <span class="ml15"><a href="javascript:void(0);" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
+                        <p class="red error verifcode">图片验证码错误.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>手机验证码:</td>
+                      <td>
+                        <input type="text" name="phonecode" id="phonecode" required="" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                        <input type="button" id="getphonecode" class="btn-def" value="免费获取验证码" />
+                        <p class="red error phonecode">短信验证码错误.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td class="text-center">
+                        <input type="hidden" id="formtype" value="findpwd"/>
+                        <button type="submit" name="submit" id="submit" class="btn-brown">下一步</button>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

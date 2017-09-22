@@ -1,0 +1,46 @@
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="info-panel">
+              <div class="login">
+                <div class="f20">修改百姓金密码</div>
+                <br/>
+                <div class="s-line"></div>
+                <form id="checkform" name="checkform" method="POST" action="/member/checksetpwd">
+                  <table class="center">
+                    <tr>
+                      <td>新密码:</td>
+                      <td><input type="password" name="pwd" id="pwd" required="" /></td>
+                    </tr>
+                    <tr>
+                      <td>确认密码:</td>
+                      <td>
+                        <input type="password" name="repwd" id="repwd" required="" />
+                        <p class="red error repwd">两次密码输入不一致.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>图片验证码:</td>
+                      <td>
+                        <input type="text" name="verifcode" id="verifcode" required="" />
+                        <span>
+                          <img src="/member/imgverifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
+                        </span> 
+                        <span class="ml15"><a href="javascript:void(0);" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
+                        <p class="red error verifcode">图片验证码错误.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td class="text-center">
+                        <input type="hidden" id="formtype" value="setpwd"/>
+                        <button type="submit" name="submit" id="submit" class="btn-brown ml15">修改密码</button>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

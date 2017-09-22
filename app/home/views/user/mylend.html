@@ -1,0 +1,95 @@
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 hidden-xs">
+            <?php $this->load->view('/user/menu.html');?>
+          </div>
+          <div class="col-sm-8 col-xs-12">
+            <div class="info-panel" style="border:none;">
+              <div class="lendrow">
+                <div class="brown-bg pull-left text-center">
+                  <span class="red f18">200</span>
+                  <span>已赚收益</span>
+                </div>
+                <div class="rightcolmn">
+                  <ul>
+                    <li>
+                      <p class="red f18">2000</p>
+                      <p>已赚收益</p>
+                    </li>
+                    <li>
+                      =
+                    </li>
+                    <li>
+                      <p class="red f18">20000</p>
+                      <p>已赚收益</p>
+                    </li>
+                    <li>
+                      +
+                    </li>
+                    <li>
+                      <p class="red f18">20000</p>
+                      <p>已赚收益</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="info-panel tab lendcolmn">
+              <ul id="tabTle">
+                <li>已出借项目</li>
+                <li onclick="switchTab('tabTle','tabCon',1)" class="active">全部出借状态</li>
+                <li onclick="switchTab('tabTle','tabCon',2)">出借中</li>
+                <li onclick="switchTab('tabTle','tabCon',3)">回款中</li>
+                <li onclick="switchTab('tabTle','tabCon',4)">已还款</li>
+              </ul>
+              <div class="clearfix"></div>
+              <div id="tabCon">
+                <div style="display:none"></div>
+                <div>
+
+                  <div class="lendrow">
+                    <div class="brown-bg pull-left text-center">
+                      <span class="red f18">ggggggg</span>
+                      <span>已投金额</span>
+                    </div>
+                    <div class="rightcolmn">
+                      <p><a href="#" class="f20">百姓金3号</a><span class="pull-right f20 brown">出借中</span></p>
+                      <p>
+                        年化收益率: <span class="f20 red">9%</span> 
+                        借款期限: <span class="f20 red">3个月</span>
+                      </p>
+                      <p>预期收益: <span class="f20 red">20</span></p>
+                    </div>
+                  </div>
+
+                  <div class="lendrow">
+                    <div class="brown-bg pull-left text-center">
+                      <span class="red f18">ggggggg</span>
+                      <span>已投金额</span>
+                    </div>
+                    <div class="rightcolmn">
+                      <p><a href="#" class="f20">百姓金3号</a><span class="pull-right f20 brown">出借中</span></p>
+                      <p>
+                        年化收益率: <span class="f20 red">9%</span> 
+                        借款期限: <span class="f20 red">3个月</span>
+                      </p>
+                      <p>预期收益: <span class="f20 red">20</span></p>
+                    </div>
+                  </div>
+
+                </div>
+                <div style="display:none">
+                  b
+                </div>
+                <div style="display:none">
+                  c
+                </div>
+                <div style="display:none">
+                  d
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php $this->load->view('/user/newnav.html');?>

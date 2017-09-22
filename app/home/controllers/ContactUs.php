@@ -27,7 +27,8 @@ class ContactUs extends CI_Controller{
 
 		$header = array(
 			'nav' => '联系我们',
-			'cname' => $this->head_data['cname']
+			'cname' => $this->head_data['cname'],
+			'member' => $this->session->member
 		);
 
 		$this->load->view('templates/header.html',$header);

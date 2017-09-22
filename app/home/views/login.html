@@ -12,8 +12,8 @@
                     <tr>
                       <td class="w180">用户名:</td>
                       <td>
-                        <input type="text" name="user" id="user" required=""/>
-                        <p class="red error user">用户不存在.</p>
+                        <input type="text" name="phone" id="phone" required="" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                        <p class="red error phone">用户不存在.</p>
                       </td>
                     </tr>
                     <tr>
@@ -30,7 +30,7 @@
                         <span>
                           <img src="/member/imgverifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
                         </span> 
-                        <span class="ml15"><a href="javascript:void()'" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
+                        <span class="ml15"><a href="javascript:void(0);" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
                         <p class="red error verifcode">图片验证码错误.</p>
                       </td>
                     </tr>
@@ -38,13 +38,12 @@
                       <td>&nbsp;</td>
                       <td>
                         <input type="checkbox" name="" id="" checked="checked" />记住用户名
-                        <a href="findpwd.html" class="forgetpwd">忘记密码</a>
+                        <a href="/member/findpwd" class="forgetpwd">忘记密码</a>
                       </td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
                       <td class="text-center">
-                        <img src="/public/home/images/loader6.gif" alt="" id="loadimg" style="display:none"/>
                         <input type="hidden" id="formtype" value="login"/>
                         <button type="submit" name="submit" id="submit" class="btn-brown ml15">登陆</button>
                       </td>

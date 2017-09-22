@@ -16,6 +16,13 @@
                       </td>
                     </tr>
                     <tr>
+                      <td>邮　箱:</td>
+                      <td>
+                        <input type="text" name="email" id="email" required="" />
+                        <p class="red error email">邮箱格式有误.</p>
+                      </td>
+                    </tr>
+                    <tr>
                       <td>密　码:</td>
                       <td>
                         <input type="password" name="pwd" id="pwd" required="" />
@@ -35,7 +42,7 @@
                         <span>
                           <img src="/member/imgverifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
                         </span> 
-                        <span class="ml15"><a href="javascript:void()'" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
+                        <span class="ml15"><a href="javascript:void(0);" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
                         <p class="red error verifcode">图片验证码错误.</p>
                       </td>
                     </tr>
@@ -65,7 +72,6 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td class="text-center">
-                        <img src="/public/home/images/loader6.gif" alt="" id="loadimg" style="display:none"/>
                         <input type="hidden" id="formtype" value="register"/>
                         <button type="submit" name="submit" id="submit" class="btn-brown ml15">开始注册</button>
                       </td>

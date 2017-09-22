@@ -118,3 +118,25 @@ if(!function_exists('utfSubstr')){
   }
 
 }
+
+/*
+* 获取随机数
+* $length - 字符长度
+* $type   - 类型 数字int/字符串型str
+*/
+function randcode($length=4,$type='int') {  
+
+  if(empty($type) || $type == 'int'){
+    $chars = "0123456789";
+  }
+
+  if($type == 'str'){
+    $chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  }
+  
+  $str ="";  
+  for ( $i = 0; $i < $length; $i++ )  {  
+    $str.= substr($chars, mt_rand(0, strlen($chars)-1), 1);  
+  }  
+  return $str;  
+}

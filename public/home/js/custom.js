@@ -11,19 +11,40 @@ $(function(){
         //阻止浏览器直接提交表单
         e.preventDefault();
 
+        var url;
+
         var formtype = $('#formtype').val();
 
-        if(formtype == 'register'){
+        var phone = $('#phone');
+        if(phone.length > 0){
+            if (!phone.val().match(/^((1[0-9]{1})+\d{9})$/)) { 
+                $(".phone").show();
+                $(".phone").text("手机号码格式不正确.请重新输入."); 
+                return false; 
+            } 
+        }
+
+        if(formtype == 'register' || formtype == 'setpwd'){
+
+            var email = $("#email");
+            if(email.length > 0){
+                if(!email.val().match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+                    $(".email").show();
+                    return false;
+                }
+            }
 
             //密码验证
             var pwd = $("#pwd").val();
             var repwd = $("#repwd").val();
             if(repwd != pwd){ 
                 $('.repwd').show();
+                return false;
             }
 
-            if(!$('#agree').is(':checked')) {
+            if($('#agree').length > 0 && !$('#agree').is(':checked')) {
                 $('.agree').show();
+                return false;
             }
 
         }
@@ -37,15 +58,12 @@ $(function(){
             url: $(form).attr('action'),
             data: formData,
             beforeSend: function ( xhr ) {
-                $('#loadimg').show();
-                $('#submit').hide();
+                $('#submit').attr('disabled',true);
             }
         })
         .done(function(response) {
 
-            $('#loadimg').hide();
-
-            $('#submit').show();
+            $('#submit').removeAttr('disabled',true);
 
             if(response == 500){
                 $('.server').show();
@@ -65,7 +83,10 @@ $(function(){
                 }else if(response == -3){
                     $('.pwd').show();
                     return false;
-                } 
+                }
+
+                url = '/user';
+
             }
 
             //注册
@@ -73,13 +94,39 @@ $(function(){
                 if(response == -2){
                     $('.phone').show();
                     return false;
+                }/*else if(response == -3){
+                    $('.phonecode').show();
+                    return false;
+                }*/ 
+                url = '/user';
+            }
+
+            //查找密码
+            if(formtype == 'findpwd'){
+                if(response == -2){
+                    $('.user').show();
+                    return false;
                 }else if(response == -3){
                     $('.phonecode').show();
                     return false;
-                } 
+                }
+                url = null;
+                window.location.href='/member/setpwd';
             }
 
-            window.location.href='/member';
+            //设置密码
+            if(formtype == 'setpwd'){
+                url = '/member/login';
+            }
+
+            if(url != null){
+                //弹出框提示+跳转
+                $('#myModal .modal-body').text(response);
+                $('#myModal').modal('show');
+                $('#myModal').on('hidden.bs.modal', function () {
+                    window.location.href = url;
+                });
+            }
 
         })
         .fail(function(data) {
@@ -91,9 +138,7 @@ $(function(){
                 $('.server').text('出错了,请再试一次!.');
             }
 
-            $('#submit').show();
-
-            $('#loadimg').hide();
+            $('#submit').removeAttr('disabled',true);
 
         });
  
@@ -159,13 +204,13 @@ function switchTab(tle,con,e){
 
 
 /*发送手机验证码*/
-var wait=60;  
+var wait=180;  
 function time(o) {  
     if (wait == 0) {  
         o.removeAttribute("disabled");            
         o.value="重新发送验证码";
         o.style.background="#fff";  
-        wait = 60;  
+        wait = 180;  
     } else {  
         o.setAttribute("disabled", true);  
         o.value="发送验证码(" + wait + ")...";
@@ -177,4 +222,4 @@ function time(o) {
         1000)  
     }  
 }  
-document.getElementById("getphonecode").onclick=function(){time(this);}  
+$("#getphonecode").click(function(){time(this);})  

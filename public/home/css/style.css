@@ -154,7 +154,7 @@ footer .black-bg{
 }
 
 .banner img{
-	width: 100%;
+	/*width: 100%;*/
 }
 
 button {
@@ -964,6 +964,7 @@ button {
 		display: block;
 		position: fixed;
 		bottom: 0;
+		z-index: 1;
 		background: #fff;
 		border-top:1px solid #e1e1e1; 
 		width: 100%;
@@ -1614,7 +1615,7 @@ button {
 	}
 
 	/*&&[type=radio]*/
-	.info-panel form input:not([type=checkbox]){
+	.info-panel form input([type=text]){
 		width: 400px;
 	}
 

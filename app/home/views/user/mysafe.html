@@ -1,0 +1,105 @@
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 hidden-xs">
+            <?php $this->load->view('/user/menu.html');?>
+          </div>
+          <div class="col-sm-8 col-xs-12">
+            <div class="info-panel p24">
+              <ul class="sub-nav">
+                <li><a href="/user" <?php if($fname=='myinfo'):?>class="brown"<?php endif;?>>个人设置</a></li>
+                <li><a href="/user/mysafe" <?php if($fname=='mysafe'):?>class="brown"<?php endif;?>>安全设置</a></li>
+              </ul>
+              <form id="form1" name="form1" method="POST" action="">
+                <table class="table">
+                  <tr>
+                    <td>安全等级</td>
+                    <td colspan="2">
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                          70%
+                        </div>
+                      </div>
+                      <span class="pull-right gray">上次登录时间：2017-8-30 20:48:42</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>手机绑定 </td>
+                    <td colspan="2">
+                      <!--
+                      159********
+                      <span class="pull-right"><button>已绑定</button></span>
+                      -->
+                      <div>
+                        <span class="pull-right"><button type="button" class="btnbrow bind">绑定</button></span>
+                      </div>
+                      <div class="hide">
+                        <input name="mobile" id="mobile" class="smallinput"/>
+                        <button type="button" class="btnbrow ok">确定</button>
+                        <button type="button" class="btnbrow cancel">取消</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>邮箱绑定</td>
+                    <td colspan="2">
+                      <!--
+                      159********
+                      <span class="pull-right"><button>已绑定</button></span>
+                      -->
+                      <div>
+                        绑定邮箱使您的账户更安全
+                        <span class="pull-right"><button type="button" class="btnbrow bind">绑定</button></span>
+                      </div>
+                      <div class="hide">
+                        <input name="email" id="email" class="smallinput"/>
+                        <button type="button" class="btnbrow ok">确定</button>
+                        <button type="button" class="btnbrow cancel">取消</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>银行卡绑定</td>
+                    <td colspan="2">
+                      <!--
+                      159********
+                      <span class="pull-right"><button>已绑定</button></span>
+                      -->
+                      <div>
+                        您尚绑定银行卡，请绑定银行卡
+                        <span class="pull-right"><button type="button" class="btnbrow bind">绑定</button></span>
+                      </div>
+                      <div class="hide">
+                        <input name="bankcard" id="bankcard" class="smallinput"/>
+                        <button type="button" class="btnbrow ok">确定</button>
+                        <button type="button" class="btnbrow cancel">取消</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">
+                      <b>修改密码</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="lh80">原密码:</td>
+                    <td colspan="2"><input type="password" name="oldpwd" id="oldpwd" required="" /></td>
+                  </tr>
+                  <tr>
+                    <td class="lh80">新密码:</td>
+                    <td colspan="2"><input type="password" name="newpwd" id="newpwd" required="" /></td>
+                  </tr>
+                  <tr>
+                    <td class="lh80">确认密码:</td>
+                    <td colspan="2"><input type="password" name="repwd" id="repwd" required="" /></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="text-center" colspan="2"><button type="submit" name="submit" id="submit" class="btn-brown">确认修改</button></td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php $this->load->view('/user/newnav.html');?>

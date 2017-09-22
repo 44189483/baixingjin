@@ -29,7 +29,8 @@ class News extends CI_Controller{
 
 		$header = array(
 			'nav' => $class->className,
-			'cname' => $this->head_data['cname']
+			'cname' => $this->head_data['cname'],
+			'member' => $this->session->member
 		);
 
 		$where .= " AND articleShow=1";
@@ -117,7 +118,8 @@ class News extends CI_Controller{
 
     	$header = array(
 			'nav' => $data->articleTitle,
-			'cname' => $this->head_data['cname']
+			'cname' => $this->head_data['cname'],
+			'member' => $this->session->member
 		);
 
 		$sql = "SELECT articleId,articleTitle FROM {$this->table} WHERE articleType=1 AND articleShow=1 AND classId={$data->classId}";

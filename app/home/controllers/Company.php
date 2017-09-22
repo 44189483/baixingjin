@@ -45,7 +45,8 @@ class Company extends CI_Controller{
 
 		$header = array(
 			'nav' => $data['info']->articleTitle,
-			'cname' => $this->head_data['cname']
+			'cname' => $this->head_data['cname'],
+			'member' => $this->session->member
 		);
 
 		$this->load->view('templates/header.html',$header);

@@ -23,7 +23,8 @@ class Index extends CI_Controller{
 
 		$header = array(
 			'nav' => '首页',
-			'cname' => $this->head_data['cname']
+			'cname' => $this->head_data['cname'],
+			'member' => $this->session->member
 		);
 
 		//轮播图
