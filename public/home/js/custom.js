@@ -19,16 +19,18 @@ $(function(){
         if(phone.length > 0){
             if (!phone.val().match(/^((1[0-9]{1})+\d{9})$/)) { 
                 $(".phone").show();
-                $(".phone").text("手机号码格式不正确.请重新输入."); 
+                $(".phone").text("手机号码格式不正确."); 
                 return false; 
             } 
         }
 
-        if(formtype == 'register' || formtype == 'setpwd'){
+        //注册 密码 安全
+        if(formtype == 'register' || formtype == 'setpwd' || formtype == 'mysafe'){
 
             var email = $("#email");
             if(email.length > 0){
                 if(!email.val().match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+                    $(".email").text("邮箱格式有误.");
                     $(".email").show();
                     return false;
                 }
@@ -38,11 +40,13 @@ $(function(){
             var pwd = $("#pwd").val();
             var repwd = $("#repwd").val();
             if(repwd != pwd){ 
+                $('.repwd').text('两次密码输入不一致');
                 $('.repwd').show();
                 return false;
             }
 
             if($('#agree').length > 0 && !$('#agree').is(':checked')) {
+                $('.agree').text('未同意注册协议.');
                 $('.agree').show();
                 return false;
             }
@@ -71,6 +75,7 @@ $(function(){
             }
 
             if(response == -1){
+                $('.verifcode').text('图片验证码错误.');
                 $('.verifcode').show();
                 return false;
             }
@@ -78,9 +83,11 @@ $(function(){
             //登陆
             if(formtype == 'login'){
                 if(response == -2){
-                    $('.user').show();
+                    $('.phone').text('用户不存在');
+                    $('.phone').show();
                     return false;
                 }else if(response == -3){
+                    $('.pwd').text('密码错误请重新填写.');
                     $('.pwd').show();
                     return false;
                 }
@@ -93,20 +100,28 @@ $(function(){
             if(formtype == 'register'){
                 if(response == -2){
                     $('.phone').show();
+                    $('.phone').text('用户已存在.');
                     return false;
-                }/*else if(response == -3){
+                }else if(response == -3){
+                    $('.phonecode').text('短信验证码错误.');
                     $('.phonecode').show();
                     return false;
-                }*/ 
+                }else if(response == -4){
+                    $('.recommcode').text('渠道推荐码错误..');
+                    $('.recommcode').show();
+                    return false;
+                }  
                 url = '/user';
             }
 
             //查找密码
             if(formtype == 'findpwd'){
                 if(response == -2){
-                    $('.user').show();
+                    $('.phone').text('用户不存在');
+                    $('.phone').show();
                     return false;
                 }else if(response == -3){
+                    $('phonecode').text('短信验证码错误.');
                     $('.phonecode').show();
                     return false;
                 }
@@ -117,6 +132,10 @@ $(function(){
             //设置密码
             if(formtype == 'setpwd'){
                 url = '/member/login';
+            }
+
+            if(formtype == 'mysafe'){
+                url = '/user/mysafe';
             }
 
             if(url != null){
@@ -178,9 +197,64 @@ $(function(){
 
     //安全设置 绑定
     $('.info-panel table button.ok').click(function(){
+
         var input = $(this).siblings('input');
-        //input.val()
-        //input.attr('name');
+
+        var name = input.attr('name');
+
+        if(name == 'mobile'){
+
+            if (!input.val().match(/^((1[0-9]{1})+\d{9})$/)) { 
+                $(".mobile").text('手机号码格式不正确.');
+                $(".mobile").show();
+                return false; 
+            } 
+
+        }
+
+        if(name == 'email'){
+
+            if(!input.val().match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+                $(".email").text('邮箱格式不正确.');
+                $(".email").show();
+                return false;
+            }
+
+        }
+
+        if(name == 'bankcard'){
+            if(input.val() == '' || input.val() == null){
+                $(".bankcard").text('银行卡+卡号不能为空.');
+                $(".bankcard").show();
+                return false;                
+            }
+        }
+
+        $.ajax({
+           type: "POST",
+           url: "/user/ajax_safe",
+           data: "filed="+name+"&value="+input.val(),
+           success: function(msg){
+             if(msg != null || msg != ''){
+                $('.'+name).show();
+                $('.'+name).text(msg);
+             }else{
+                $('.'+name).hide();
+                input.parent().siblings('div').html(input.val()+'<span class="pull-right"><button type="button" class="bind">已绑定</button></span>');
+             }
+           }
+        });
+    });
+
+    //发送手机验证码
+    $("#getphonecode").click(function(){
+        var phone = $("#phone");
+        if(phone.val() == '' || phone.val() == null){
+            $('.phone').show();
+            $('.phone').text('手机号码格式不正确');
+            return false;
+        }
+        time(this);
     });
 
 });
@@ -222,4 +296,5 @@ function time(o) {
         1000)  
     }  
 }  
-$("#getphonecode").click(function(){time(this);})  
+
+//document.getElementById('getphonecode').onclick = function(){time(this);}; 

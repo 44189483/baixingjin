@@ -9,69 +9,71 @@
                 <li><a href="/user" <?php if($fname=='myinfo'):?>class="brown"<?php endif;?>>个人设置</a></li>
                 <li><a href="/user/mysafe" <?php if($fname=='mysafe'):?>class="brown"<?php endif;?>>安全设置</a></li>
               </ul>
-              <form id="form1" name="form1" method="POST" action="">
+              <form id="checkform" name="checkform" method="POST" action="/user/save">
                 <table class="table">
                   <tr>
                     <td>安全等级</td>
                     <td colspan="2">
                       <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $level;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $level;?>%;">
                           70%
                         </div>
                       </div>
-                      <span class="pull-right gray">上次登录时间：2017-8-30 20:48:42</span>
+                      <span class="pull-right gray">上次登录时间：<?php echo $logTime;?></span>
                     </td>
                   </tr>
                   <tr>
                     <td>手机绑定 </td>
                     <td colspan="2">
-                      <!--
-                      159********
-                      <span class="pull-right"><button>已绑定</button></span>
-                      -->
                       <div>
-                        <span class="pull-right"><button type="button" class="btnbrow bind">绑定</button></span>
+                        <?php echo preg_replace('/(\d{3})\d{8}/', '$1********', $mobile);?>
+                        <span class="pull-right"><button type="button" class="bind">已绑定</button></span>
                       </div>
                       <div class="hide">
-                        <input name="mobile" id="mobile" class="smallinput"/>
+                        <input name="mobile" id="mobile" class="smallinput" value="<?php echo $mobile;?>" />
                         <button type="button" class="btnbrow ok">确定</button>
                         <button type="button" class="btnbrow cancel">取消</button>
+                        <p class="red error mobile"></p>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <td>邮箱绑定</td>
                     <td colspan="2">
-                      <!--
-                      159********
-                      <span class="pull-right"><button>已绑定</button></span>
-                      -->
                       <div>
-                        绑定邮箱使您的账户更安全
-                        <span class="pull-right"><button type="button" class="btnbrow bind">绑定</button></span>
+                        <?php if(!empty($email)):?>
+                          <?php echo $email;?>
+                          <span class="pull-right"><button type="button" class="bind">已绑定</button></span>
+                        <?php else:?> 
+                          绑定邮箱使您的账户更安全
+                          <span class="pull-right"><button type="button" class="btnbrow bind">绑定</button></span>
+                        <?php endif;?>
                       </div>
                       <div class="hide">
-                        <input name="email" id="email" class="smallinput"/>
+                        <input name="email" id="email" class="smallinput" value="<?php echo $email;?>" />
                         <button type="button" class="btnbrow ok">确定</button>
                         <button type="button" class="btnbrow cancel">取消</button>
+                        <p class="red error email"></p>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <td>银行卡绑定</td>
                     <td colspan="2">
-                      <!--
-                      159********
-                      <span class="pull-right"><button>已绑定</button></span>
-                      -->
                       <div>
-                        您尚绑定银行卡，请绑定银行卡
-                        <span class="pull-right"><button type="button" class="btnbrow bind">绑定</button></span>
+                        <?php if(!empty($bankcard)):?>
+                          <?php echo $bankcard;?>
+                          <span class="pull-right"><button type="button" class="bind">已绑定</button></span>
+                        <?php else:?> 
+                          您尚绑定银行卡，请绑定银行卡
+                          <span class="pull-right"><button type="button" class="btnbrow bind">绑定</button></span>
+                        <?php endif;?>
                       </div>
                       <div class="hide">
-                        <input name="bankcard" id="bankcard" class="smallinput"/>
+                        <input name="bankcard" id="bankcard" class="smallinput" value="<?php echo $bankcard;?>" />
                         <button type="button" class="btnbrow ok">确定</button>
                         <button type="button" class="btnbrow cancel">取消</button>
+                        <p class="red error bankcard"></p>
                       </div>
                     </td>
                   </tr>
@@ -81,20 +83,22 @@
                     </td>
                   </tr>
                   <tr>
-                    <td class="lh80">原密码:</td>
-                    <td colspan="2"><input type="password" name="oldpwd" id="oldpwd" required="" /></td>
-                  </tr>
-                  <tr>
                     <td class="lh80">新密码:</td>
-                    <td colspan="2"><input type="password" name="newpwd" id="newpwd" required="" /></td>
+                    <td colspan="2"><input type="password" name="pwd" id="pwd" required="" /></td>
                   </tr>
                   <tr>
                     <td class="lh80">确认密码:</td>
-                    <td colspan="2"><input type="password" name="repwd" id="repwd" required="" /></td>
+                    <td colspan="2">
+                      <input type="password" name="repwd" id="repwd" required="" />
+                      <p class="red error repwd">两次密码输入不一致.</p>
+                    </td>
                   </tr>
                   <tr>
                     <td>&nbsp;</td>
-                    <td class="text-center" colspan="2"><button type="submit" name="submit" id="submit" class="btn-brown">确认修改</button></td>
+                    <td class="text-center" colspan="2">
+                      <input type="hidden" name="formtype" id="formtype" value="mysafe"/>
+                      <button type="submit" name="submit" id="submit" class="btn-brown">确认修改</button>
+                    </td>
                   </tr>
                 </table>
               </form>
@@ -102,4 +106,3 @@
           </div>
         </div>
       </div>
-      <?php $this->load->view('/user/newnav.html');?>

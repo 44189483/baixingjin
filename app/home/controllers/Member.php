@@ -15,8 +15,12 @@ class Member extends CI_Controller{
 		$this->load->helper('url_helper');
 		$this->load->database();
 		$this->load->helper('func_helper');
-		$this->head_data['cname'] = __CLASS__;	
-		$this->table = $this->db->dbprefix('member');	
+		$this->table = $this->db->dbprefix('member');
+
+		$this->header = array(
+			'cname' => __CLASS__,
+			'fname' => __FUNCTION__
+		);	
 	}
 
 	//图片验证码
@@ -47,12 +51,10 @@ class Member extends CI_Controller{
 			redirect(site_url('/user'));
 		}
 
-		$header = array(
-			'nav' => '注册',
-			'cname' => $this->head_data['cname']
-		);
 
-		$this->load->view('templates/header.html',$header);
+		$this->header['nav'] = '注册';
+
+		$this->load->view('templates/header.html',$this->header);
 		$this->load->view('register.html');
 		$this->load->view('templates/footer.html');
 
@@ -98,7 +100,7 @@ class Member extends CI_Controller{
 			$row = $que->row();
 
 			if(!$row){
-				echo -3;//业务员不存在
+				echo -4;//业务员不存在
 				exit();
 			}
 
@@ -121,6 +123,10 @@ class Member extends CI_Controller{
 		}else{
 			$this->session->member = new stdClass();
 			$this->session->member->user = $phone;
+
+			//登录日志
+	    	$this->db->insert($this->db->dbprefix('member_login'), array('mobile'=>$phone,'logTime'=>date('Y-m-d H:i:s')));
+
 			echo '恭喜您已注册成功.';
 		}	
 
@@ -130,16 +136,13 @@ class Member extends CI_Controller{
 	public function login(){
 
 		//帐号不为空跳到会员中心
-		if(!empty($this->session->member->user)){
-			redirect(site_url('/user'));
-		}
+		// if(!empty($this->session->member->user)){
+		// 	redirect(site_url('/user'));
+		// }
 
-		$header = array(
-			'nav' => '登陆',
-			'cname' => $this->head_data['cname']
-		);
+		$this->header['nav'] = '登陆';
 
-		$this->load->view('templates/header.html',$header);
+		$this->load->view('templates/header.html',$this->header);
 		$this->load->view('login.html');
 		$this->load->view('templates/footer.html');
 
@@ -180,6 +183,16 @@ class Member extends CI_Controller{
 		$this->session->member = new stdClass();
 		$this->session->member->user = $phone;	
 
+		//登录日志
+		$q = $this->db->query("SELECT * FROM {$this->db->dbprefix('member_login')} WHERE mobile='{$phone}'");
+    	$res = $q->row();
+
+    	if($res){//已存在用户
+    		$this->db->query("UPDATE {$this->db->dbprefix('member_login')} SET logTime='".date('Y-m-d H:i:s')."' WHERE mobile='{$phone}'");
+    	}else{
+    		$this->db->insert($this->db->dbprefix('member_login'), array('mobile'=>$phone,'logTime'=>date('Y-m-d H:i:s')));
+    	}
+
 		echo '登录已成功.';
 		
 	}
@@ -187,12 +200,9 @@ class Member extends CI_Controller{
 	//找回密码
 	public function findpwd(){
 
-		$header = array(
-			'nav' => '找回登录密码',
-			'cname' => $this->head_data['cname']
-		);
+		$this->header['nav'] = '找回登录密码';
 
-		$this->load->view('templates/header.html',$header);
+		$this->load->view('templates/header.html',$this->header);
 		$this->load->view('findpwd.html');
 		$this->load->view('templates/footer.html');
 
@@ -227,7 +237,8 @@ class Member extends CI_Controller{
 		}
 		*/
 
-		$this->session->member->mobile = $user;
+		$this->session->member = new stdClass();
+		$this->session->member->user = $phone;
 
 		$message = "【百姓金】验证码为912104，请在3分钟内使用，您正在请求找回登录密码。如非本人操作请致电0411-66896333";
 
@@ -238,12 +249,9 @@ class Member extends CI_Controller{
 	//设置密码
 	public function setpwd(){
 
-		$header = array(
-			'nav' => '设置登录密码',
-			'cname' => $this->head_data['cname']
-		);
+		$this->header['nav'] = '设置登录密码';
 
-		$this->load->view('templates/header.html',$header);
+		$this->load->view('templates/header.html',$this->header);
 		$this->load->view('setpwd.html');
 		$this->load->view('templates/footer.html');
 
@@ -263,7 +271,7 @@ class Member extends CI_Controller{
 		    'pwd' => $pwd
 		);
 
-		$this->db->where('mobile', $this->session->member->mobile);
+		$this->db->where('mobile', $this->session->member->user);
 		$bool = $this->db->update($this->table, $data);
 
 		echo '密码设置成功,请重新登陆.';

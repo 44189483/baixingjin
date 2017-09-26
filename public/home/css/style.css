@@ -528,6 +528,14 @@ button {
 	text-align: center;
 }
 
+.avatar,#pic{
+    width:100px;
+    height:100px;
+    border-radius:50% ;
+    margin:20px auto;
+    cursor: pointer;
+}
+
 /* 补丁IPHONE5 */
 @media (max-width: 375px){
 	.data-tips img{

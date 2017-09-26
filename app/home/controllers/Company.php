@@ -14,7 +14,6 @@ class Company extends CI_Controller{
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->helper('url_helper');
-		$this->head_data['cname'] = __CLASS__;
 		$this->load->database();
 
 		$this->table = $this->db->dbprefix('article');
@@ -45,7 +44,8 @@ class Company extends CI_Controller{
 
 		$header = array(
 			'nav' => $data['info']->articleTitle,
-			'cname' => $this->head_data['cname'],
+			'cname' => __CLASS__,
+			'fname' => '',
 			'member' => $this->session->member
 		);
 

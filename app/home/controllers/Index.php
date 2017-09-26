@@ -16,14 +16,14 @@ class Index extends CI_Controller{
 		$this->load->helper('url_helper');
 		$this->load->database();
 		$this->load->helper('func_helper');
-		$this->head_data['cname'] = __CLASS__;		
 	}
 
 	public function index(){
 
 		$header = array(
 			'nav' => '首页',
-			'cname' => $this->head_data['cname'],
+			'cname' => __CLASS__,
+			'fname' => '',
 			'member' => $this->session->member
 		);
 

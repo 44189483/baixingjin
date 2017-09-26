@@ -44,11 +44,10 @@
                                 </th>
                                 <th class="head0">姓名</th>
                                 <th class="head0">手机</th>
+                                <th class="head3">身份证</th>
+                                <th class="head3">银行卡号</th>
                                 <th class="head3">省</th>
                                 <th class="head3">市</th>
-                                <th class="head3">已赚收益</th>
-                                <th class="head3">待收利息</th>
-                                <th class="head3">待收本金</th>
                                 <th class="head3">时间</th>
                                 <th class="head0">操作</th>
                             </tr>
@@ -66,20 +65,17 @@
                                 <td>
                                     <?php echo $val->mobile;?>
                                 </td>
+                                <td>
+                                    <?php echo $val->identificationNumber;?>
+                                </td>
+                                <td>
+                                    <?php echo $val->bankcard;?>
+                                </td>
                                 <td class="head3">
                                     <?php echo $val->province;?>
                                 </td>
                                 <td class="head3">
                                     <?php echo $val->city; ?>
-                                </td>
-                                <td class="head3">
-                                    <?php echo $val->earnedIncome; ?>
-                                </td>
-                                <td class="head3">
-                                    <?php echo $val->interestReceived; ?>
-                                </td>
-                                <td class="head3">
-                                    <?php echo $val->principalReceived; ?>
                                 </td>
                                 <td class="head3">
                                     <?php echo $val->createTime; ?>

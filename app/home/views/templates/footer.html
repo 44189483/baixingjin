@@ -40,13 +40,8 @@
       </div>
       </div>
     </footer>
-
-    <script src="/public/home/js/responsive-nav.js"></script>
-    <script src="/public/home/js/jquery.min.js"></script>
-    <script src="/public/home/js/bootstrap.min.js"></script>
-    <script src="/public/home/js/jquery.rotate.min.js"></script>
-    <script src="/public/home/js/jquery.cityselect.js"></script>
-    <script src="/public/home/js/custom.js"></script>
+    <?php $this->load->view('/user/newnav.html');?>
+    
     <script type="text/javascript">
       var navigation = responsiveNav(".nav-collapse", { // Selector: The ID of the wrapper
           animate: true, // Boolean: 是否启动CSS过渡效果（transitions）， true 或 false
@@ -63,10 +58,6 @@
       });
 
       $('.carousel').carousel();
-
-      <?php if(!empty($province)):?>
-        $("#prov_city").citySelect({prov:"<?php echo $province;?>", city:"<?php echo $city;?>"});
-      <?php endif;?>
       
     </script>
   </body>

@@ -14,17 +14,18 @@ class Lend extends CI_Controller{
 		$this->load->library('session');
 		$this->load->helper('url_helper');
 		$this->load->database();
-		$this->head_data['cname'] = __CLASS__;
 		$this->table = $this->db->dbprefix('project');
+
+		$this->header = array(
+			'cname' => __CLASS__,
+			'fname' => '',
+			'member' => $this->session->member
+		);
 	}
 
 	public function Index($cat = null){
 
-		$header = array(
-			'nav' => '出借',
-			'cname' => $this->head_data['cname'],
-			'member' => $this->session->member
-		);
+		$this->header['nav'] = '出借';
 
 		//项目状态
 		$status = $this->get_class(2);
@@ -146,7 +147,7 @@ class Lend extends CI_Controller{
 	        'page'  => $this->pagination->create_links(),
 	    );
 
-	    $this->load->view('templates/header.html',$header);
+	    $this->load->view('templates/header.html',$this->header);
 		$this->load->view('lend.html',$data);
 		$this->load->view('templates/footer.html');
 
@@ -170,13 +171,9 @@ class Lend extends CI_Controller{
     	$res = $this->db->query("SELECT * FROM {$this->db->dbprefix('project_user')} WHERE projectId={$id}");
     	$data->users = $res->result();
 
-    	$header = array(
-			'nav' => $data->projectName,
-			'cname' => $this->head_data['cname'],
-			'member' => $this->session->member
-		);
+		$this->header['nav'] = $data->projectName;
 
-    	$this->load->view('templates/header.html',$header);
+    	$this->load->view('templates/header.html',$this->header);
 		$this->load->view('lenddetail.html',$data);
 		$this->load->view('templates/footer.html');
 		

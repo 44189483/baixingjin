@@ -134,6 +134,10 @@ class Member extends CI_Controller{
 
 		$realname = $this->input->post('realname');
 
+		$identificationNumber = $this->input->post('number');
+
+		$bankcard = $this->input->post('card');
+
 		$sex = $this->input->post('sex');
 
 		$marital = $this->input->post('marital');
@@ -156,6 +160,8 @@ class Member extends CI_Controller{
 
 		$data = array(
 		    'realname' => $realname,
+		    'identificationNumber' => $identificationNumber,
+		    'bankcard' => $bankcard,
 		    'sex' => $sex,
 		    'marital' => $marital,
 		    'education' => $education,

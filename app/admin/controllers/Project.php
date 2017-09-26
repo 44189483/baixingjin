@@ -51,7 +51,7 @@ class Project extends CI_Controller{
 		}
 
 	    $config = array();
-	    $config['per_page'] = 3; //每页显示的数据数
+	    $config['per_page'] = 5; //每页显示的数据数
 	    $current_page = intval($this->input->get('per_page')); //获取当前分页页码数
 	    //page还原
 	    if(0 == $current_page){
@@ -197,6 +197,13 @@ class Project extends CI_Controller{
 		}
 		
 		if($bool) {
+
+			//已还款更新金额表状态
+			if($status == 18){
+				$this->db->where('pid', $id);
+				$this->db->update($this->db->dbprefix('bxj_fund'), array('status'=>1,'endTime'=>date('Y-m-d H:i:s')));
+			}
+
             jump('操作成功',site_url('project/index'));
         }else{
             jump('操作失败');

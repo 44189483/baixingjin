@@ -13,11 +13,11 @@
                   <tr>
                     <td>
                       <img src="/public/home/images/arrow_5.png" alt="" />
-                      账户余额:<span class="red">200</span>
+                      账户余额:<span class="red">0</span>
                     </td>
                     <td>
                       <img src="/public/home/images/arrow_5.png" alt="" />
-                      待收收益:<span class="red">200</span>
+                      累计收益:<span class="red"><?php echo $total_interest;?></span>
                     </td>
                   </tr>
                   <tr>
@@ -28,25 +28,25 @@
                   <tr>
                     <td colspan="2">
                       <img src="/public/home/images/arrow_4.png" alt="" />
-                      待收本金:<span class="red">40</span>
+                      待收本金:<span class="red"><?php echo $total_principal;?></span>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <img src="/public/home/images/arrow_2.png" alt="" />
-                      待收利息:<span class="red">40</span>
+                      待收利息:<span class="red"><?php echo $interest;?></span>
                     </td>
                     <td>
-                      <a href="lend.html" class="brown">去出借</a>
+                      <a href="#" class="brown">去出借</a>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <img src="/public/home/images/arrow_1.png" alt="" />
-                      待收奖励:<span class="red">40</span>
+                      待收奖励:<span class="red">0</span>
                     </td>
                     <td>
-                      <a href="lend.html" class="brown">去出借</a>
+                      <a href="#" class="brown">去出借</a>
                     </td>
                   </tr>
                   <tr>
@@ -56,9 +56,9 @@
                   </tr>
                   <tr>
                     <td colspan="2">
-                      <div class="col-xs-4">红包(个) 5</div>
-                      <div class="col-xs-4">现金券(张) 1</div>
-                      <div class="col-xs-4">加息券(张) 1</div>
+                      <div class="col-xs-4">红包(个) 0</div>
+                      <div class="col-xs-4">现金券(张) 0</div>
+                      <div class="col-xs-4">加息券(张) 0</div>
                     </td>
                   </tr>
                 </table>
@@ -67,4 +67,3 @@
           </div>
         </div>
       </div>
-      <?php $this->load->view('/user/newnav.html');?>

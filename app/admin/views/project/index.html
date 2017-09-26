@@ -106,7 +106,7 @@
                                     <?php echo $val->createTime; ?>
                                 </td>
                                 <td class="center">
-                                    <a href="<?php echo site_url('project/edit/'.$val->projectId); ?>">编辑</a> / <a data-href="<?php echo site_url('project/del/'.$val->projectId); ?>" class="delete">删除</a> / <a href="<?php echo site_url('user/index/'.$val->projectId); ?>">借款人</a> / <a href="<?php echo site_url('raisefund/index/'.$val->projectId); ?>">集资会员</a></td>
+                                    <a href="<?php echo site_url('project/edit/'.$val->projectId); ?>">编辑</a> <!--/ <a data-href="<?php echo site_url('project/del/'.$val->projectId); ?>" class="delete">删除</a> --> / <a href="<?php echo site_url('user/index/'.$val->projectId); ?>">借款人</a> / <a href="<?php echo site_url('raisefund/index/'.$val->projectId); ?>">集资会员</a></td>
                             </tr>
                             <?php endforeach;?>
                         <?php else:?>
@@ -116,8 +116,8 @@
                     </table>
 
                     <div class="dataTables_paginate paging_full_titles" id="dyntable_paginate">
-                        <div class="dataTables_info" id="dyntable_info">注意:删除项目集资会员及借款人等一并删除</div>
-                        <button type="button" class="deletebutton">删除选中</button>
+                        <!--<div class="dataTables_info" id="dyntable_info">注意:删除项目集资会员及借款人等一并删除</div>
+                        <button type="button" class="deletebutton">删除选中</button>-->
                         <?php echo $page;?>
                     </div>
 

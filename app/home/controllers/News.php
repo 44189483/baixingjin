@@ -6,8 +6,13 @@ class News extends CI_Controller{
 		$this->load->library('session');
 		$this->load->helper('url_helper');
 		$this->load->database();
-		$this->head_data['cname'] = __CLASS__;
 		$this->table = $this->db->dbprefix('article');
+
+		$this->header = array(
+			'cname' => __CLASS__,
+			'fname' => '',
+			'member' => $this->session->member
+		);
 	}
 
 	public function Index($cid = null){
@@ -27,11 +32,7 @@ class News extends CI_Controller{
 		$c_query = $this->db->query("SELECT * FROM {$this->db->dbprefix('class')} {$where}");
 		$class = $c_query->row();
 
-		$header = array(
-			'nav' => $class->className,
-			'cname' => $this->head_data['cname'],
-			'member' => $this->session->member
-		);
+		$this->header['nav'] = $class->className;
 
 		$where .= " AND articleShow=1";
 		
@@ -96,7 +97,7 @@ class News extends CI_Controller{
 	        'page'  => $this->pagination->create_links(),
 	    );
 
-	    $this->load->view('templates/header.html',$header);
+	    $this->load->view('templates/header.html',$this->header);
 		$this->load->view('news.html',$data);
 		$this->load->view('templates/footer.html');
 
@@ -116,11 +117,7 @@ class News extends CI_Controller{
     		show_error('参数有误',null,'错误提示');
     	}
 
-    	$header = array(
-			'nav' => $data->articleTitle,
-			'cname' => $this->head_data['cname'],
-			'member' => $this->session->member
-		);
+		$this->header['nav'] = $data->articleTitle;
 
 		$sql = "SELECT articleId,articleTitle FROM {$this->table} WHERE articleType=1 AND articleShow=1 AND classId={$data->classId}";
 
@@ -132,7 +129,7 @@ class News extends CI_Controller{
 		$next_query = $this->db->query($sql." AND articleId>{$id}");
     	$data->next = $next_query->row();
 
-    	$this->load->view('templates/header.html',$header);
+    	$this->load->view('templates/header.html',$this->header);
 		$this->load->view('newsdetail.html',$data);
 		$this->load->view('templates/footer.html');
 		

@@ -12,7 +12,7 @@
                       <td class="w180">手机号:</td>
                       <td>
                         <input type="text" name="phone" id="phone" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}" required="" />
-                        <p class="red error user">用户不存在.</p>
+                        <p class="red error phone"></p>
                       </td>
                     </tr>
                     <tr>
@@ -23,7 +23,7 @@
                           <img src="/member/imgverifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
                         </span> 
                         <span class="ml15"><a href="javascript:void(0);" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
-                        <p class="red error verifcode">图片验证码错误.</p>
+                        <p class="red error verifcode"></p>
                       </td>
                     </tr>
                     <tr>
@@ -31,7 +31,7 @@
                       <td>
                         <input type="text" name="phonecode" id="phonecode" required="" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
                         <input type="button" id="getphonecode" class="btn-def" value="免费获取验证码" />
-                        <p class="red error phonecode">短信验证码错误.</p>
+                        <p class="red error phonecode"></p>
                       </td>
                     </tr>
                     <tr>

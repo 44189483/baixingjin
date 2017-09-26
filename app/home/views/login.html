@@ -13,14 +13,14 @@
                       <td class="w180">用户名:</td>
                       <td>
                         <input type="text" name="phone" id="phone" required="" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
-                        <p class="red error phone">用户不存在.</p>
+                        <p class="red error phone"></p>
                       </td>
                     </tr>
                     <tr>
                       <td>密　码:</td>
                       <td>
                         <input type="password" name="pwd" id="pwd" required=""/>
-                        <p class="red error pwd">密码错误请重新填写.</p>
+                        <p class="red error pwd"></p>
                       </td>
                     </tr>
                     <tr>
@@ -31,7 +31,7 @@
                           <img src="/member/imgverifycode" name="imgCaptcha" id="imgCaptcha" class="code"/>
                         </span> 
                         <span class="ml15"><a href="javascript:void(0);" onclick="document.getElementById('imgCaptcha').src='/member/imgverifycode';" class="brown">看不清?再换一张</a></span>
-                        <p class="red error verifcode">图片验证码错误.</p>
+                        <p class="red error verifcode"></p>
                       </td>
                     </tr>
                     <tr>

@@ -6,16 +6,17 @@
           <div class="col-sm-8 col-xs-12">
             <div class="info-panel p24">
               <ul class="sub-nav">
-                <li><a href="/user" <?php if($fname=='myinfo'):?>class="brown"<?php endif;?>>个人设置</a></li>
+                <li><a href="/user" <?php if($fname=='index'):?>class="brown"<?php endif;?>>个人设置</a></li>
                 <li><a href="/user/mysafe" <?php if($fname=='mysafe'):?>class="brown"<?php endif;?>>安全设置</a></li>
               </ul>
-              <form id="form1" name="form1" method="POST" action="">
+              <form id="form1" name="form1" method="POST" action="/user/save" enctype="multipart/form-data">
                   <table class="center"> 
                     <tr>
                       <td colspan="2" class="text-center">
-                        <img src="/public/home/images/avatar_detalut.png" alt="" />
+                        <img id="pic" src="<?php if(!empty($avatar)): echo $avatar;else:?>/public/home/images/avatar_detalut.png<?php endif;?>" />
+                        <input id="upload" name="attchment" type="file" style="display: none"/>
                         <br/><br/>
-                        <button type="button" class="btn-del">头像修改</button>
+                        <button type="button" class="btn-del" id="pic_btn">头像修改</button>
                       </td>
                     </tr>
                     <tr>
@@ -70,7 +71,10 @@
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td class="text-center"><button type="submit" name="submit" id="submit" class="btn-brown">保存修改</button></td>
+                      <td class="text-center">
+                        <input type="hidden" name="formtype" id="formtype" value="myinfo"/>
+                        <button type="submit" name="submit" id="submit" class="btn-brown">保存修改</button>
+                      </td>
                     </tr>
                   </table>
                 </form>
@@ -78,4 +82,36 @@
           </div>
         </div>
       </div>
-      <?php $this->load->view('/user/newnav.html');?>
+      <script type="text/javascript">
+
+        $(function() {
+
+          <?php if(!empty($province)):?>
+          $("#prov_city").citySelect({prov:"<?php echo $province;?>", city:"<?php echo $city;?>"});
+          <?php endif;?>
+
+          $("#pic_btn").click(function () {
+            $("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+            $("#upload").on("change",function(){
+              var objUrl = getObjectURL(this.files[0]) ; //获取图片的路径，该路径不是图片在本地的路径
+              if (objUrl) {
+                $("#pic").attr("src", objUrl) ; //将图片路径存入src中，显示出图片
+              }
+            });
+          });
+        });
+         
+        //建立一個可存取到該file的url
+        function getObjectURL(file) {
+          var url = null ;
+          if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+          } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+          } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+          }
+          return url ;
+        }
+
+      </script>

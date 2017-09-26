@@ -24,7 +24,7 @@ class Index extends CI_Controller{
 		if($this->input->post('act') == 'submit'){
 
 			if($this->input->post('provenum') != $this->session->authImg){
-    			$this->error('对不起，请输入正确的验证码！');
+    			show_error('对不起，请输入正确的验证码！');
 			}
 				
 			$row = $this->login_model->get_login();
