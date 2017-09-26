@@ -317,6 +317,13 @@ button {
 	overflow:hidden;
 	display:inline;
 	float:left;
+	max-width: 65%;
+}
+
+.marquee-panel ul li{
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
 }
 
 .progress .progress-bar {
@@ -1018,6 +1025,10 @@ button {
 
 	.lendrow .rightcolmn li{
 		width: 20%;
+	}
+
+	.marquee-panel ul li{
+		width: 70%;
 	}
 
 }

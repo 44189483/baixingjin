@@ -1,3 +1,5 @@
+var t;
+
 $(function(){
 
     var form = $('#checkform');
@@ -105,6 +107,8 @@ $(function(){
                 }else if(response == -3){
                     $('.phonecode').text('短信验证码错误.');
                     $('.phonecode').show();
+                    //发送验证码复位
+
                     return false;
                 }else if(response == -4){
                     $('.recommcode').text('渠道推荐码错误..');
@@ -121,8 +125,9 @@ $(function(){
                     $('.phone').show();
                     return false;
                 }else if(response == -3){
-                    $('phonecode').text('短信验证码错误.');
+                    $('.phonecode').text('短信验证码错误.');
                     $('.phonecode').show();
+                    //发送验证码复位
                     return false;
                 }
                 url = null;
@@ -162,6 +167,17 @@ $(function(){
         });
  
     });
+
+    //触发输入手机验证码时
+    $("#phonecode").keyup(function(){
+        clearTimeout(t);
+        //验证码按钮激活
+        $("#getphonecode").attr("value","重新发送验证码");
+        $("#getphonecode").css("background","#fff"); 
+        //提交按钮变成点击
+        $("#submit").attr("disabled", false);
+        $("#submit").css("background","#cd9d26"); 
+    })
 
     //加入我们 展开闭合
     $('.conbr h3 span').click(function(){
@@ -251,9 +267,29 @@ $(function(){
         var phone = $("#phone");
         if(phone.val() == '' || phone.val() == null){
             $('.phone').show();
+            $('.phone').text('手机号码不能为空');
+            return false;
+        }
+        if(!phone.val().match(/^((1[0-9]{1})+\d{9})$/)){
+            $('.phone').show();
             $('.phone').text('手机号码格式不正确');
             return false;
         }
+
+        $("#submit").css("background","#eee");  
+        $("#submit").attr("disabled", true);//禁用提交按钮 
+
+        $.ajax({
+           type: "POST",
+           url: "/member/sendverifycode",
+           data: "phone="+phone.val(),
+           success: function(msg){
+            if(msg != 'ok' && msg != null && msg != ''){ 
+             alert(msg);
+            }
+           }
+        });
+
         time(this);
     });
 
@@ -280,17 +316,20 @@ function switchTab(tle,con,e){
 /*发送手机验证码*/
 var wait=180;  
 function time(o) {  
+    var btn = document.getElementById('submit');
     if (wait == 0) {  
         o.removeAttribute("disabled");            
         o.value="重新发送验证码";
-        o.style.background="#fff";  
+        o.style.background="#fff"; 
+        btn.style.background="#cd9d26";
+        btn.setAttribute("disabled", false);//禁用提交按钮 
         wait = 180;  
     } else {  
         o.setAttribute("disabled", true);  
         o.value="发送验证码(" + wait + ")...";
-        o.style.background="#eee";  
+        o.style.background="#eee";
         wait--;  
-        setTimeout(function() {  
+        t = setTimeout(function() {  
             time(o)  
         },  
         1000)  

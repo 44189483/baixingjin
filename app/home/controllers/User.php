@@ -23,17 +23,18 @@ class User extends CI_Controller{
 		}
 
 		$query = $this->db->query("SELECT * FROM {$this->table} WHERE mobile='{$this->session->member->user}'");
-    	$this->member = $query->row();	
+    	$this->member = $query->row();
+
+    	$this->header = array(
+			'cname' => __CLASS__,
+			'member' => $this->session->member
+		);	
 
 	}
 
 	public function index(){
 
-		$this->header = array(
-			'nav' => '个人中心',
-			'cname' => __CLASS__,
-			'fname' => __FUNCTION__
-		);
+		$this->header += array('nav' => '个人中心','fname' => __FUNCTION__);
 
 		$this->load->view('templates/header.html',$this->header);
 		$this->load->view('user/myinfo.html',$this->member);
@@ -43,11 +44,7 @@ class User extends CI_Controller{
 
 	public function mysafe(){
 
-		$this->header = array(
-			'nav' => '安全设置',
-			'cname' => __CLASS__,
-			'fname' => __FUNCTION__
-		);
+		$this->header += array('nav' => '安全设置','fname' => __FUNCTION__);
 
 		//登录时间
 		$query = $this->db->query("SELECT logTime FROM {$this->db->dbprefix('member_login')} WHERE mobile='{$this->session->member->user}'");
@@ -84,11 +81,7 @@ class User extends CI_Controller{
 
 	public function mylend(){
 
-		$this->header = array(
-			'nav' => '个人出借',
-			'cname' => '',
-			'fname' => __FUNCTION__
-		);
+		$this->header += array('nav' => '个人出借','fname' => __FUNCTION__);
 
 		$table = $this->db->dbprefix('fund');
 
@@ -161,11 +154,7 @@ class User extends CI_Controller{
 
 	public function myproperty(){
 
-		$this->header = array(
-			'nav' => '个人资产',
-			'cname' => '',
-			'fname' => __FUNCTION__
-		);
+		$this->header += array('nav' => '个人资产','fname' => __FUNCTION__);
 
 		$table = $this->db->dbprefix('fund');
 

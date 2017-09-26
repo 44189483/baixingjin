@@ -33,14 +33,28 @@ class Member extends CI_Controller{
 	//发送手机验证码
 	public function sendverifycode(){
 
-		$this->load->helper('cookie');
+		$code = randcode(6);//短信CODE码
 
-		$code = randcode();
+		$phone = $this->input->post('phone');//手机号
 
-		set_cookie("randcode",$code,180);
+		$signName = '百姓金';//短信签名
 
-		//https://help.aliyun.com/document_detail/55451.html?spm=5176.8195934.507901.11.7bcea26d4xaXV9
+		$templateCode = 'SMS_100010022';//短信模板Code
 
+		$this->load->library('AliyunSms');
+
+		$sms = new AliyunSms();
+
+		$acsResponse = $sms->sendsms($phone,$signName,$templateCode, array("code" => $code));
+
+		if($acsResponse->Message == 'OK'){
+			//cookie
+			$this->load->helper('cookie');
+			set_cookie("randcode",$code,180);
+		}else{
+			print_r($acsResponse);
+		}
+		
 	}
 
 	//注册
@@ -79,10 +93,11 @@ class Member extends CI_Controller{
 		$phonecode = $this->input->post('phonecode');
 
 		//手机验证码
-		// if($phonecode != get_cookie("randcode")){
-		// 	echo -3;
-		// 	exit();
-		// }
+		$this->load->helper('cookie');
+		if($phonecode != get_cookie("randcode")){
+			echo -3;
+			exit();
+		}
 
 		$query = $this->db->query("SELECT * FROM {$this->table} WHERE mobile='{$phone}'");
 
@@ -229,20 +244,17 @@ class Member extends CI_Controller{
 			exit();
 		}
 
-		/*
 		//手机验证码
+		$this->load->helper('cookie');
 		if($phonecode != get_cookie("randcode")){
 			echo -3;
 			exit();
 		}
-		*/
 
 		$this->session->member = new stdClass();
 		$this->session->member->user = $phone;
 
-		$message = "【百姓金】验证码为912104，请在3分钟内使用，您正在请求找回登录密码。如非本人操作请致电0411-66896333";
-
-		//echo '短信已发送注意查收.';
+		echo '短信已发送注意查收.';
 
 	}
 
