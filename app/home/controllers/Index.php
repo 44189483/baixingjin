@@ -42,8 +42,7 @@ class Index extends CI_Controller{
 	    $n_query = $this->db->query("SELECT * FROM {$this->db->dbprefix('article')} WHERE articleType=0 ORDER BY articleId DESC");
 	    $result['notice'] = $n_query->result();
 
-	    //出借服务
-	    $sql = "
+	    $lend_sql = "
 	    	SELECT 
 	    		p.*,
 	    		c.className 
@@ -53,14 +52,16 @@ class Index extends CI_Controller{
 	    		{$this->db->dbprefix('class')} c 
 	    	ON
 	    		p.status=c.classId
-	    	ORDER BY p.projectOrd DESC,p.projectId DESC LIMIT 0,5
+	    	WHERE 1=1
 	    ";
-	    $s_query = $this->db->query($sql);
+
+	    //新手专享
+	    $novice_query = $this->db->query($lend_sql." AND p.projectType=1 LIMIT 1");
+	    $result['novice'] = $novice_query->row();
+
+	    //出借服务
+	    $s_query = $this->db->query($lend_sql." AND p.projectType=0 ORDER BY p.projectOrd DESC,p.projectId DESC LIMIT 0,5");
 	    $result['service'] = $s_query->result();
-
-
-		//$this->load->helper('func');
-		//CreateVerifyImage(154,39); 
 
 	    $this->load->view('templates/header.html',$header);
 		$this->load->view('index.html',$result);

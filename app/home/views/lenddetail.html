@@ -20,7 +20,10 @@
             </div>
             <div class="row">
               <div class="col-xs-6">
-                还款方式: <?php echo $repayment;?> &nbsp;<i class="fa fa-exclamation-circle brown"></i>
+                还款方式: <?php echo $repayment;?> &nbsp;
+                <a data-toggle="tooltip" data-placement="right" title="<?php echo $tip;?>">
+                  <i class="fa fa-exclamation-circle brown"></i>
+                </a>
               </div>
               <div class="col-xs-6 text-right">
                 出借进度: &nbsp;
@@ -32,7 +35,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-12 text-left">
+              <div class="col-xs-12">
                 剩余可借用金额: ¥30000.00 <span class="brown">全投</span>
               </div>
             </div>
@@ -40,7 +43,7 @@
           <div class="col-sm-5 brown-bg">
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-7">
-                <p>账户可用余额: <span class="red"><!--¥200.00-->请登录</span></p>
+                <p>账户可用余额: <span class="red"><!--¥200.00--><a href="/member/login" class="brown">请登录</a></span></p>
                 <div class="s-line"></div>
                 <p>
                   <div class="input-group">

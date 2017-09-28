@@ -72,7 +72,7 @@ class Project extends CI_Controller{
 	    		{$this->db->dbprefix('class')} c 
 	    	ON
 	    		p.status=c.classId
-	    	ORDER BY p.projectOrd DESC,p.projectId DESC LIMIT {$offset},{$config['per_page']}
+	    	ORDER BY p.projectType DESC,p.projectOrd DESC,p.projectId DESC LIMIT {$offset},{$config['per_page']}
 	    ";
 
 	    $query = $this->db->query($sql);
@@ -144,6 +144,8 @@ class Project extends CI_Controller{
 
 		$id = $this->input->post('id');
 
+		$type = $this->input->post('type');
+
 		$name = $this->input->post('name');
 
 		$ulimit = $this->input->post('ulimit');
@@ -164,11 +166,14 @@ class Project extends CI_Controller{
 
 		$status = $this->input->post('status');
 
+		$other = $this->input->post('other');
+
 		$time = $this->input->post('time');
 
 		//$risk = $this->input->post('risk');//风险控制
 
 		$data = array(
+			'projectType' => $type,
 		    'projectName' => $name,
 		    'upperLendLimit' => $ulimit,
 		    'loanAmount' => $lamount,
@@ -179,12 +184,13 @@ class Project extends CI_Controller{
 		    'repayment' => $repay,
 		    'interestDate' => $date,
 		    //'riskManagement' => $risk,
+		    'projectOther' => $other,
 		    'status' => $status,
 		    'createTime' => $time
 		);
 		
 		if(empty($id)){
-			$query = $this->db->query("SELECT * FROM {$this->table} WHERE projectName='{$name}'");
+			$query = $this->db->query("SELECT * FROM {$this->table} WHERE projectName='{$name}' OR projectType=1");
 	    	$row = $query->row(); 
 			if($row){
 				jump('该项目已存在',site_url('project/add'));
@@ -201,7 +207,7 @@ class Project extends CI_Controller{
 			//已还款更新金额表状态
 			if($status == 18){
 				$this->db->where('pid', $id);
-				$this->db->update($this->db->dbprefix('bxj_fund'), array('status'=>1,'endTime'=>date('Y-m-d H:i:s')));
+				$this->db->update($this->db->dbprefix('fund'), array('status'=>1,'endTime'=>date('Y-m-d H:i:s')));
 			}
 
             jump('操作成功',site_url('project/index'));

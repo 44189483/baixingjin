@@ -36,7 +36,7 @@ class Lend extends CI_Controller{
 		//还款方式
 		$repayment = $this->get_class(5);
 
-		$where = "WHERE 1=1";
+		$where = "WHERE projectType=0";
 
 		if(!empty($cat)){
 
@@ -166,6 +166,23 @@ class Lend extends CI_Controller{
     	if(!$data){
     		show_error('参数有误',null,'错误提示');
     	}
+
+    	switch ($data->repayment) {
+    		case '按月还本付息':
+    			$tip = '每月按照一定比例归还本金、支付利息';
+    			break;
+    		case '等额本息':
+    			$tip = '每月偿还同等数额的借款，包括本金和利息';
+    			break;
+    		case '先息后本':
+    			$tip = '每月支付利息，到期支付最后一期利息和全部本金';
+    			break;
+    		case '一次性还本付息':
+    			$tip = '到期后一次性归还本金和利息';
+    			break;
+    	}
+
+    	$data->tip = $tip;
 
     	//借款人
     	$res = $this->db->query("SELECT * FROM {$this->db->dbprefix('project_user')} WHERE projectId={$id}");

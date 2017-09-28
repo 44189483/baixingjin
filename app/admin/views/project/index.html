@@ -43,6 +43,7 @@
                                 </th>
                                 <th class="head3">序号</th>
                                 <th class="head0">名称</th>
+                                <th class="head3">类型</th>
                                 <th class="head3">出借上限</th>
                                 <th class="head3">借款金额</th>
                                 <th class="head3">最低出借金额</th>
@@ -71,6 +72,13 @@
                                             echo $per_page*($current_page-1)+$k+1;
                                         endif;
                                     ?>
+                                </td>
+                                <td>
+                                    <?php if($val->projectType==0): ?>
+                                        出借服务
+                                    <?php elseif($val->projectType==1): ?>
+                                        新手专享
+                                    <?php endif;?>
                                 </td>
                                 <td title="<?php echo $val->projectName; ?>">
                                     <?php echo utfSubstr($val->projectName,0,20); ?>

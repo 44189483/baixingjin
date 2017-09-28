@@ -23,6 +23,10 @@ ul {
 	margin: 5px 0;
 }
 
+.mt10{
+	margin-top: 10px;
+}
+
 .mt15{
 	margin: 15px 0;
 }
@@ -173,9 +177,9 @@ button {
 	display: block;
 	text-align: center;
 	width: 100%;
-	padding:5px 20px;
+	padding:8px 20px;
 	margin: 10px 0;
-	border-radius: 10px;
+	border-radius: 5px;
 	border: none;
 	font-weight: bold;
 	color:#fff !important;
@@ -190,9 +194,9 @@ button {
 	display: block;
 	text-align: center;
 	width: 100%;
-	padding:5px 20px;
+	padding:8px 20px;
 	margin: 10px 0;
-	border-radius: 10px;
+	border-radius: 5px;
 	border: none;
 	font-weight: bold;
 	color:#fff !important;
@@ -383,7 +387,7 @@ button {
 .info-panel{
 	border-radius: 10px;
 	border: 1px solid #f5f5f5;
-	/*overflow: auto;*/
+	overflow: auto;
 }
 
 .info-panel .table{
@@ -541,6 +545,16 @@ button {
     border-radius:50% ;
     margin:20px auto;
     cursor: pointer;
+}
+
+.tooltip.right .tooltip-arrow {
+    border-right-color: #cd9d26;
+}
+
+.tooltip.right .tooltip-inner {
+    border:1px solid #cd9d26;
+    background: #fffcef;
+    color: #000;
 }
 
 /* 补丁IPHONE5 */
@@ -709,101 +723,40 @@ button {
 		font-size: 11px;
 	}
 
-	.novice{
-		position: relative;
-		margin:30px 5%;
-		border:1px solid #f5f5f5;
-		border-radius: 10px;
-		font-weight:bold; 
-		height: 156px;
-	}
-
-	.novice li{
-		float: left;
-		text-align: left;
-		margin-right: 25px;
-	}
-
-	.novice a{
-		color:#fff;
-	}
-
-	.novice .bg{
-	    background: url(../images/novice_bg.png) no-repeat;
-	    background-size: 60% 98%;
-	    width:200px;
-	    padding: 20px 10px;
-	    margin-top: -10px;
-	    color: #fff;
-	}
-
-	.novice .bg > *{
-		margin-left: 15px;
-	}
-
-	.novice .bg .f20{
-		font-size: 16px;
-		text-align: left;
-	}
-
-	.novice .bg dl{
-		font-size: 14px;
-		margin-bottom:10px;
-	}
-
-	.novice .btn-brown{
-		margin-top: 90px;
-		width: auto;
-	}
-
-	.novice .lqbtn{
-		font-size: 14px;
-	    padding: 5px 10px;
-	    border: 1px solid #fff;
-	    border-radius: 5px;
-	    margin-bottom: 10px;
-	}
-
 	.novice .newinfo{
-		float: left;
-		margin: 20px 15px;
-	}
-
-	.novice .newinfo ul{
-		margin-top: 5px;
+		border: 1px solid #f5f5f5;
+		border-left: none;
+		border-right:none;
+	    padding: 0 20px;
+	    display: inline-block;
+	    width: 100%;
 	}
 
 	.novice .newinfo .info{
-		position:absolute;
-		top:0;
-		left:130px;
-		padding:15px;
+		padding:20px 0;
 	}
 
-	.novice .newinfo .info h5{
-		margin: 5px 0;
-		font-size: 90%;
+	.novice .newinfo li{
+		float: left;
+		margin:0 10px 10px 0;
+	}
+
+	.novice .newinfo .btn-panel{
+		float: right;
+		margin-right: 16px;
+	}
+
+	.novice .newinfo .btn-panel .btn-brown{
+		padding: 5px 20px;
+		font-size: 14px;
 	}
 
 	.novice .newinfo .info .f22{
-		font-size: 16px;
+		font-size: 18px;
 	}
 
 	.novice .newinfo .info .f20{
-		font-size: 12px;
-	}
-
-	.novice .btn-panel {
-	    position: absolute;
-	    right: 25px;
-	    bottom: 0;
-	}
-
-	.novice .newinfo .btn-brown {
-	    background: #cd9d26;
-	    padding: 5px 15px;
-	    border-radius: 5px;
-	    font-weight: bold;
+		font-size: 14px;
 	}
 
 	.list{
@@ -848,7 +801,7 @@ button {
 	}
 
 	.list li p .btn-brown {
-	    padding: 5px 20px;
+	    padding: 8px 20px;
 	    border-radius: 5px;
 	}
 
@@ -864,7 +817,7 @@ button {
 
 	.search-colmn li{
 		float: left;
-		margin-right: 11px;
+		margin-right: 10px;
 		font-size: 14px;
 	}
 
@@ -928,20 +881,6 @@ button {
 	    width: 118px;
 	    font-size: 12px;
 	}
-
-	/*
-
-	.info-panel form #verifcode{
-		width: 82px;
-	}
-
-	*/
-
-	/*
-	.info-panel form span{
-		display: block;
-	}
-	*/
 
 	.info-panel .tab #tabCon p{
 		overflow: hidden;
@@ -1147,6 +1086,10 @@ button {
 
 	.novice .bg dl dd{
 		float: left;
+	}
+
+	.novice .jl{
+		display: none;
 	}
 	
 	.novice .newinfo{
@@ -1408,23 +1351,24 @@ button {
 	.login-panel {
 	    background: white;
 	    position: absolute;
-	    top:12%;
-	    right: 2%;
+	    top: 22%;
+    	right: 8%;
 	    z-index: 1;
 	    border-radius: 15px;
-	    padding: 2% 5%;
+	    padding: 2% 4%;
 	}
 
 	.login-panel h3{
-		font-size: 2vw;
+		font-size: 1.6vw;
+		font-weight: bold;
 	}
 
 	.login-panel span{
-		font-size: 1.5vw;
+		font-size: 1vw;
 	}
 
 	.login-panel span.f40{
-		font-size: 3vw;
+		font-size: 2.5vw;
 	}
 
 	.login-panel p{
@@ -1467,6 +1411,10 @@ button {
 		color:#fff;
 	}
 
+	.novice .jl{
+		display: none;
+	}
+	
 	.novice .bg{
 	    background: url(../images/novice_bg.png) no-repeat;
 	    width:260px;
@@ -1508,6 +1456,7 @@ button {
 
 	.novice .btn-brown{
 		margin-top: 60px;
+		padding: 10px 20px;
 	}
 
 	.novice .btn-panel{
@@ -1578,7 +1527,7 @@ button {
 
 	.search-colmn{
 		margin: 30px 0;
-		font-size: 20px;
+		font-size: 18px;
 		overflow: auto;
 		clear: both;
 	}
@@ -1601,7 +1550,7 @@ button {
 	}
 
 	.detail-tl{
-		padding:20px 20px 20px 0;
+		padding:20px 20px 10px 0;
 	}
 
 	.brown-bg{

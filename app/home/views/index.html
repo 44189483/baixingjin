@@ -11,7 +11,7 @@
             <a href="/member/register" class="btn-brown">立即注册</a>
           </p>
           <p class="right">
-            <span><a href="/member/login">已有帐号</a></span> <span><a href="/member/login" class="brown">去登陆</a></span> 
+            <span><a href="/member/login">已有帐号?</a></span> <span><a href="/member/login" class="brown">去登陆</a></span> 
           </p>
           <?php else:?>
             <div class="text-center mtb15">
@@ -131,40 +131,69 @@
       <div class="container">
         <div class="row">
           <div class="novice">
-            <div class="bg pull-left">
+            <div class="bg pull-left hidden-xs">
               <p class="f20 text-center">新手专享</p>
-                <dl>
-                  <dd>298元红包</dd>
-                  <dd class="hidden-xs">+</dd>
-                  <dd>3000体验金</dd>
-                  <dd class="hidden-xs">+</dd>
-                  <dd>5%加息券</dd>
-                </dl>
-              <p><a href="#" class="lqbtn">立即领取</a></p>
+              <dl>
+                <dd><?php echo $novice->projectOther;?></dd>
+              </dl>
+              <p><a href="/lend/detail/<?php echo $novice->projectId;?>" class="lqbtn">立即领取</a></p>
             </div>
             <div class="newinfo">
               <div class="info">
-                <div class="f22 brown">新手专享N17082501</div>
+                <div class="f22 brown">
+                  <a href="/lend/detail/<?php echo $novice->projectId;?>" class="brown">
+                    <?php echo $novice->projectName;?>
+                  </a>
+                </div>
+                <p class="red mt10 jl"><?php echo $novice->projectOther;?></p>
                 <ul>
                   <li>
                     <h5>历史年化收益率</h5>
-                    <span class="f20 red">8.60%</span>
+                    <span class="f20 red"><?php echo $novice->yearRate;?>%</span>
                   </li>
                   <li>
                     <h5>封闭期</h5>
-                    <span class="f20">31天</span>
+                    <span class="f20"><?php echo $novice->timeLimit;?></span>
                   </li>
                   <li>
                     <h5>还款方式</h5>
-                    <span class="f20">到期还本付息</span>
+                    <span class="f20"><?php echo $novice->repayment;?></span>
                   </li>
                 </ul>
               </div>
               <p class="btn-panel">
-                <a href="#" class="btn-brown">立即出借</a>
+                <a href="/lend/detail/<?php echo $novice->projectId;?>" class="btn-brown">立即出借</a>
               </p>
             </div>
           </div>
+          <!--
+          <div class="list visible-xs-12">
+            <h3><a href="lend/detail/<?php echo $novice->projectId;?>" class="brown"><?php echo $novice->projectName;?></a></h3>
+            <ul>
+              <li>
+                <p>借款期限: <span class="f20 red"><?php echo $novice->timeLimit;?></span></p>
+                <p>借款金额: <span>10万以下</span></p>
+              </li>
+              <li>
+                <p>年化收益率: <span class="f20 red"><?php echo $novice->yearRate;?>%</span></p>
+                <div>
+                  出借进度: 
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $novice->lendProgress;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $novice->lendProgress;?>%;">
+                      <?php echo $novice->lendProgress;?>%
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <p class="text-right">
+                  <a href="lend/detail/<?php echo $novice->projectId;?>" <?php if($novice->className == '出借中'):?>class="btn-brown"<?php else: ?>class="btn-gray"<?php endif;?>><?php echo $novice->className;?></a>
+                </p>
+                <p class="mt12">还款方式: <span><?php echo $novice->repayment;?></span></p>
+              </li>
+            </ul>            
+          </div>
+          -->
         </div>
       </div>
       <div class="b-line"></div>
@@ -178,11 +207,11 @@
         <div class="row">
           <?php foreach ($service as $key => $val):?>
           <div class="list">
-            <h3><a href="lenddetail/<?php echo $val->projectId;?>" class="brown"><?php echo $val->projectName;?></a></h3>
+            <h3><a href="lend/detail/<?php echo $val->projectId;?>" class="brown"><?php echo $val->projectName;?></a></h3>
             <ul>
               <li>
                 <p>借款期限: <span class="f20 red"><?php echo $val->timeLimit;?></span></p>
-                <p>借款金额: <span>10万以下</span></p>
+                <p>借款金额: <span><?php echo $val->loanAmount;?></span></p>
               </li>
               <li>
                 <p>年化收益率: <span class="f20 red"><?php echo $val->yearRate;?>%</span></p>
@@ -197,21 +226,7 @@
               </li>
               <li>
                 <p class="text-right">
-                  <?php 
-                    if($val->className == '出借中'):
-                  ?>
-                  <a href="lenddetail/<?php echo $val->projectId;?>" class="btn-brown">立即出借</a>
-                  <?php
-                    elseif($val->className == '还款中'):
-                  ?>
-                  <a href="#" class="btn-gray">还款中</a>
-                  <?php
-                    elseif($val->className == '已满标'):
-                  ?>
-                  <a href="#" class="btn-gray">已满标</a>
-                  <?php
-                    endif;
-                  ?>
+                  <a href="lend/detail/<?php echo $val->projectId;?>" <?php if($val->className == '出借中'):?>class="btn-brown"<?php else: ?>class="btn-gray"<?php endif;?>><?php echo $val->className;?></a>
                 </p>
                 <p class="mt12">还款方式: <span><?php echo $val->repayment;?></span></p>
               </li>

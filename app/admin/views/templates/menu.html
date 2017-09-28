@@ -3,10 +3,10 @@
 		<li <?php if($cname=='Option'):?>class="current"<?php endif?>><a href="/admin.php/option"><i class="fa fa-cog"></i> <span class="nav-label">基本设置</span></a></li>
         <li <?php if($cname=='Slide'):?>class="current"<?php endif?>><a href="/admin.php/slide"><i class="fa fa-picture-o"></i> <span class="nav-label">轮播图</span></a></li>
         <li <?php if($cname=='Salesman'):?>class="current"<?php endif?>><a href="/admin.php/salesman"><i class="fa fa-group"></i> <span class="nav-label">业务员管理</span></a></li>
-        <li <?php if($cname=='Project' || $cname=='User'):?>class="current"<?php endif?>><a href="#pro" class="editor"><i class="fa fa-rmb"></i> 项目管理</a>
+        <li <?php if($cname=='Project' || $cname=='User'):?>class="current"<?php endif?>><a href="#pro" class="editor"><i class="fa fa-rmb"></i> 出借管理</a>
             <span class="arrow"></span>
             <ul id="pro">
-                <li <?php if($cname=='Project'):?>class="current"<?php endif?>><a href="/admin.php/project">项目列表</a></li>
+                <li <?php if($cname=='Project'):?>class="current"<?php endif?>><a href="/admin.php/project">出借列表</a></li>
                 <li <?php if($cname=='User'):?>class="current"<?php endif?>><a href="/admin.php/user">借款人</a></li>
             </ul>
         </li>

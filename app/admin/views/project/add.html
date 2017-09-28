@@ -11,6 +11,16 @@
                 <form id="form1" name="form1" class="stdform" method="post" action="/admin.php/project/save">
 
                     <p>
+                        <label>类型</label>
+                        <span class="field">
+                            <select name="type" id="type" required="required" >
+                                <option value="0">-出借服务-</option>
+                                <option value="1">-新手专享-</option>
+                            </select>
+                        </span>
+                    </p>
+
+                    <p>
                         <label>项目名称</label>
                         <span class="field"><input type="text" name="name" id="name" class="smallinput" required="required" /></span>
                     </p>
@@ -92,6 +102,11 @@
                     </p>
 
                     <p>
+                        <label>额外信息</label>
+                        <span class="field"><input type="text" name="other" id="other" class="smallinput"/></span>
+                    </p>
+
+                    <p>
                         <label>出借进度</label>
                         <span class="field"><input type="text" name="progress" id="progress" required="required" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" style="width:110px" /></span>
                     </p>
@@ -100,6 +115,7 @@
                         <label>日期</label>
                         <span class="field"><input type="text" name="time" id="time" class="smallinput" required="required" readonly="readonly" /></span>
                     </p>
+
                     <!--
                     <p>
                         <label>风险控制</label>
