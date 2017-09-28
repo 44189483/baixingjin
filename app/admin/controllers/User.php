@@ -28,7 +28,7 @@ class User extends CI_Controller{
 		$this->load->view('templates/menu.html',$this->head_data);
 
 		//获取所有项目
-		$query = $this->db->query("SELECT projectId,projectName FROM {$this->db->dbprefix('project')} ORDER BY projectId DESC");
+		$query = $this->db->query("SELECT projectId,projectName FROM {$this->db->dbprefix('project')} ORDER BY projectType DESC,projectId DESC");
 	    $this->data = $query->result();
 
 	}

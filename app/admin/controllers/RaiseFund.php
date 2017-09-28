@@ -7,7 +7,7 @@
 * @filesource
 */
 
-class RaiseFund extends CI_Controller{
+class Raisefund extends CI_Controller{
 
 	public function __construct(){
 

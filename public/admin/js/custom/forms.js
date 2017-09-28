@@ -82,6 +82,11 @@ jQuery(document).ready(function(){
 		    }
 		}
 	});
+
+	jQuery.validator.addMethod("pwd", function(value, element) {   
+	    var str = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+	    return this.optional(element) || (str.test(value));
+	}, "密码需为6-20位字母与数字组合");
 	
 	
 	///// TAG INPUT /////

@@ -160,7 +160,19 @@ class Lend extends CI_Controller{
 		}
 
 		//详情
-		$query = $this->db->query("SELECT * FROM {$this->table} WHERE projectId={$id}");
+		$sql = "
+	    	SELECT 
+	    		p.*,
+	    		c.className 
+	    	FROM 
+	    		{$this->db->dbprefix('project')} p
+	    	INNER JOIN
+	    		{$this->db->dbprefix('class')} c 
+	    	ON
+	    		p.status=c.classId
+	    	WHERE projectId={$id}
+	    ";
+		$query = $this->db->query($sql);
     	$data = $query->row();
 
     	if(!$data){

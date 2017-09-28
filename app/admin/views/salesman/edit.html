@@ -68,8 +68,7 @@
 </div><!--bodywrapper-->
 <script>
     jQuery(document).ready(function(){
-        jQuery('#birth').datetimepicker({
-            timeFormat: "HH:mm:ss",
+        jQuery('#birth').datepicker({
             dateFormat: "yy-mm-dd"
         });
         jQuery("#prov_city").citySelect({prov:"<?php echo $province;?>", city:"<?php echo $city;?>"});

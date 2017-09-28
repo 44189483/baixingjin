@@ -40,6 +40,12 @@ $(function(){
 
             //密码验证
             var pwd = $("#pwd").val();
+            if(!pwd.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/)){
+                $('.pwd').text('密码需为6-20位字母与数字组合');
+                $('.pwd').show();
+                return false;
+            }
+
             var repwd = $("#repwd").val();
             if(repwd != pwd){ 
                 $('.repwd').text('两次密码输入不一致');
@@ -108,7 +114,6 @@ $(function(){
                     $('.phonecode').text('短信验证码错误.');
                     $('.phonecode').show();
                     //发送验证码复位
-
                     return false;
                 }else if(response == -4){
                     $('.recommcode').text('渠道推荐码错误..');
@@ -174,6 +179,7 @@ $(function(){
         //验证码按钮激活
         $("#getphonecode").attr("value","重新发送验证码");
         $("#getphonecode").css("background","#fff"); 
+        $("#getphonecode").attr("disabled", false);
         //提交按钮变成点击
         $("#submit").attr("disabled", false);
         $("#submit").css("background","#cd9d26"); 
@@ -275,22 +281,26 @@ $(function(){
             $('.phone').text('手机号码格式不正确');
             return false;
         }
-
-        $("#submit").css("background","#eee");  
-        $("#submit").attr("disabled", true);//禁用提交按钮 
-
+        
         $.ajax({
            type: "POST",
            url: "/member/sendverifycode",
-           data: "phone="+phone.val(),
+           data: "phone="+phone.val()+"&formtype="+$("#formtype").val(),
            success: function(msg){
-            if(msg != 'ok' && msg != null && msg != ''){ 
-             alert(msg);
+            if(msg == -2){
+                $('.phone').show();
+                $('.phone').text('用户已存在');
+                return false;
+            }else if(msg != 'ok' && msg != null && msg != ''){ 
+                alert(msg);
             }
            }
         });
 
+        $("#submit").css("background","#eee");  
+        $("#submit").attr("disabled", true);//禁用提交按钮
         time(this);
+        
     });
 
 });

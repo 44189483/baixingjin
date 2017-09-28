@@ -434,10 +434,10 @@ button {
 	margin-top:30px;
 }
 
-.info-panel form input ,.info-panel form select{
+.info-panel form input,.info-panel form select{
     border-radius: 5px;
     border: 1px solid #eaeaea;
-    padding: 15px;
+    padding: 10px;
     margin: 15px;
 }
 
@@ -554,6 +554,7 @@ button {
 .tooltip.right .tooltip-inner {
     border:1px solid #cd9d26;
     background: #fffcef;
+    max-width: none;
     color: #000;
 }
 
@@ -869,11 +870,15 @@ button {
 	}
 
 	.info-panel form input[^type=checkbox] {
-		
+		width:260px;
+	}
+
+	.info-panel form input[type=checkbox] {
+		margin: 0 0 0 15px;
 	}
 
 	.info-panel form #phonecode{
-		width:65px;
+		width:55px;
 	}
 
 	.info-panel form #getphonecode{
@@ -968,6 +973,11 @@ button {
 
 	.marquee-panel ul li{
 		width: 70%;
+	}
+
+	.tooltip {
+		top: -10px !important;
+    	left: 155px !important;
 	}
 
 }
@@ -1269,7 +1279,6 @@ button {
 		padding:10px;
 	}
 
-	/*&&[type=radio]*/
 	.info-panel form input:not([type=checkbox]){
 		width: 400px;
 	}
@@ -1582,9 +1591,8 @@ button {
 	    margin: 0 auto;
 	}
 
-	/*&&[type=radio]*/
-	.info-panel form input([type=text]){
-		width: 400px;
+	.info-panel form input[type=text],.info-panel form input[type=password]{
+		width:380px;
 	}
 
 	.info-panel form #getphonecode{
@@ -1592,16 +1600,16 @@ button {
 	}
 
 	.info-panel form #verifcode{
-		width: 82px;
+		width: 165px;
 	}
 
 	.info-panel form #phonecode{
-		width:82px;
+		width: 165px;
 	}
 
 	.info-panel form .forgetpwd{
 		float: right;
-		margin:10px 66px 0 0;
+		margin-top:10px;
 	}
 
 	.info-panel form .btn-brown{

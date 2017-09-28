@@ -163,35 +163,6 @@ class News extends CI_Controller{
 		    'createTime' => date('Y-m-d H:i:s')
 		);
 
-		//文件存在判断
-		if(!empty($_FILES["attchment"]["name"]) && is_uploaded_file($_FILES["attchment"]["tmp_name"])){
-
-			//重命名
-			$attchname = $_FILES["attchment"]["name"];
-			$ext = substr($attchname,strripos($attchname,'.') + 1);
-			$name = date('Ymd').rand(0,999).'.'.$ext;
-			$config['file_name'] = $name;
-
-			$config['upload_path'] = 'upload/img/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_size'] = '0';
-			$config['max_width'] = '1024';
-			$config['max_height'] = '768';
-			$this->load->library('upload', $config);
-			$this->upload->initialize($config);
-			$this->upload->do_upload('attchment');
-			$info = $this->upload->data();
-
-		    if($info && !empty($id)){//删除旧图
-				$query = $this->db->query("SELECT articleAttach FROM {$this->table} WHERE articleId={$id}");
-	    		$row = $query->row(); 
-				@unlink($row->articleAttach);
-		    }
-
-		    $data['articleAttach'] = $config['upload_path'].$name;
-
-		}
-		
 		if(empty($id)){
 			$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleType=1 AND articleTitle='{$title}'");
 	    	$row = $query->row(); 

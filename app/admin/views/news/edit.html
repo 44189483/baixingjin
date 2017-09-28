@@ -33,22 +33,7 @@
                         <label>标题</label>
                         <span class="field"><input type="text" name="title" id="title" class="smallinput" value="<?php echo $articleTitle;?>"/></span>
                     </p>
-                    
-                    <p>
-                        <label>图片</label>
-                        <span class="field"><input type="file" name="attchment" id="attchment"/></span>
-                    </p>
-
-                    <?php if(!empty($articleAttach)):?>
-                        <p align="center">
-                            <span id="load"></span>
-                        </p>
-                        <p id="panel" align="center">
-                            <img src="/<?php echo $articleAttach;?>" alt="" />
-                            <button type="button" onclick="delData('article','articleAttach','articleId',<?php echo $articleId;?>)">删除</button>
-                        </p>
-                    <?php endif; ?>
-
+                   
                     <p>
                         <label>内容</label>
                         <span class="field"><textarea id="content" name="content"><?php echo $articleContent;?></textarea>

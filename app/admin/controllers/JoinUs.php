@@ -7,7 +7,7 @@
 * @filesource
 */
 
-class JoinUs extends CI_Controller{
+class Joinus extends CI_Controller{
 
 	public function __construct(){
 

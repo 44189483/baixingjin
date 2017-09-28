@@ -114,7 +114,7 @@
                                     <?php echo $val->createTime; ?>
                                 </td>
                                 <td class="center">
-                                    <a href="<?php echo site_url('project/edit/'.$val->projectId); ?>">编辑</a> <!--/ <a data-href="<?php echo site_url('project/del/'.$val->projectId); ?>" class="delete">删除</a> --> / <a href="<?php echo site_url('user/index/'.$val->projectId); ?>">借款人</a> / <a href="<?php echo site_url('raisefund/index/'.$val->projectId); ?>">集资会员</a></td>
+                                    <a href="<?php echo site_url('project/edit/'.$val->projectId); ?>">编辑</a> <!--/ <a data-href="<?php echo site_url('project/del/'.$val->projectId); ?>" class="delete">删除</a> --> / <a href="<?php echo site_url('user/index/'.$val->projectId); ?>">借款人</a> / <a href="<?php echo site_url('raisefund/index/'.$val->projectId); ?>">融资人</a></td>
                             </tr>
                             <?php endforeach;?>
                         <?php else:?>

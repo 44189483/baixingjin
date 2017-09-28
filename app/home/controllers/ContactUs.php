@@ -1,13 +1,13 @@
 <?php
 /*
-* ContactUs 联系我们
+* Contactus 联系我们
 * @package	ContactUs
 * @author	Sun Guo Liang
 * @since	Version 1.0.0
 * @filesource
 */
 
-class ContactUs extends CI_Controller{
+class Contactus extends CI_Controller{
 
 	public function __construct(){
 
@@ -19,7 +19,7 @@ class ContactUs extends CI_Controller{
 		$this->table = $this->db->dbprefix('article');
 	}
 
-	public function Index($id = null){
+	public function Index(){
 
 		$query = $this->db->query("SELECT * FROM {$this->table} WHERE articleId=1");
     	$data = $query->row();
@@ -38,4 +38,5 @@ class ContactUs extends CI_Controller{
 	}
 
 }
+
 ?>

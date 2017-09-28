@@ -33,13 +33,27 @@ class Member extends CI_Controller{
 	//发送手机验证码
 	public function sendverifycode(){
 
-		$code = randcode(6);//短信CODE码
-
 		$phone = $this->input->post('phone');//手机号
 
-		$signName = '百姓金';//短信签名
+		$formtype = $this->input->post('formtype');//表单类型
+
+		if($formtype == 'register'){
+			$query = $this->db->query("SELECT * FROM {$this->table} WHERE mobile='{$phone}'");
+			$res = $query->row();
+			if($res){
+				echo -2;//用户已存在
+				exit();
+			}
+			//$templateCode = 'SMS_100840046';//短信模板Code
+		}else if ($formtype == 'findpwd') {
+			//$templateCode = 'SMS_100010022';//短信模板Code
+		}
 
 		$templateCode = 'SMS_100010022';//短信模板Code
+
+		$code = randcode(6);//短信CODE码
+
+		$signName = '百姓金';//短信签名
 
 		$this->load->library('AliyunSms');
 
@@ -65,7 +79,6 @@ class Member extends CI_Controller{
 			redirect(site_url('/user'));
 		}
 
-
 		$this->header['nav'] = '注册';
 
 		$this->load->view('templates/header.html',$this->header);
@@ -87,6 +100,8 @@ class Member extends CI_Controller{
 		$email = $this->input->post('email');
 
 		$pwd = md5($this->input->post('pwd'));
+
+		//$pwd = password_hash($this->input->post('pwd'), PASSWORD_BCRYPT);
 
 		$recommcode = $this->input->post('recommcode');
 
@@ -173,7 +188,9 @@ class Member extends CI_Controller{
 		
 		$phone = $this->input->post('phone');
 
-		$pwd = md5($this->input->post('pwd'));
+		//$pwd = md5($this->input->post('pwd'));
+
+		$pwd = $this->input->post('pwd');
 
 		$sql = "SELECT * FROM {$this->table} ";
 
@@ -189,6 +206,8 @@ class Member extends CI_Controller{
 		$que = $this->db->query($sql."WHERE mobile='{$phone}' AND pwd='{$pwd}'");
 
 		$row = $que->row();
+
+		//$row = password_verify($pwd, $res->pwd);
 
 		if(!$row){
 			echo -3;//密码错误

@@ -19,7 +19,7 @@ class JoinUs extends CI_Controller{
 		$this->table = $this->db->dbprefix('article');
 	}
 
-	public function Index($id = null){
+	public function Index(){
 
 		$query = $this->db->query("SELECT articleTitle,articleContent FROM {$this->table} WHERE articleType=4 ORDER BY articleOrd DESC,articleId DESC");
     	$data['joinus'] = $query->result();

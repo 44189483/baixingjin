@@ -19,17 +19,17 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-6">
+              <div class="col-xs-12">
                 还款方式: <?php echo $repayment;?> &nbsp;
                 <a data-toggle="tooltip" data-placement="right" title="<?php echo $tip;?>">
                   <i class="fa fa-exclamation-circle brown"></i>
                 </a>
-              </div>
-              <div class="col-xs-6 text-right">
-                出借进度: &nbsp;
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $lendProgress;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $lendProgress;?>%;">
-                    <?php echo $lendProgress;?>%
+                <div class="pull-right">
+                  出借进度: &nbsp;
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $lendProgress;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $lendProgress;?>%;">
+                      <?php echo $lendProgress;?>%
+                    </div>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                 </div>
               <div class="col-md-12 col-sm-12 col-xs-5">
                 <p>
-                  <a href="" class="btn-brown">立即出借</a>
+                  <a href="" <?php if($className == '出借中'):?>class="btn-brown"<?php else: ?>class="btn-gray"<?php endif;?>><?php if($className == '出借中'):?>立即出借<?php else: ?><?php echo $className;?><?php endif;?></a>
                 </p>
                 <p>
                   温馨提示:<span class="absolutely">市场有风险，投资需谨慎</span>

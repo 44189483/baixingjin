@@ -3,7 +3,7 @@
         <div id="contentwrapper" class="contentwrapper">
                 
             <div class="contenttitle2">
-            	<h3>集资会员</h3>
+            	<h3>融资人</h3>
             </div><!--contenttitle-->
 
             <div class="tableoptions">
@@ -12,7 +12,7 @@
                         当前项目:<?php echo $pname;?>
                     </label>
                     &nbsp;
-                    <button type="button" onclick="window.location.href='/admin.php/raisefund/add/<?php echo $pid;?>'">增加集资会员</button>
+                    <button type="button" onclick="window.location.href='/admin.php/raisefund/add/<?php echo $pid;?>'">增加融资人</button>
                     <button type="button" class="backbutton" onclick="history.back()">返 回</button>
                 </form>
             </div>
@@ -83,7 +83,7 @@
                         </tbody>
                     </table>
                     <div class="dataTables_paginate paging_full_titles" id="dyntable_paginate">
-                        <div class="dataTables_info" id="dyntable_info">累计项目集资会员:<?php echo $total;?>个</div>
+                        <div class="dataTables_info" id="dyntable_info">累计项目融资人:<?php echo $total;?>个</div>
                         <button type="button" class="deletebutton">删除选中</button>
                         <?php echo $page;?>
                     </div>
