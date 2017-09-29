@@ -23,18 +23,26 @@ class Lend extends CI_Controller{
 		);
 	}
 
-	public function Index($cat = null){
+	public function Index(){
 
 		$this->header['nav'] = '出借';
 
 		//项目状态
-		$status = $this->get_class(2);
+		$data['status'] = $this->get_class(2);
 		//年收益率
-		$yearRate = $this->get_class(3);
+		$data['yearRate'] = $this->get_class(3);
 		//出借期限
-		$timeLimit = $this->get_class(4);
+		$data['timeLimit'] = $this->get_class(4);
 		//还款方式
-		$repayment = $this->get_class(5);
+		$data['repayment'] = $this->get_class(5);
+
+	    $this->load->view('templates/header.html',$this->header);
+		$this->load->view('lend.html',$data);
+		$this->load->view('templates/footer.html');
+
+	}
+
+	public function loadlend($cat = null){
 
 		$where = "WHERE projectType=0";
 
@@ -135,7 +143,7 @@ class Lend extends CI_Controller{
 	    $this->pagination->initialize($config);
 
 	    $data = array(
-	    	'getparam' => $getparam,
+	    	//'getparam' => $getparam,
 	    	'status' => $status,
 	    	'yearRate' => $yearRate,
 	    	'timeLimit' => $timeLimit,
@@ -147,9 +155,7 @@ class Lend extends CI_Controller{
 	        'page'  => $this->pagination->create_links(),
 	    );
 
-	    $this->load->view('templates/header.html',$this->header);
-		$this->load->view('lend.html',$data);
-		$this->load->view('templates/footer.html');
+	    $this->load->view('loadlend.html');
 
 	}
 

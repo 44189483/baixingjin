@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-09-29 06:55:16
+-- Generation Time: 2017-09-29 11:28:02
 -- 服务器版本： 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bxj_article` (
   `articleId` int(11) NOT NULL,
-  `articleType` tinyint(1) NOT NULL COMMENT '分类:0.公告 1.新闻 2.信息披露3.联系我们4.加入我们',
+  `articleType` tinyint(1) NOT NULL COMMENT '分类:0.公告 1.新闻 2.信息披露3.联系我们4.加入我们5.注册协议',
   `articleTitle` varchar(100) NOT NULL COMMENT '标题',
   `articleAttach` varchar(100) NOT NULL COMMENT '附件',
   `articleContent` text NOT NULL COMMENT '内容',
@@ -57,6 +57,7 @@ INSERT INTO `bxj_article` (`articleId`, `articleType`, `articleTitle`, `articleA
 (29, 4, '客户经理', '', '<p>岗位职责：</p>\r\n                    <p>1.负责收集整理新客户的资料，并进行沟通，开发新客户。</p>\r\n                    <p>2.通过与客户进行有效沟通了解客户需求。</p>\r\n                    <p>3.维护老客户的业务，挖掘客户的“”潜力。</p>\r\n                    <p>4.定期与合作客户进行沟通，建立良好的长期合作关系。</p>\r\n                    <p>5.组织公司产品和竞争对手产品在市场上销售情况的调查，综合客户的反馈意见。</p>\r\n                    <p>任职资格：</p>\r\n                    <p>只要你有能力，只要你想要高薪，只要你有对这份工作的一腔热血！</p>\r\n                    <p>1.男女不限，学历本科（有经验者可议），可接受应届毕业生。</p>\r\n                    <p>2.对市场有足够的了解，良好的抗压能力，有丰富的市场推广经验。</p>\r\n                    <p>3.具备较强的学习能力和优秀的沟通能力，懂得团队协作，服从管理</p>\r\n                    <p>4.性格坚韧、思维敏捷，具备良好的应变能力和承压能力。</p>\r\n                    <p>5.有敏锐的市场洞察力，有强烈的事业心、责任心和积极的工作态度。</p>\r\n                    <p>薪资待遇：</p>\r\n                    <p>1.底薪3000+高绩效+高提成+各种奖金+实时奖励政策+各种补助+社保</p>\r\n                    <p>2.双休，节假日休息</p>\r\n                    <p>3.各种相关的专业培训</p>\r\n                    <p>4.定期多样的员工活动，生日福利，节日福利等各种福利待遇</p>\r\n                    <p>5.全面的公平的富有竞争力的薪酬体系和奖励体系；完善的职业规划和晋升渠道</p>\r\n                    <p>工作时间：周一到周五上午：8：00-11：30，下午：13：00-17：00，双休及所有法定节假日</p>', 1, 7, '2017-09-20 04:47:27', 0),
 (30, 4, '团队经理', '', '<p>岗位职责：</p>\r\n                    <p>1、根据公司的战略和销售计划，形成相应的销售策略，带领团队开拓市场，并确保有效的执行，完成公司的销售计划，达成团队的销售目标</p>\r\n                    <p>2、确保团队人员编制的健全，控制人员流失，人员流失时主动招募</p>\r\n                    <p>3、从事客户渠道开发及客户关系维护工作</p>\r\n                    <p>4、组织团队会议，总结营销经验，对所属团队人员进行培训、指导、激励等</p>\r\n                    <p>5、负责向所属团队人员宣贯公司各项规章制度</p>\r\n                    <p>6、收集相关行业政策、竞争对手的信息、客户信息等，根据一线销售工作人员的反馈向上级主管提出产品及流程优化建议</p>\r\n                    <p>7、完成工作报告及相关的业务汇报工作</p>\r\n                    <p>8、完成上级领导交办的其他工作任务</p>\r\n                    <p>任职资格：</p>\r\n                    <p>1、专科或以上同等学历，营销、管理、金融等专业优先考虑</p>\r\n                    <p>2、两年以上工作经验，有理财产品、银行、保险、信托等相关行业经验、一年以上相关行业管理经验者优先考虑</p>\r\n                    <p>3、具有优秀的团队管理能力，能带领团队完成销售任务</p>\r\n                    <p>4、具有敏锐的市场洞察力和准确的客户分析能力，能够有效开发客户资源</p>\r\n                    <p>5、具备自我约束、激励并勇于承担、完成目标责任的能力，能在一定的压力下胜任工作</p>\r\n                    <p>6、具有较强的市场分析、营销、推广能力和良好的人际沟通、协调能力，分析和解决问题的能力</p>\r\n                    <p>7、具有较强的时间观念和服务意识，强有力的自律和自我驱动力，具有高度的团队合作精神和高度的工作热情</p>\r\n                    <p>8、具有强烈的创业、创新意识，愿与公司共同成长、共同进步</p>\r\n                    <p>薪资待遇：</p>\r\n                    <p>1、薪资构成：底薪5500+奖金+绩效+高提成+各种福利+各种补助+社保</p>\r\n                    <p>2、根据工作表现及能力，公司将给予相应的晋升空间</p>\r\n                    <p>3、定期相关的专业培训</p>\r\n                    <p>4、定期的各种员工活动，生日福利，节日福利等</p>\r\n                    <p>工作时间：</p>\r\n                    <p>周一到周五，周末双休，上午9：00-11：30，下午13：00-18：00，法定节假日均休。</p>', 1, 8, '2017-09-20 04:47:51', 0),
 (31, 4, '营业部经理', '', '<p>岗位职责：</p>\r\n                    <p>1、根据公司战略，形成相应的团队管理策略，确保团队成员有效执行</p>\r\n                    <p>2、带领团队挖掘客户财富管理需求；组织客户管理工作，负责维持重要客户，与客户保持良好关系</p>\r\n                    <p>3、负责分析客户的财务漏洞，提供理财服务</p>\r\n                    <p>4、负责管理本营业部人员的业务活动，组织实施营业部人员的招募 与甄选、辅导与培训、督导与考核等工作</p>\r\n                    <p>5、参与营业部管理制度的制定，检查本部门执行情况</p>\r\n                    <p>6、负责向所属营业部人员宣贯公司各项规章制度</p>\r\n                    <p>7、负责协调下属员工之间、本部门与相关部门之间关系；确保营业部团队成员明确工作进度及个人目标，建立与健全团队各项管理制度</p>\r\n                    <p>8、快速掌握公司产品专业知识，学习能力优秀，具备丰富的市场营销、销售谈判、客户关系管理等综合知识</p>\r\n                    <p>任职资格：</p>\r\n                    <p>1、专科或以上同等学历，营销、管理、金融等专业优先考虑</p>\r\n                    <p>2、两年以上工作经验，有理财产品、银行、保险、信托等相关行业经验、一年以上相关行业管理经验者优先考虑</p>\r\n                    <p>3、具有优秀的团队管理能力，能带领团队完成销售任务</p>\r\n                    <p>4、具有敏锐的市场洞察力和准确的客户分析能力，能够有效开发客户资源</p>\r\n                    <p>5、具备自我约束、激励并勇于承担、完成目标责任的能力，能在一定的压力下胜任工作</p>\r\n                    <p>6、具有较强的市场分析、营销、推广能力和良好的人际沟通、协调能力，分析和解决问题的能力</p>\r\n                    <p>7、具有较强的时间观念和服务意识，强有力的自律和自我驱动力，具有高度的团队合作精神和高度的工作热情</p>\r\n                    <p>8、具有强烈的创业、创新意识，愿与公司共同成长、共同进步</p>\r\n                    <p>薪资待遇：</p>\r\n                    <p>1、薪资构成：底薪+奖金+绩效+业绩提成</p>\r\n                    <p>2、根据工作表现及能力，公司将给予相应的晋升空间</p>\r\n                    <p>3、定期相关的专业培训</p>\r\n                    <p>4、定期的各种员工活动，生日福利，节日福利等</p>\r\n                    <p>工作时间：</p>\r\n                    <p>周一到周五，周末双休，上午8：00-11：30，下午13：00-17：00，法定节假日均休。</p>', 1, 9, '2017-09-20 04:48:13', 0),
+(2, 5, '注册协议', '', 'aaaaa', 1, 0, '', 0),
 (32, 0, 'dddddddddddddddddddddd', '', '', 1, 0, '', 0),
 (16, 0, '标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必填标题必题必填标题必填', '', '', 1, 0, '', 0),
 (17, 1, '工薪家庭如何展开小型投资？', '', '<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#666666;font-family:" font-size:16px;white-space:normal;background-color:#ffffff;"="">\r\n	工薪家庭如何展开小型投资？随着社会科技发展，投资理财方式不断多样化，无论富裕贫穷家庭都离不开理财，理财可以实现家庭资产的增值保值。因此家庭越来越重视做好这块，对于投资，家庭的主要想法是使资产增值，并且风险偏好程度偏向稳健型，那么，对于工薪家庭投资应以稳健为主，如何展开小型投资一起了解下吧。\r\n	</p>\r\n<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#666666;font-family:" font-size:16px;white-space:normal;background-color:#ffffff;"="">\r\n	一、做好投资理财\r\n</p>\r\n<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#666666;font-family:" font-size:16px;white-space:normal;background-color:#ffffff;"="">\r\n	　　家庭的零散资金，尽管不算多，但如果集聚起来，投资也能获得一定的的收益，至少比银行的活期存款利息要高出很多。如将闲置资金放入互联网活期理财产品，鲤鱼理财这样的平台，不仅安全有保障，而且收益高达8.6%，让你每天的投资都在赚钱，这样的理财方式非常适合工薪家庭，即省时又省力不用任何复杂操作，很方便灵活。\r\n	</p>\r\n<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#666666;font-family:" font-size:16px;white-space:normal;background-color:#ffffff;"="">\r\n	二、固定收益类的投资\r\n</p>\r\n<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#666666;font-family:" font-size:16px;white-space:normal;background-color:#ffffff;"="">\r\n	　　除了股市的投资，市场上的一些稳健型的投资还包括银行的理财产品，以及一些固定收益类的产品。银行理财产品，通常指的是货币基金等投资品种，其收益稳定，投资期限也较为灵活，投资门槛要求也不高，5万即可，收益率在4%-5.5%左右。而固定收益类的投资，如稳利精选基金，收益率6%-11.5%。不过投资的门槛相对要高一些，20万起。选择有固定收益类的投资，也是家庭投资的一个重要渠道，能稳定的获得收益。\r\n	</p>\r\n<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#666666;font-family:" font-size:16px;white-space:normal;background-color:#ffffff;"="">\r\n	三、降低股市投资比重\r\n</p>\r\n<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#666666;font-family:" font-size:16px;white-space:normal;background-color:#ffffff;"="">\r\n	　　对于股市投资，鲤鱼理财师认为，尽管股票有风险收益较高的特点，但却不是每个人都适合选择，至少不是每个人都适合自己的来操作。其实目前也可以采取间接投资的形式来投资股票。例如持有股票基金、混合基金等，基金投资，可降低自身投资专业度不足的问题，并且基金持有的一篮子股票，也能降低投资选股的风险。\r\n	</p>\r\n<p style="box-sizing:border-box;margin-top:0px;margin-bottom:10px;color:#666666;font-family:" font-size:16px;white-space:normal;background-color:#ffffff;"="">\r\n	此外，还有一些指数基金，跟踪指数的走势，投资的话，也不用再担心自己的股票会滞涨了。总的来说，投资于基金是一种相对于直接投资股票风险更低的投资方式，工薪家庭可适当的安排转变投资结构，降低直投股票的比重，转为持有基金的形式来投资理财。\r\n</p>', 1, 0, '2017-09-19 11:24:36', 17),
@@ -171,6 +172,13 @@ CREATE TABLE `bxj_member` (
   `sid` int(11) NOT NULL COMMENT '所属业务员'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员';
 
+--
+-- 转存表中的数据 `bxj_member`
+--
+
+INSERT INTO `bxj_member` (`id`, `realname`, `avatar`, `mobile`, `pwd`, `email`, `identificationNumber`, `bankcard`, `sex`, `marital`, `education`, `job`, `province`, `city`, `createTime`, `sid`) VALUES
+(1, '嘉良', '', '15942461399', '$2y$10$B0JEtkPTY5g7J5fgZ/lFueqt3ZE4zx6YMyiQWSQslZh0A5CuWqiNy', '44189483@qq.com', '', '', 0, '', '', '', '', '', '0000-00-00 00:00:00', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -189,11 +197,11 @@ CREATE TABLE `bxj_member_login` (
 --
 
 INSERT INTO `bxj_member_login` (`id`, `mid`, `mobile`, `logTime`) VALUES
-(1, 0, '15942461399', '2017-09-26 11:57:50'),
+(1, 0, '15942461399', '2017-09-29 07:56:16'),
 (2, 0, '13889467368', '2017-09-27 03:39:25'),
-(3, 0, '15942461399', '2017-09-27 03:44:02'),
-(4, 0, '15942461399', '2017-09-28 05:40:27'),
-(5, 0, '15942461399', '2017-09-28 10:56:04');
+(3, 0, '15942461399', '2017-09-29 07:56:16'),
+(4, 0, '15942461399', '2017-09-29 07:56:16'),
+(5, 0, '15942461399', '2017-09-29 07:56:16');
 
 -- --------------------------------------------------------
 
@@ -212,7 +220,7 @@ CREATE TABLE `bxj_option` (
 --
 
 INSERT INTO `bxj_option` (`optionType`, `optionKey`, `optionValue`) VALUES
-('AdminContrl', 'admin', '$2y$10$G0tO9usSAC99zklQ/LrbzOQKaK0OMyjmV4AZMz5SbEhcbibpwNt32'),
+('AdminContrl', 'admin', '$2y$10$fnsWzvP39/BSTRhcfwmTMufWnO2H4lpjOGR2yyHJHniPno5ooLs9C'),
 ('index_amount', 'half_year_turnover', '5千万'),
 ('index_amount', 'total_users', '140万'),
 ('index_amount', 'total_investment', '100亿');
@@ -402,7 +410,7 @@ ALTER TABLE `bxj_img`
 -- 使用表AUTO_INCREMENT `bxj_member`
 --
 ALTER TABLE `bxj_member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- 使用表AUTO_INCREMENT `bxj_member_login`
 --

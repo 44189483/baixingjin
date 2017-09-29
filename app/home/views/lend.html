@@ -44,35 +44,6 @@
       </div>
       <div class="s-line"></div>
       <div class="container">
-        <div class="row">
-          <?php foreach ($rows as $key => $val):?>
-          <div class="list">
-            <h3><a href="/lend/detail/<?php echo $val->projectId;?>" class="brown"><?php echo $val->projectName;?></a></h3>
-            <ul>
-              <li>
-                <p>借款期限: <span class="f20 red"><?php echo $val->timeLimit;?></span></p>
-                <p>借款金额: <span>10万以下</span></p>
-              </li>
-              <li>
-                <p>年化收益率: <span class="f20 red"><?php echo $val->yearRate;?>%</span></p>
-                <div>
-                  出借进度: 
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $val->lendProgress;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $val->lendProgress;?>%;">
-                      <?php echo $val->lendProgress;?>%
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <p class="text-right">
-                  <a href="lend/detail/<?php echo $val->projectId;?>" <?php if($val->className == '出借中'):?>class="btn-brown"<?php else: ?>class="btn-gray"<?php endif;?>><?php echo $val->className;?></a>
-                </p>
-                <p class="mt12">还款方式: <span><?php echo $val->repayment;?></span></p>
-              </li>
-            </ul>            
-          </div>
-          <?php endforeach;?>
-          <?php echo $page;?>
+        <div class="row" id="lends">
         </div>
       </div>  

@@ -85,6 +85,24 @@ class Member extends CI_Controller{
 
 	}
 
+	//注册协议
+	public function agreement(){
+
+		//详情
+		$query = $this->db->query("SELECT * FROM {$this->db->dbprefix('article')} WHERE articleId=2");
+    	$data = $query->row();
+
+    	if(!$data){
+    		show_error('暂无数据',null,'信息提示');
+    	}
+
+		$this->header['nav'] = '注册协议';
+
+    	$this->load->view('templates/header.html',$this->header);
+		$this->load->view('agreement.html',$data);
+		$this->load->view('templates/footer.html');
+	}
+
 	//验证注册
 	public function checkregister(){
 
