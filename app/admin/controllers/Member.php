@@ -209,12 +209,18 @@ class Member extends CI_Controller{
 			//删除会员将清除所属该会员所有资金账户
 			$this->db->query("DELETE FROM {$this->db->dbprefix('fund')} WHERE mid IN(".implode(',', $pid).")");
 
+			//删除所有会员登录日志
+			$this->db->query("DELETE FROM {$this->db->dbprefix('member_login')} WHERE mid IN(".implode(',', $pid).")");
+
 			$bool = $this->db->query("DELETE FROM {$this->table} WHERE id IN(".implode(',', $pid).")"); 
 
 		}else if (!empty($gid)) {//单删
 
 			//删除会员将清除所属该会员所有资金账户
 			$this->db->query("DELETE FROM {$this->db->dbprefix('fund')} WHERE mid={$gid}");
+
+			//删除所有会员登录日志
+			$this->db->query("DELETE FROM {$this->db->dbprefix('member_login')} WHERE mid={$gid}");
 
 			$bool = $this->db->delete($this->table, array('id' => $gid));
 

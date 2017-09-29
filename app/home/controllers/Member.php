@@ -155,7 +155,7 @@ class Member extends CI_Controller{
 			$this->session->member->user = $phone;
 
 			//登录日志
-	    	$this->db->insert($this->db->dbprefix('member_login'), array('mobile'=>$phone,'logTime'=>date('Y-m-d H:i:s')));
+	    	$this->db->insert($this->db->dbprefix('member_login'), array('mid'=>$this->db->insert_id(),'mobile'=>$phone,'logTime'=>date('Y-m-d H:i:s')));
 
 			echo '恭喜您已注册成功.';
 		}	
@@ -188,9 +188,7 @@ class Member extends CI_Controller{
 		
 		$phone = $this->input->post('phone');
 
-		//$pwd = md5($this->input->post('pwd'));
-
-		$pwd = $this->input->post('pwd');
+		$pwd = md5($this->input->post('pwd'));
 
 		$sql = "SELECT * FROM {$this->table} ";
 
@@ -218,14 +216,7 @@ class Member extends CI_Controller{
 		$this->session->member->user = $phone;	
 
 		//登录日志
-		$q = $this->db->query("SELECT * FROM {$this->db->dbprefix('member_login')} WHERE mobile='{$phone}'");
-    	$res = $q->row();
-
-    	if($res){//已存在用户
-    		$this->db->query("UPDATE {$this->db->dbprefix('member_login')} SET logTime='".date('Y-m-d H:i:s')."' WHERE mobile='{$phone}'");
-    	}else{
-    		$this->db->insert($this->db->dbprefix('member_login'), array('mobile'=>$phone,'logTime'=>date('Y-m-d H:i:s')));
-    	}
+    	$this->db->query("UPDATE {$this->db->dbprefix('member_login')} SET logTime='".date('Y-m-d H:i:s')."' WHERE mobile='{$phone}'");
 
 		echo '登录已成功.';
 		

@@ -38,7 +38,7 @@ class Setpwd extends CI_Controller{
 
 	public function save(){
 
-		$pwd = md5($this->input->post('pwd'));
+		$pwd = md5($this->input->post('newpwd'));
 
 		$this->db->where('optionType', 'AdminContrl');
 		$bool = $this->db->update($this->table, array('optionValue' => $pwd));

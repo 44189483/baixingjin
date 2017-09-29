@@ -119,7 +119,7 @@ class User extends CI_Controller{
 	    	ON
 	    		f.pid=p.projectId
 	    	INNER JOIN
-	    		{$this->db->dbprefix('class')} C
+	    		{$this->db->dbprefix('class')} c
 	    	ON
 	    		p.status=c.classId
 	    	WHERE

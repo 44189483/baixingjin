@@ -55,12 +55,12 @@ jQuery(document).ready(function(){
 			cid: "required",
 			content: "required",
 			number: "required",
-			pwd: {
-		     minlength: 6
+			newpwd: {
+			 required:true, 
+		     checkpwd: true
 		    },
-		    newpwd: {
-		     minlength: 6,
-		     equalTo: "#pwd"
+		    repwd: {
+		     equalTo: "#newpwd"
 		    },
 			selection: "required"
 		},
@@ -73,17 +73,17 @@ jQuery(document).ready(function(){
 			cid: "分类必选",
 			content: "内容必填",
 			number: "身份证必填",
-		    pwd: {
-		     minlength: jQuery.format("密码不能小于{0}个字符")
-		    },
 		    newpwd: {
-		     minlength: "确认密码不能小于5个字符",
+		    	required: "请填写密码",   
+            	checkpwd: "密码需为6-20位字母与数字组合"
+		    },
+		    repwd: {
 		     equalTo: "两次输入密码不一致不一致"
 		    }
 		}
 	});
 
-	jQuery.validator.addMethod("pwd", function(value, element) {   
+	jQuery.validator.addMethod("checkpwd", function(value, element) {   
 	    var str = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
 	    return this.optional(element) || (str.test(value));
 	}, "密码需为6-20位字母与数字组合");
