@@ -1,6 +1,8 @@
 var t;
 
 $(function(){
+	
+	getlend();
 
     var form = $('#checkform');
     $(form).find("input").focus(function(){
@@ -304,6 +306,13 @@ $(function(){
     });
 
 });
+
+//出借无刷新查询 
+function getlend(ids){
+    var getids = ids == null ? '0-0-0-0' : ids;
+    var url = "/lend/getlist/"+getids+"/"+Math.random();
+    $("#lends").load(url);
+}
 
 /*
 * switchTab 标签切换
