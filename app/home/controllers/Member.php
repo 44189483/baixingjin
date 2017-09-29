@@ -287,8 +287,6 @@ class Member extends CI_Controller{
 			exit();
 		}
 		
-		//$pwd = md5($this->input->post('pwd'));
-
 		$pwd = password_hash($this->input->post('pwd'), PASSWORD_BCRYPT);
 
 		$data = array(

@@ -248,7 +248,7 @@ class User extends CI_Controller{
 			//安全设置
 			case 'mysafe':
 
-				$pwd = md5($this->input->post('pwd'));
+				$pwd = password_hash($this->input->post('pwd'), PASSWORD_BCRYPT);
 
 				$data = array(
 				    'pwd' => $pwd

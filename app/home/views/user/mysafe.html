@@ -19,7 +19,7 @@
                           70%
                         </div>
                       </div>
-                      <span class="pull-right gray">上次登录时间：<?php echo $logTime;?></span>
+                      <span class="pull-right gray"><?php if(isset($logTime)):?>上次登录时间：<?php echo $logTime;?><?php endif;?></span>
                     </td>
                   </tr>
                   <tr>
@@ -84,13 +84,16 @@
                   </tr>
                   <tr>
                     <td class="lh80">新密码:</td>
-                    <td colspan="2"><input type="password" name="pwd" id="pwd" required="" /></td>
+                    <td colspan="2">
+                      <input type="password" name="pwd" id="pwd" required="" />
+                      <p class="red error pwd"></p>
+                    </td>
                   </tr>
                   <tr>
                     <td class="lh80">确认密码:</td>
                     <td colspan="2">
                       <input type="password" name="repwd" id="repwd" required="" />
-                      <p class="red error repwd">两次密码输入不一致.</p>
+                      <p class="red error repwd"></p>
                     </td>
                   </tr>
                   <tr>
