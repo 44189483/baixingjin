@@ -1,4 +1,4 @@
-     <div class="container">
+          <div class="container">
         <div class="row">
           <div class="search-colmn">
             <span>项目状态</span>
@@ -72,3 +72,12 @@
           <?php echo $page;?>
         </div>
       </div>
+      <script type="text/javascript">
+        $(function(){
+          //用JQ替换分页链接实现无刷新省得改后端PHP
+          $(".page li a").each(function(i){
+              var num = $(this).attr("data-ci-pagination-page");
+              $(this).attr("href","javascript:getlend('<?php echo $cat;?>',"+num+")");
+          });
+        });
+      </script>
