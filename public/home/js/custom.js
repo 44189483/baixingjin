@@ -308,10 +308,11 @@ $(function(){
 });
 
 //出借无刷新查询 
-function getlend(ids){
+function getlend(ids,n){
     var getids = ids == null ? '0-0-0-0' : ids;
-    var url = "/lend/getlist/"+getids+"/"+Math.random();
-    $("#lends").load(url);
+    var p = n == null ? '' : '?per_page='+n;
+    var url = "/lend/getlist/"+getids+"/"+Math.random()+p;
+    $("#lends").load(url);    
 }
 
 /*
