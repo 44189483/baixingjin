@@ -2,48 +2,5 @@
         <img src="/public/home/images/banner-4.png" alt="" />
       </div> 
       <div class="clearfix"></div>
-      <div class="container">
-        <div class="row">
-          <div class="search-colmn">
-            <span>项目状态</span>
-            <ul>
-              <li><a href="/lend/0-<?php echo $getparam[1];?>-<?php echo $getparam[2];?>-<?php echo $getparam[3];?>" class="brown">全部</a></li>
-              <?php foreach ($status as $key => $val):?>
-              <li><a href="/lend/<?php echo $val->classId;?>-<?php echo $getparam[1];?>-<?php echo $getparam[2];?>-<?php echo $getparam[3];?>" <?php if($val->classId == $getparam[0]):?>class="brown"<?php endif;?>><?php echo $val->className;?></a></li>
-              <?php endforeach;?>
-            </ul>
-          </div>
-          <div class="search-colmn">
-            <span>年化收益率</span>
-            <ul>
-              <li><a href="/lend/<?php echo $getparam[0];?>-0-<?php echo $getparam[2];?>-<?php echo $getparam[3];?>" class="brown">全部</a></li>
-              <?php foreach ($yearRate as $key => $val):?>
-              <li><a href="/lend/<?php echo $getparam[0];?>-<?php echo $val->classId;?>-<?php echo $getparam[2];?>-<?php echo $getparam[3];?>" <?php if($val->classId == $getparam[1]):?>class="brown"<?php endif;?>><?php echo $val->className;?>%</a></li>
-              <?php endforeach;?>
-            </ul>
-          </div>
-          <div class="search-colmn">
-            <span>出借期限</span>
-            <ul>
-              <li><a href="/lend/<?php echo $getparam[0];?>-<?php echo $getparam[1];?>-0-<?php echo $getparam[3];?>" class="brown">全部</a></li>
-              <?php foreach ($timeLimit as $key => $val):?>
-              <li><a href="/lend/<?php echo $getparam[0];?>-<?php echo $getparam[1];?>-<?php echo $val->classId;?>-<?php echo $getparam[3];?>" <?php if($val->classId == $getparam[2]):?>class="brown"<?php endif;?>><?php echo $val->className;?></a></li>
-              <?php endforeach;?>
-            </ul>
-          </div>
-          <div class="search-colmn">
-            <span>还款方式</span>
-            <ul>
-              <li><a href="/lend/<?php echo $getparam[0];?>-<?php echo $getparam[1];?>-<?php echo $getparam[2];?>-0" class="brown">全部</a></li>
-              <?php foreach ($repayment as $key => $val):?>
-              <li><a href="/lend/<?php echo $getparam[0];?>-<?php echo $getparam[1];?>-<?php echo $getparam[2];?>-<?php echo $val->classId;?>" <?php if($val->classId == $getparam[3]):?>class="brown"<?php endif;?>><?php echo $val->className;?></a></li>
-              <?php endforeach;?>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="s-line"></div>
-      <div class="container">
-        <div class="row" id="lends">
-        </div>
+      <div id="lends">
       </div>  
