@@ -35,6 +35,7 @@ class Index extends CI_Controller{
 				$this->session->admin = $this->input->post('username');
 				jump('登陆成功',site_url('index'));
 			}
+
 		}else{
 			$this->load->view('login.html');
 		}

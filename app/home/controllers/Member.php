@@ -44,12 +44,10 @@ class Member extends CI_Controller{
 				echo -2;//用户已存在
 				exit();
 			}
-			//$templateCode = 'SMS_100840046';//短信模板Code
+			$templateCode = 'SMS_100840046';//短信模板Code
 		}else if ($formtype == 'findpwd') {
-			//$templateCode = 'SMS_100010022';//短信模板Code
+			$templateCode = 'SMS_100010022';//短信模板Code
 		}
-
-		$templateCode = 'SMS_100010022';//短信模板Code
 
 		$code = randcode(6);//短信CODE码
 
@@ -99,9 +97,9 @@ class Member extends CI_Controller{
 
 		$email = $this->input->post('email');
 
-		$pwd = md5($this->input->post('pwd'));
+		//$pwd = md5($this->input->post('pwd'));
 
-		//$pwd = password_hash($this->input->post('pwd'), PASSWORD_BCRYPT);
+		$pwd = password_hash($this->input->post('pwd'), PASSWORD_BCRYPT);
 
 		$recommcode = $this->input->post('recommcode');
 
@@ -188,7 +186,9 @@ class Member extends CI_Controller{
 		
 		$phone = $this->input->post('phone');
 
-		$pwd = md5($this->input->post('pwd'));
+		//$pwd = md5($this->input->post('pwd'));
+
+		$pwd = $this->input->post('pwd');
 
 		$sql = "SELECT * FROM {$this->table} ";
 
@@ -201,11 +201,11 @@ class Member extends CI_Controller{
 			exit();
 		}
 
-		$que = $this->db->query($sql."WHERE mobile='{$phone}' AND pwd='{$pwd}'");
+		//$que = $this->db->query($sql."WHERE mobile='{$phone}' AND pwd='{$pwd}'");
 
-		$row = $que->row();
+		//$row = $que->row();
 
-		//$row = password_verify($pwd, $res->pwd);
+		$row = password_verify($pwd, $res->pwd);
 
 		if(!$row){
 			echo -3;//密码错误
@@ -287,7 +287,9 @@ class Member extends CI_Controller{
 			exit();
 		}
 		
-		$pwd = md5($this->input->post('pwd'));
+		//$pwd = md5($this->input->post('pwd'));
+
+		$pwd = password_hash($this->input->post('pwd'), PASSWORD_BCRYPT);
 
 		$data = array(
 		    'pwd' => $pwd
