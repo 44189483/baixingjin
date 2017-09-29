@@ -26,55 +26,51 @@ class Lend extends CI_Controller{
 	public function Index(){
 
 		$this->header['nav'] = '出借';
-
-		//项目状态
-		$data['status'] = $this->get_class(2);
-		//年收益率
-		$data['yearRate'] = $this->get_class(3);
-		//出借期限
-		$data['timeLimit'] = $this->get_class(4);
-		//还款方式
-		$data['repayment'] = $this->get_class(5);
-
 	    $this->load->view('templates/header.html',$this->header);
-		$this->load->view('lend.html',$data);
+		$this->load->view('lend.html');
 		$this->load->view('templates/footer.html');
 
 	}
 
-	public function loadlend($cat = null){
+	public function getlist($cat,$e){
+
+		if(empty($cat)){
+			show_error('页面参数有误', null, '错误提示');
+		}
+
+		//项目状态
+		$status = $this->get_class(2);
+		//年收益率
+		$yearRate = $this->get_class(3);
+		//出借期限
+		$timeLimit = $this->get_class(4);
+		//还款方式
+		$repayment = $this->get_class(5);
 
 		$where = "WHERE projectType=0";
 
-		if(!empty($cat)){
+		$getparam = explode('-', $cat);
 
-			$getparam = explode('-', $cat);
+		$count = count($getparam);
 
-			$count = count($getparam);
+		if($count < 4){
+			show_error('页面参数有误', null, '错误提示');
+		}
 
-			if($count < 4){
-				show_error('页面参数有误', null, '错误提示');
-			}
+		if($getparam[0] > 0){
+			$where .= " AND p.status='{$getparam[0]}'";
+		}
 
-			if($getparam[0] > 0){
-				//$this->get_class_name($getparam[0])
-				$where .= " AND p.status='{$getparam[0]}'";
-			}
+		if($getparam[1] > 0){
+			$where .= " AND p.yearRate='{$this->get_class_name($getparam[1])}'";
+		}
 
-			if($getparam[1] > 0){
-				$where .= " AND p.yearRate='{$this->get_class_name($getparam[1])}'";
-			}
+		if($getparam[2] > 0){
+			$where .= " AND p.timeLimit='{$this->get_class_name($getparam[2])}'";
+		}
 
-			if($getparam[2] > 0){
-				$where .= " AND p.timeLimit='{$this->get_class_name($getparam[2])}'";
-			}
-
-			if($getparam[3] > 0){
-				$where .= " AND p.repayment='{$this->get_class_name($getparam[3])}'";
-			}
-
-		}else{
-			$getparam = array(0,0,0,0);
+		if($getparam[3] > 0){
+			$where .= " AND p.repayment='{$this->get_class_name($getparam[3])}'";
 		}
 
 	    $config = array();
@@ -143,7 +139,7 @@ class Lend extends CI_Controller{
 	    $this->pagination->initialize($config);
 
 	    $data = array(
-	    	//'getparam' => $getparam,
+	    	'getparam' => $getparam,
 	    	'status' => $status,
 	    	'yearRate' => $yearRate,
 	    	'timeLimit' => $timeLimit,
@@ -155,7 +151,7 @@ class Lend extends CI_Controller{
 	        'page'  => $this->pagination->create_links(),
 	    );
 
-	    $this->load->view('loadlend.html');
+	    $this->load->view('loadlend.html',$data);
 
 	}
 
